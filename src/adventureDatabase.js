@@ -1,6 +1,5 @@
 const adventureDatabaseData = {
   energetic: [{
-
     title: "Urban Parkour Trail",
     description: "Navigate the city like never before with guided parkour spots and safe practice areas",
     duration: "1-2 hours",
