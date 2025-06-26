@@ -1,4 +1,3 @@
-
 const adventureDatabaseData = {
   energetic: [{
     title: "Urban Parkour Trail",
