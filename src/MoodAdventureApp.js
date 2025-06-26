@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Zap, Cloud, Smile,FireExtinguisher, Sun, PauseCircle, EyeOff, Flame, Ban, Mountain, Flower, Flower2, Coffee, Crown, Camera, Wind, Music, MapPin, Clock, Star, Compass, Bed, Moon, Users, HeartCrack, Waves, TreePine, Frown, } from 'lucide-react';
 import adventureDatabaseData from './adventureDataBase';
 
+
 const MoodAdventureApp = () => {
   const [currentMood, setCurrentMood] = useState(null);
   const [selectedIntensity, setSelectedIntensity] = useState(3);
