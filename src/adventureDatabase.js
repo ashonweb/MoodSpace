@@ -1,104 +1,126 @@
-const adventureDatabaseData = {
-  energetic: [{
-    title: "Urban Parkour Trail",
-    description: "Navigate the city like never before with guided parkour spots and safe practice areas",
-    duration: "1-2 hours",
-    intensity: 5,
-    location: "Downtown District",
-    type: "Active Adventure",
-    vibe: "Adrenaline rush through urban exploration",
-    tags: { setting: "outdoor", cost: "free", group: "either" }
-  },
-  {
-    title: "Sunrise Hill Sprint",
-    description: "Beat the crowd with an early morning hike to catch golden hour views",
-    duration: "2-3 hours",
-    intensity: 4,
-    location: "Nature Reserve",
-    type: "Outdoor Challenge",
-    vibe: "Fresh air and natural endorphins",
-    tags: { setting: "outdoor", cost: "free", group: "either" }
-  },
-  {
-    title: "Street Art Bike Tour",
-    description: "High-energy cycling tour through the city's most vibrant murals and art districts",
-    duration: "3-4 hours",
-    intensity: 4,
-    location: "Arts Quarter",
-    type: "Cultural Sport",
-    vibe: "Art meets adventure on two wheels",
-    tags: { setting: "outdoor", cost: "free", group: "either" }
-  },
-  {
-    title: "Rock Climbing Gym Challenge",
-    description: "Indoor bouldering with routes for every skill level, plus friendly climbing community",
-    duration: "2-3 hours",
-    intensity: 5,
-    location: "Sports Complex",
-    type: "Strength Challenge",
-    vibe: "Conquer fears and build confidence vertically",
-    tags: { setting: "indoor", cost: "paid", group: "either" }
-  },
-  {
-    title: "Night Running Club",
-    description: "Join energetic runners exploring lit city paths with safety in numbers",
-    duration: "1-2 hours",
-    intensity: 4,
-    location: "City Center",
-    type: "Cardio Adventure",
-    vibe: "City lights become your running soundtrack",
-    tags: { setting: "outdoor", cost: "free", group: "group" }
-  },
-  {
-    title: "Axe Throwing Arena",
-    description: "Release stress and channel warrior energy in a safe, supervised environment",
-    duration: "1-2 hours",
-    intensity: 3,
-    location: "Entertainment District",
-    type: "Skill Sport",
-    vibe: "Medieval meets modern stress relief",
-    tags: { setting: "indoor", cost: "paid", group: "either" }
-  },
-  {
-    title: "Dance Battle Workshop",
-    description: "Learn street dance moves and join impromptu battles with local dancers",
-    duration: "2-3 hours",
-    intensity: 4,
-    location: "Community Center",
-    type: "Creative Movement",
-    vibe: "Express your energy through rhythm and flow",
-    tags: { setting: "indoor", cost: "paid", group: "group" }
-  },
-  {
-    title: "Obstacle Course Racing",
-    description: "Mud runs, rope climbs, and team challenges in outdoor adventure parks",
-    duration: "3-5 hours",
-    intensity: 5,
-    location: "Adventure Park",
-    type: "Extreme Challenge",
-    vibe: "Transform into your strongest, muddiest self",
-    tags: { setting: "outdoor", cost: "paid", group: "group" }
-  },
-  {
-    title: "Skateboard Park Sessions",
-    description: "Learn tricks or perfect your style at local skate spots with mentorship",
-    duration: "2-4 hours",
-    intensity: 4,
-    location: "Skate Parks",
-    type: "Board Sport",
-    vibe: "Roll with the flow of street culture",
-    tags: { setting: "outdoor", cost: "free", group: "either" }
-  },
-  {
-    title: "High-Intensity Hiking Circuits",
-    description: "Power hiking with bodyweight exercises at scenic overlooks",
-    duration: "2-3 hours",
-    intensity: 5,
-    location: "Hill Trails",
-    type: "Fitness Adventure",
-    vibe: "Nature's gym with breathtaking rewards",
-    tags: { setting: "outdoor", cost: "free", group: "either" }
-  }],
+let adventureDatabaseData = {
+  energetic: [
+
+    {
+      title: "Urban Parkour Trail",
+      description: "Navigate the city like never before with guided parkour spots and safe practice areas",
+      duration: "1-2 hours",
+      intensity: 5,
+      location: "Downtown District",
+      type: "Active Adventure",
+      vibe: "Adrenaline rush through urban exploration",
+      tags: { setting: "outdoor", cost: "free", group: "either" },
+      gettingStarted: ["Find a comfortable spot to begin", "ake a moment to embrace the peaceful energy", "Follow your instincts and enjoy the experience"],
+      locationAndDirection: [
+
+        {
+          address: "Downtown District",
+          gettingThere: "Best accessed by car or public transport. Check local transit apps for real-time directions",
+          parking: "Street parking typically available. Check for any time restrictions or meters."
+        },
+
+        {
+          address: "fsdfsdfsf",
+          gettingThere: "Best accessed by car or public transport. Check local transit apps for real-time directions",
+          parking: "Street parking typically available. Check for any time restrictions or meters."
+        },
+
+
+
+      ],
+      whatToBring: ['Comfortable clothes', 'Water bottle', 'Positive attitude']
+    },
+
+    {
+      title: "Sunrise Hill Sprint",
+      description: "Beat the crowd with an early morning hike to catch golden hour views",
+      duration: "2-3 hours",
+      intensity: 4,
+      location: "Nature Reserve",
+      type: "Outdoor Challenge",
+      vibe: "Fresh air and natural endorphins",
+      tags: { setting: "outdoor", cost: "free", group: "either" }
+    },
+    {
+      title: "Street Art Bike Tour",
+      description: "High-energy cycling tour through the city's most vibrant murals and art districts",
+      duration: "3-4 hours",
+      intensity: 4,
+      location: "Arts Quarter",
+      type: "Cultural Sport",
+      vibe: "Art meets adventure on two wheels",
+      tags: { setting: "outdoor", cost: "free", group: "either" }
+    },
+    {
+      title: "Rock Climbing Gym Challenge",
+      description: "Indoor bouldering with routes for every skill level, plus friendly climbing community",
+      duration: "2-3 hours",
+      intensity: 5,
+      location: "Sports Complex",
+      type: "Strength Challenge",
+      vibe: "Conquer fears and build confidence vertically",
+      tags: { setting: "indoor", cost: "paid", group: "either" }
+    },
+    {
+      title: "Night Running Club",
+      description: "Join energetic runners exploring lit city paths with safety in numbers",
+      duration: "1-2 hours",
+      intensity: 4,
+      location: "City Center",
+      type: "Cardio Adventure",
+      vibe: "City lights become your running soundtrack",
+      tags: { setting: "outdoor", cost: "free", group: "group" }
+    },
+    {
+      title: "Axe Throwing Arena",
+      description: "Release stress and channel warrior energy in a safe, supervised environment",
+      duration: "1-2 hours",
+      intensity: 3,
+      location: "Entertainment District",
+      type: "Skill Sport",
+      vibe: "Medieval meets modern stress relief",
+      tags: { setting: "indoor", cost: "paid", group: "either" }
+    },
+    {
+      title: "Dance Battle Workshop",
+      description: "Learn street dance moves and join impromptu battles with local dancers",
+      duration: "2-3 hours",
+      intensity: 4,
+      location: "Community Center",
+      type: "Creative Movement",
+      vibe: "Express your energy through rhythm and flow",
+      tags: { setting: "indoor", cost: "paid", group: "group" }
+    },
+    {
+      title: "Obstacle Course Racing",
+      description: "Mud runs, rope climbs, and team challenges in outdoor adventure parks",
+      duration: "3-5 hours",
+      intensity: 5,
+      location: "Adventure Park",
+      type: "Extreme Challenge",
+      vibe: "Transform into your strongest, muddiest self",
+      tags: { setting: "outdoor", cost: "paid", group: "group" }
+    },
+    {
+      title: "Skateboard Park Sessions",
+      description: "Learn tricks or perfect your style at local skate spots with mentorship",
+      duration: "2-4 hours",
+      intensity: 4,
+      location: "Skate Parks",
+      type: "Board Sport",
+      vibe: "Roll with the flow of street culture",
+      tags: { setting: "outdoor", cost: "free", group: "either" }
+    },
+    {
+      title: "High-Intensity Hiking Circuits",
+      description: "Power hiking with bodyweight exercises at scenic overlooks",
+      duration: "2-3 hours",
+      intensity: 5,
+      location: "Hill Trails",
+      type: "Fitness Adventure",
+      vibe: "Nature's gym with breathtaking rewards",
+      tags: { setting: "outdoor", cost: "free", group: "either" }
+    }],
 
   peaceful: [
     {
@@ -2222,7 +2244,6 @@ const adventureDatabaseData = {
       "duration": "1-2 hours",
       "intensity": 2,
       "location": "Backyard or Community Garden",
-      "type": "Shared Creation",
       "type": "Nurturing Bond",
       "vibe": "Grow love with every seed you sow",
       "tags": {
@@ -3157,7 +3178,7 @@ const adventureDatabaseData = {
         cost: "free",
         group: "solo",
         tone: "peace"
-      },
+      }
 
     },
     {
@@ -3173,7 +3194,7 @@ const adventureDatabaseData = {
         cost: "paid",
         group: "solo or couple",
         tone: "calm"
-      },
+      }
 
     },
     {
@@ -3205,7 +3226,7 @@ const adventureDatabaseData = {
         cost: "free",
         group: "solo",
         tone: "calm"
-      },
+      }
 
     },
     {
@@ -3237,7 +3258,7 @@ const adventureDatabaseData = {
         cost: "low-cost",
         group: "solo",
         tone: "calm"
-      },
+      }
 
     },
     {
@@ -3355,7 +3376,8 @@ const adventureDatabaseData = {
       type: "Sound Meditation",
       vibe: "Drip by drip, you return to center",
       tags: { setting: "outdoor", cost: "free", group: "solo", time: "day", tone: "peaceful" }
-    }, {
+    },
+    {
       "title": "Cloud Shadow Watch",
       "description": "Lie on grass and watch cloud shadows drift across the landscape",
       "duration": "30-60 mins",
@@ -3370,7 +3392,8 @@ const adventureDatabaseData = {
         "time": "day",
         "tone": "peaceful"
       }
-    }, {
+    },
+    {
       "title": "Dewdrop Morning Gaze",
       "description": "Observe dewdrops on grass or flowers at dawn, marveling at their delicate sparkle",
       "duration": "20-30 mins",
