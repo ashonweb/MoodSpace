@@ -1,0 +1,111 @@
+[
+  {
+    "mood": "energetic",
+    "title": "Urban Parkour Trail",
+    "description": "Navigate the city like never before with guided parkour spots and safe practice areas",
+    "duration": "1-2 hours",
+    "intensity": 5,
+    "location": "Downtown District",
+    "type": "Active Adventure",
+    "vibe": "Adrenaline rush through urban exploration",
+    "keyword": "parkour",
+    "tags": {
+      "setting": "outdoor",
+      "cost": "free",
+      "group": "either",
+      "tone": "adventurous",
+      "nature": "general",
+      "time": "daytime",
+      "place_type": "outside"
+    },
+    "equipment": [
+      "comfortable clothing",
+      "sneakers",
+      "water bottle",
+      "safety gear",
+      "backpack",
+      "first aid kit",
+      "phone with GPS",
+      "snacks"
+    ],
+    "ideal_for": [
+      "young adults",
+      "fitness seekers"
+    ],
+   
+    "season": [
+      "spring",
+      "autumn"
+    ],
+    "skills_required": [
+      "coordination",
+      "endurance"
+    ],
+    "safety_tips": [
+      "wear appropriate footwear",
+      "stay hydrated",
+      "avoid crowded areas"
+    ],
+    "gettingStarted":[
+      "find a local parkour group or instructor",
+      "start with basic movements and techniques",
+      "practice in safe, open areas"
+    ]
+   
+  },
+  {
+    "mood": "energetic",
+
+    "gettingStarted":[
+      "find a local hiking trail",
+      "check weather conditions",
+      "bring a friend or group for safety"
+    ],
+    "title": "Sunrise Hill Sprint",
+    "description": "Beat the crowd with an early morning hike to catch golden hour views",
+    "duration": "2-3 hours",
+    "intensity": 4,
+    "location": "Nature Reserve",
+    "type": "Outdoor Challenge",
+    "vibe": "Fresh air and natural endorphins",
+    "keyword": "hiking",
+    "tags": {
+      "setting": "outdoor",
+      "cost": "free",
+      "group": "either",
+      "tone": "invigorating",
+      "nature": "general",
+      "time": "morning",
+      "place_type": "outside"
+    },
+    "equipment": [
+      "comfortable clothing",
+      "hiking boots",
+      "water bottle",
+      "snacks",
+      "backpack",
+      "first aid kit",
+      "phone with GPS",
+      "sunscreen",
+      "map"
+    ],
+    "ideal_for": [
+      "young adults",
+      "fitness seekers"
+    ],
+    "season": [
+      "spring",
+      "autumn"
+    ],
+    "skills_required": [
+      "coordination",
+      "endurance"
+    ],
+    "safety_tips": [
+      "inform someone about your route",
+      "carry a whistle",
+      "avoid hiking alone"
+    ]
+   
+  }
+]
