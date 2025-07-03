@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, Zap, Cloud, Smile, FireExtinguisher, Sun, ParkingCircleIcon, PauseCircle, EyeOff, Flame, Ban, Mountain, Flower, Flower2, Coffee, Crown, Camera, Wind, Music, MapPin, Clock, Star, Compass, Bed, Moon, Users, HeartCrack, Waves, TreePine, Frown, Menu, X, ChevronRight, Search, Loader2 } from 'lucide-react';
-import adventureDatabaseData from './adventureDatabase';
+import adventureDatabaseData, { getStandardizedCityName, keywordMappings, moodCategories, moodCategoryMappings, moods } from './adventureDatabase';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { generateSmartKeywords } from './indoorResultsGenerator'
 
 // Mock adventure database
 
@@ -15,386 +16,50 @@ const MoodAdventureApp = () => {
     const [isAnimating, setIsAnimating] = useState(false);
     const [showMoodMenu, setShowMoodMenu] = useState(false);
     const [moodCategory, setMoodCategory] = useState('popular');
-    const [searchResults, setSearchResults] = useState([]);
+    // const [searchResults, setSearchResults] = useState([]);
     const [selectedAdventure, setSelectedAdventure] = useState(null)
     const [showAdventureDetail, setShowAdventureDetail] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [searchKeywords, setSearchKeywords] = useState('');
+    const [searchKeywords, setSearchKeywords] = useState([]);
+    const [showSearchResult, setShowSearchResult] = useState(false)
 
-    const moods = [
-        {
-            id: 'energetic',
-            name: 'Energetic',
-            icon: Zap,
-            color: 'from-yellow-400 to-red-600',
-            bgColor: 'bg-yellow-100',
-            description: 'Ready to conquer the world!',
-            category: 'positive'
-        },
-        {
-            id: 'peaceful',
-            name: 'Peaceful',
-            icon: Cloud,
-            color: 'from-teal-300 to-blue-400',
-            bgColor: 'bg-teal-50',
-            description: 'Seeking calm and tranquility',
-            category: 'calm'
-        },
-        {
-            id: 'happy',
-            name: 'Happy',
-            icon: Smile,
-            color: 'from-yellow-300 to-orange-400',
-            bgColor: 'bg-yellow-50',
-            description: 'Feeling joyful and upbeat',
-            category: 'positive'
-        },
-        {
-            id: 'curious',
-            name: 'Curious',
-            icon: Compass,
-            color: 'from-violet-400 to-fuchsia-500',
-            bgColor: 'bg-violet-50',
-            description: 'Want to discover something new',
-            category: 'explore'
-        },
-        {
-            id: 'social',
-            name: 'Social',
-            icon: Coffee,
-            color: 'from-red-100 to-pink-300',
-            bgColor: 'bg-rose-50',
-            description: 'Craving human connection',
-            category: 'popular'
-        },
-        {
-            id: 'calm',
-            name: 'Calm',
-            icon: Waves,
-            color: 'from-blue-100 to-teal-300',
-            bgColor: 'bg-blue-50',
-            description: 'At peace and relaxed',
-            category: 'calm'
-        },
-        {
-            id: 'creative',
-            name: 'Creative',
-            icon: Camera,
-            color: 'from-orange-300 to-yellow-400',
-            bgColor: 'bg-orange-50',
-            description: 'Inspiration is calling',
-            category: 'explore'
-        },
-        {
-            id: 'adventurous',
-            name: 'Adventurous',
-            icon: MapPin,
-            color: 'from-blue-400 to-orange-400',
-            bgColor: 'bg-orange-50',
-            description: 'Craving excitement and new places',
-            category: 'explore'
-        },
-        {
-            id: 'love',
-            name: 'Love',
-            icon: Heart,
-            color: 'from-pink-400 to-rose-600',
-            bgColor: 'bg-pink-50',
-            description: 'Feeling affectionate and warm',
-            category: 'positive'
-        },
-        {
-            id: 'reflective',
-            name: 'Reflective',
-            icon: Mountain,
-            color: 'from-green-300 to-emerald-500',
-            bgColor: 'bg-emerald-50',
-            description: 'Need space to think and feel',
-            category: 'calm'
-        },
-        {
-            id: 'playful',
-            name: 'Playful',
-            icon: Music,
-            color: 'from-pink-300 to-yellow-300',
-            bgColor: 'bg-yellow-50',
-            description: 'Ready for fun and games',
-            category: 'positive'
-        },
-        {
-            id: 'focused',
-            name: 'Focused',
-            icon: Clock,
-            color: 'from-indigo-400 to-blue-600',
-            bgColor: 'bg-blue-50',
-            description: 'In the zone and productive',
-            category: 'explore'
-        },
-        {
-            id: 'stressed',
-            name: 'Stressed',
-            icon: Wind,
-            color: 'from-red-200 to-pink-300',
-            bgColor: 'bg-pink-50',
-            description: 'Need to unwind and release tension',
-            category: 'challenging'
-        },
-        {
-            id: 'tired',
-            name: 'Tired',
-            icon: Moon,
-            color: 'from-indigo-100 to-purple-300',
-            bgColor: 'bg-purple-50',
-            description: 'Running low on energy',
-            category: 'calm'
-        },
-        {
-            id: 'angry',
-            name: 'Angry',
-            icon: Flame,
-            color: 'from-red-400 to-gray-700',
-            bgColor: 'bg-red-50',
-            description: 'Need to let off some steam',
-            category: 'challenging'
-        },
-        {
-            id: 'sad',
-            name: 'Sad',
-            icon: Frown,
-            color: 'from-blue-200 to-gray-400',
-            bgColor: 'bg-blue-50',
-            description: 'Feeling down or blue',
-            category: 'challenging'
-        },
-        {
-            id: 'heartbreak',
-            name: 'Heartbreak',
-            icon: HeartCrack,
-            color: 'from-blue-300 to-indigo-500',
-            bgColor: 'bg-blue-50',
-            description: 'Mending a broken heart',
-            category: 'challenging'
-        },
-        {
-            id: 'cozy',
-            name: 'Cozy',
-            icon: Bed,
-            color: 'from-orange-200 to-pink-300',
-            bgColor: 'bg-pink-50',
-            description: 'Wanting warmth and comfort',
-            category: 'calm'
-        }
-    ];
 
-    const moodCategories = {
-        popular: { name: 'Popular', moods: moods.filter(m => m.category === 'popular') },
-        positive: { name: 'Positive Vibes', moods: moods.filter(m => m.category === 'positive') },
-        calm: { name: 'Find Peace', moods: moods.filter(m => m.category === 'calm') },
-        explore: { name: 'Explore & Create', moods: moods.filter(m => m.category === 'explore') },
-        challenging: { name: 'Working Through It', moods: moods.filter(m => m.category === 'challenging') }
-    };
-
-    const keywordMappings = {
-        // Outdoor/Nature Activities (energetic, adventurous, peaceful, reflective)
-        outdoor: {
-            keywords: ['outdoor', 'nature', 'fresh air', 'outside', 'open air', 'wilderness', 'natural', 'forest', 'trees', 'greenery', 'scenic', 'landscape'],
-            searchTerms: ['parks', 'nature reserves', 'outdoor spaces', 'green areas', 'nature trails', 'forest areas'],
-            moods: ['energetic', 'adventurous', 'peaceful', 'reflective', 'curious']
-        },
-
-        // Water-related Activities (peaceful, calm, reflective, love)
-        water: {
-            keywords: ['lake', 'water', 'waterfront', 'river', 'pond', 'beach', 'swimming', 'boating', 'fishing', 'lakeside', 'riverside', 'fountain', 'stream', 'cascade', 'waves'],
-            searchTerms: ['lakes', 'waterfront', 'rivers', 'water bodies', 'beaches', 'reservoirs', 'fountains', 'water features'],
-            moods: ['peaceful', 'calm', 'reflective', 'love', 'cozy']
-        },
-
-        // Garden/Botanical Activities (peaceful, calm, creative, love, cozy)
-        garden: {
-            keywords: ['garden', 'botanical', 'flowers', 'plants', 'greenery', 'bloom', 'flora', 'herb', 'roses', 'petals', 'fragrance', 'blossom', 'orchid', 'tulip'],
-            searchTerms: ['botanical gardens', 'gardens', 'nurseries', 'flower gardens', 'parks with gardens', 'rose gardens', 'herb gardens'],
-            moods: ['peaceful', 'calm', 'creative', 'love', 'cozy', 'reflective']
-        },
-
-        // Hills/Mountains/Elevation (energetic, adventurous, reflective, focused)
-        elevation: {
-            keywords: ['hill', 'mountain', 'peak', 'summit', 'climb', 'hike', 'trek', 'altitude', 'viewpoint', 'overlook', 'sunrise', 'sunset', 'ridge', 'cliff', 'valley'],
-            searchTerms: ['hills', 'mountains', 'trekking spots', 'hiking trails', 'viewpoints', 'peaks', 'climbing areas', 'scenic overlooks'],
-            moods: ['energetic', 'adventurous', 'reflective', 'focused', 'curious']
-        },
-
-        // Parks/Recreation (happy, playful, social, peaceful)
-        park: {
-            keywords: ['park', 'playground', 'recreation', 'green space', 'picnic', 'lawn', 'field or park', 'grass', 'bench', 'shade', 'children', 'family'],
-            searchTerms: ['parks', 'recreational areas', 'playgrounds', 'green spaces', 'picnic spots', 'family parks', 'community parks'],
-            moods: ['happy', 'playful', 'social', 'peaceful', 'cozy']
-        },
-
-        // Sports/Fitness/Active (energetic, angry, stressed, focused)
-        fitness: {
-            keywords: ['parkour', 'fitness', 'gym', 'exercise', 'workout', 'training', 'sports', 'athletic', 'run', 'jog', 'sprint', 'active', 'cardio', 'strength', 'yoga', 'cycling'],
-            searchTerms: ['fitness centers', 'gyms', 'sports complexes', 'athletic facilities', 'running tracks', 'outdoor gyms', 'yoga studios', 'cycling paths'],
-            moods: ['energetic', 'angry', 'stressed', 'focused', 'adventurous']
-        },
-
-        // Cultural/Historical (curious, creative, reflective, focused)
-        cultural: {
-            keywords: ['museum', 'art', 'culture', 'history', 'heritage', 'monument', 'temple', 'palace', 'fort', 'ancient', 'gallery', 'exhibition', 'sculpture', 'architecture'],
-            searchTerms: ['museums', 'art galleries', 'cultural centers', 'monuments', 'temples', 'historical sites', 'heritage buildings', 'art spaces'],
-            moods: ['curious', 'creative', 'reflective', 'focused', 'calm']
-        },
-
-        // Learning/Reading/Quiet (peaceful, reflective, focused, tired, sad)
-        quiet: {
-            keywords: ['reading', 'study', 'quiet', 'peaceful', 'meditation', 'mindful', 'contemplat', 'reflect', 'library', 'book', 'silence', 'solitude', 'thinking'],
-            searchTerms: ['libraries', 'quiet parks', 'meditation centers', 'study spaces', 'peaceful areas', 'reading rooms', 'quiet corners'],
-            moods: ['peaceful', 'reflective', 'focused', 'tired', 'sad', 'heartbreak']
-        },
-
-        // Food/Dining (social, happy, cozy, love, stressed)
-        food: {
-            keywords: ['food', 'restaurant', 'cafe', 'dining', 'eat', 'meal', 'coffee', 'tea', 'cuisine', 'cooking', 'brunch', 'dessert', 'bakery', 'comfort food'],
-            searchTerms: ['restaurants', 'cafes', 'food courts', 'dining areas', 'food markets', 'bakeries', 'coffee shops', 'comfort food places'],
-            moods: ['social', 'happy', 'cozy', 'love', 'stressed', 'tired']
-        },
-
-        // Shopping/Market (social, happy, creative, curious, stressed)
-        shopping: {
-            keywords: ['shop', 'market', 'mall', 'store', 'buy', 'purchase', 'retail', 'bazaar', 'vendor', 'browse', 'window shopping', 'boutique'],
-            searchTerms: ['shopping malls', 'markets', 'shopping areas', 'retail centers', 'bazaars', 'local markets', 'street shopping'],
-            moods: ['social', 'happy', 'creative', 'curious', 'playful']
-        },
-
-        // Entertainment/Fun (happy, playful, social, creative)
-        entertainment: {
-            keywords: ['entertainment', 'fun', 'game', 'play', 'amusement', 'cinema', 'movie', 'theater', 'show', 'concert', 'music', 'dance', 'performance'],
-            searchTerms: ['entertainment centers', 'amusement parks', 'cinemas', 'theaters', 'gaming centers', 'music venues', 'performance spaces'],
-            moods: ['happy', 'playful', 'social', 'creative', 'curious']
-        },
-
-        // Adventure/Thrill (energetic, adventurous, angry, stressed)
-        adventure: {
-            keywords: ['adventure', 'thrill', 'exciting', 'adrenaline', 'extreme', 'challenge', 'daring', 'bold', 'risk', 'speed', 'intense'],
-            searchTerms: ['adventure parks', 'activity centers', 'adventure sports', 'thrill rides', 'extreme sports', 'challenge courses'],
-            moods: ['energetic', 'adventurous', 'angry', 'curious']
-        },
-
-        // Urban/City (curious, creative, social, focused)
-        urban: {
-            keywords: ['urban', 'city', 'downtown', 'street', 'building', 'architecture', 'metropolitan', 'district', 'skyline', 'plaza', 'square'],
-            searchTerms: ['city centers', 'downtown areas', 'urban parks', 'city attractions', 'commercial districts', 'plazas', 'city squares'],
-            moods: ['curious', 'creative', 'social', 'focused', 'adventurous']
-        },
-
-        // Wellness/Health (stressed, tired, sad, heartbreak, calm)
-        wellness: {
-            keywords: ['wellness', 'health', 'spa', 'relax', 'rejuvenat', 'heal', 'therapy', 'massage', 'yoga', 'mindfulness', 'breathing', 'restore'],
-            searchTerms: ['wellness centers', 'spas', 'yoga studios', 'health centers', 'relaxation centers', 'meditation centers', 'therapy centers'],
-            moods: ['stressed', 'tired', 'sad', 'heartbreak', 'calm', 'peaceful']
-        },
-
-        // NEW CATEGORIES FOR EXPANDED MOOD COVERAGE:
-
-        // Cozy/Comfort (cozy, tired, sad, heartbreak, calm)
-        cozy: {
-            keywords: ['cozy', 'comfort', 'warm', 'intimate', 'snug', 'homey', 'blanket', 'fireplace', 'soft', 'cushion', 'nook', 'hideaway', 'shelter'],
-            searchTerms: ['cozy cafes', 'intimate spaces', 'warm restaurants', 'comfort zones', 'cozy reading spots', 'intimate venues', 'sheltered areas'],
-            moods: ['cozy', 'tired', 'sad', 'heartbreak', 'calm']
-        },
-
-        // Creative/Artistic (creative, curious, happy, playful)
-        creative: {
-            keywords: ['creative', 'art', 'craft', 'paint', 'draw', 'design', 'artistic', 'workshop', 'studio', 'pottery', 'photography', 'music', 'writing', 'expression'],
-            searchTerms: ['art studios', 'craft centers', 'creative workshops', 'art cafes', 'pottery studios', 'photography spots', 'music venues', 'creative spaces'],
-            moods: ['creative', 'curious', 'happy', 'playful', 'reflective']
-        },
-
-        // Social/Community (social, happy, playful, love)
-        social: {
-            keywords: ['social', 'community', 'friends', 'group', 'gathering', 'party', 'celebration', 'meet', 'connect', 'together', 'crowd', 'people', 'lively'],
-            searchTerms: ['community centers', 'social clubs', 'gathering spaces', 'public squares', 'lively areas', 'popular hangouts', 'social venues'],
-            moods: ['social', 'happy', 'playful', 'love', 'curious']
-        },
-
-        // Romantic/Love (love, cozy, peaceful, calm)
-        romantic: {
-            keywords: ['romantic', 'love', 'couple', 'date', 'intimate', 'candlelight', 'sunset', 'scenic', 'private', 'secluded', 'beautiful', 'charming'],
-            searchTerms: ['romantic spots', 'couple destinations', 'scenic viewpoints', 'intimate cafes', 'beautiful gardens', 'sunset spots', 'romantic restaurants'],
-            moods: ['love', 'cozy', 'peaceful', 'calm', 'happy']
-        },
-
-        // Energetic/Active (energetic, playful, happy, adventurous)
-        energetic: {
-            keywords: ['energetic', 'active', 'dynamic', 'vibrant', 'lively', 'bustling', 'upbeat', 'fast-paced', 'stimulating', 'invigorating'],
-            searchTerms: ['active zones', 'bustling areas', 'energy centers', 'vibrant districts', 'lively venues', 'dynamic spaces', 'activity hubs'],
-            moods: ['energetic', 'playful', 'happy', 'adventurous', 'social']
-        },
-
-        // Stress Relief (stressed, angry, tired, sad)
-        stressRelief: {
-            keywords: ['stress', 'relief', 'calm', 'soothe', 'unwind', 'decompress', 'release', 'tension', 'pressure', 'overwhelming', 'breathe', 'escape'],
-            searchTerms: ['stress relief centers', 'calming spaces', 'quiet retreats', 'peaceful areas', 'relaxation spots', 'tranquil zones', 'escape venues'],
-            moods: ['stressed', 'angry', 'tired', 'overwhelmed']
-        },
-
-        // Healing/Recovery (sad, heartbreak, tired, stressed)
-        healing: {
-            keywords: ['healing', 'recovery', 'mend', 'restore', 'repair', 'comfort', 'support', 'gentle', 'nurturing', 'care', 'solace', 'refuge'],
-            searchTerms: ['healing spaces', 'support centers', 'gentle environments', 'nurturing places', 'comfort zones', 'refuge areas', 'recovery spaces'],
-            moods: ['sad', 'heartbreak', 'tired', 'stressed', 'calm']
-        },
-
-        // Focus/Productivity (focused, curious, reflective)
-        focus: {
-            keywords: ['focus', 'concentrate', 'productive', 'work', 'study', 'efficient', 'organized', 'clear', 'sharp', 'attentive', 'dedicated'],
-            searchTerms: ['co-working spaces', 'study areas', 'quiet work zones', 'productive environments', 'focus centers', 'concentration spots', 'work-friendly cafes'],
-            moods: ['focused', 'curious', 'reflective', 'calm']
-        },
-
-        // Music/Audio (playful, creative, happy, social, energetic)
-        music: {
-            keywords: ['music', 'audio', 'sound', 'rhythm', 'beat', 'melody', 'song', 'concert', 'live music', 'acoustic', 'performance', 'sing', 'dance'],
-            searchTerms: ['music venues', 'concert halls', 'live music spots', 'acoustic cafes', 'music studios', 'karaoke', 'dance clubs', 'performance spaces'],
-            moods: ['playful', 'creative', 'happy', 'social', 'energetic']
-        },
-
-        // Night/Evening (cozy, romantic, social, creative, reflective)
-        nightlife: {
-            keywords: ['night', 'evening', 'dark', 'lights', 'illuminated', 'nightlife', 'late', 'moon', 'stars', 'ambient', 'atmospheric'],
-            searchTerms: ['nightlife spots', 'evening venues', 'night markets', 'illuminated areas', 'late-night cafes', 'moonlight spots', 'night photography locations'],
-            moods: ['cozy', 'love', 'social', 'creative', 'reflective']
-        }
-    };
-
-    // Enhanced mood-to-category mapping for better personalization
-    const moodCategoryMappings = {
-        energetic: ['fitness', 'adventure', 'outdoor', 'energetic', 'elevation', 'urban'],
-        peaceful: ['quiet', 'garden', 'water', 'wellness', 'cozy', 'healing'],
-        happy: ['entertainment', 'social', 'food', 'park', 'creative', 'music'],
-        curious: ['cultural', 'creative', 'urban', 'adventure', 'focus', 'outdoor'],
-        social: ['social', 'food', 'entertainment', 'shopping', 'music', 'urban'],
-        calm: ['wellness', 'quiet', 'water', 'garden', 'healing', 'cozy'],
-        creative: ['creative', 'cultural', 'music', 'urban', 'garden', 'nightlife'],
-        adventurous: ['adventure', 'elevation', 'outdoor', 'energetic', 'urban', 'fitness'],
-        love: ['romantic', 'garden', 'water', 'cozy', 'food', 'nightlife'],
-        reflective: ['quiet', 'elevation', 'water', 'cultural', 'healing', 'focus'],
-        playful: ['entertainment', 'music', 'social', 'park', 'creative', 'energetic'],
-        focused: ['focus', 'quiet', 'cultural', 'urban', 'fitness', 'elevation'],
-        stressed: ['stressRelief', 'wellness', 'fitness', 'water', 'quiet', 'healing'],
-        tired: ['cozy', 'wellness', 'quiet', 'healing', 'water', 'food'],
-        angry: ['fitness', 'adventure', 'stressRelief', 'outdoor', 'energetic', 'elevation'],
-        sad: ['healing', 'quiet', 'wellness', 'cozy', 'water', 'garden'],
-        heartbreak: ['healing', 'quiet', 'wellness', 'water', 'cozy', 'romantic'],
-        cozy: ['cozy', 'food', 'wellness', 'romantic', 'quiet', 'nightlife']
-    };
-
-    // Function to get prioritized categories for a specific mood
-    const getCategoriesForMood = (moodId) => {
-        return moodCategoryMappings[moodId] || ['park', 'outdoor', 'quiet'];
-    };
+    // Use imported moods, moodCategories, keywordMappings, moodCategoryMappings directly
+    const getTopKeywordsForAdventure = (adventure) => {
+        const searchText = `
+          ${adventure.title}
+          ${adventure.description}
+          ${adventure.type}
+          ${adventure.vibe}
+          ${Object.values(adventure.tags || {}).join(' ')}
+        `.toLowerCase();
+      
+        const matches = Object.entries(keywordMappings).filter(([_, keywords]) =>
+          keywords.some(k => searchText.includes(k.toLowerCase()))
+        );
+      
+        const allMatchedKeywords = matches.flatMap(([_, keywords]) => keywords);
+      
+        // Deduplicate and return top N (e.g. first 5 unique)
+        const topKeywords = [...new Set(allMatchedKeywords)].slice(0, 5);
+      
+        return topKeywords;
+      };
+      
+    useEffect(() => {
+        updateAdventures();
+    }, [selectedIntensity, timeAvailable]);
 
     const handleAdventureSelect = (adventure) => {
         console.log(currentMood, adventure, "wererwr");
+        const topKeywords = getTopKeywordsForAdventure(adventure);
+
+for (const keyword of topKeywords) {
+  const query = `${keyword} near bangaloe`;
+  console.log("Search query for keyword:", query);
+//   searchPlacesAPI(query); // Call your backend or third-party API
+}
+       
         setShowSearchResult(false)
         // Update adventureDatabaseData with whatToBring only when user selects an adventure
         if (currentMood && adventureDatabaseData[currentMood.id]) {
@@ -461,400 +126,6 @@ const MoodAdventureApp = () => {
         }
     };
 
-    useEffect(() => {
-        updateAdventures();
-    }, [selectedIntensity, timeAvailable]);
-
-    // const generateSmartKeywords = (selectedMood, selectedAdventure, keywordMappings, moodCategoryMappings) => {
-    //     if (!selectedMood || !selectedAdventure) return '';
-
-    //     const keywords = new Set();
-
-    //     console.log(keywords, "werwerewr")
-    //     // const fullText = `${selectedAdventure.title} ${selectedAdventure.description}`.toLowerCase();
-    //     const fullText = `${selectedAdventure.title}`.toLowerCase();
-
-    //     const fullDesc = `${selectedAdventure.description}`.toLowerCase();
-
-
-    //     // Define semantic groups to avoid similar keywords
-    //     // Expanded semantic groups for better keyword deduplication and coverage
-    //     const semanticGroups = {
-    //         music: ['music', 'sound', 'audio', 'rhythm', 'beat', 'melody', 'song', 'concert', 'live music', 'acoustic', 'performance', 'sing', 'dance'],
-    //         nature: ['trees', 'forest', 'greenery', 'plants', 'flora', 'wilderness', 'natural', 'scenic', 'landscape', 'open air', 'fresh air'],
-    //         water: ['water', 'lake', 'river', 'pond', 'stream', 'beach', 'waves', 'waterfront', 'swimming', 'boating', 'fishing', 'lakeside', 'riverside', 'fountain', 'cascade'],
-    //         peaceful: ['peaceful', 'calm', 'quiet', 'tranquil', 'serene', 'solitude', 'silence', 'mindful', 'meditation'],
-    //         healing: ['healing', 'wellness', 'therapy', 'recovery', 'restore', 'mend', 'relief', 'soothe', 'unwind', 'decompress', 'release', 'tension', 'overwhelming', 'breathe', 'escape', 'gentle', 'nurturing', 'care', 'solace', 'refuge'],
-    //         exercise: ['fitness', 'gym', 'workout', 'exercise', 'training', 'sports', 'athletic', 'run', 'jog', 'sprint', 'active', 'cardio', 'strength', 'yoga', 'cycling', 'parkour'],
-    //         outdoor: ['outdoor', 'outside', 'nature', 'wilderness', 'open air', 'greenery', 'park', 'hill', 'mountain', 'peak', 'summit', 'climb', 'hike', 'trek', 'altitude', 'viewpoint', 'overlook', 'ridge', 'cliff', 'valley', 'garden', 'botanical'],
-    //         social: ['social', 'community', 'friends', 'group', 'gathering', 'party', 'celebration', 'meet', 'connect', 'together', 'crowd', 'people', 'lively'],
-    //         creative: ['creative', 'art', 'artistic', 'craft', 'paint', 'draw', 'design', 'workshop', 'studio', 'pottery', 'photography', 'writing', 'expression', 'gallery', 'exhibition', 'sculpture'],
-    //         food: ['food', 'restaurant', 'cafe', 'dining', 'meal', 'picnic', 'eat', 'coffee', 'tea', 'cuisine', 'cooking', 'brunch', 'dessert', 'bakery', 'comfort food', 'snacks'],
-    //         urban: ['urban', 'city', 'downtown', 'street', 'building', 'architecture', 'metropolitan', 'district', 'skyline', 'plaza', 'square', 'commercial', 'center'],
-    //         heartbreak: ['heartbreak', 'broken', 'sad', 'numb', 'mend', 'solace', 'recovery'],
-    //         reading: ['reading', 'book', 'library', 'study', 'quiet', 'contemplate', 'reflect', 'notebook'],
-    //         candlelight: ['candlelight', 'candle', 'romantic', 'intimate', 'cozy', 'warm', 'snug', 'homey', 'blanket', 'fireplace', 'soft', 'cushion', 'nook', 'hideaway', 'shelter'],
-    //         couple: ["date", 'couple', 'lover', 'love', 'partner', 'flowers', 'gift', 'affection'],
-    //         sunrise: ['sunrise', 'sunset', 'dawn', 'dusk', 'evening', 'night', 'moon', 'stars', 'ambient', 'atmospheric', 'illuminated', 'late'],
-    //         cafe: ['cafe', 'coffee', 'coffee shop', 'tea house', 'bakery'],
-    //         shopping: ['shop', 'market', 'mall', 'store', 'buy', 'purchase', 'retail', 'bazaar', 'vendor', 'browse', 'window shopping', 'boutique'],
-    //         entertainment: ['entertainment', 'fun', 'game', 'play', 'amusement', 'cinema', 'movie', 'theater', 'show', 'performance', 'gaming', 'amusement park'],
-    //         elevation: ['hill', 'mountain', 'peak', 'summit', 'climb', 'hike', 'trek', 'altitude', 'viewpoint', 'overlook', 'ridge', 'cliff', 'valley'],
-    //         wellness: ['wellness', 'health', 'spa', 'relax', 'rejuvenate', 'heal', 'therapy', 'massage', 'yoga', 'mindfulness', 'breathing', 'restore'],
-    //         cozy: ['cozy', 'comfort', 'warm', 'intimate', 'snug', 'homey', 'blanket', 'fireplace', 'soft', 'cushion', 'nook', 'hideaway', 'shelter'],
-    //         nightlife: ['night', 'evening', 'dark', 'lights', 'illuminated', 'nightlife', 'late', 'moon', 'stars', 'ambient', 'atmospheric'],
-    //         adventure: ['adventure', 'thrill', 'exciting', 'adrenaline', 'extreme', 'challenge', 'daring', 'bold', 'risk', 'speed', 'intense'],
-    //         focus: ['focus', 'concentrate', 'productive', 'work', 'study', 'efficient', 'organized', 'clear', 'sharp', 'attentive', 'dedicated'],
-    //         garden: ['garden', 'botanical', 'flowers', 'plants', 'greenery', 'bloom', 'flora', 'herb', 'roses', 'petals', 'fragrance', 'blossom', 'orchid', 'tulip'],
-    //         park: ['park', 'playground', 'recreation', 'green space', 'picnic', 'lawn', 'field', 'grass', 'bench', 'shade', 'children', 'family'],
-    //     };
-
-    //     // Function to check if keyword belongs to any semantic group
-    //     const getSemanticGroup = (keyword) => {
-    //         for (const [group, terms] of Object.entries(semanticGroups)) {
-    //             if (terms.includes(keyword.toLowerCase())) {
-    //                 return group;
-    //             }
-    //         }
-    //         return null;
-    //     };
-
-    //     // Track which semantic groups we've already added
-    //     const usedGroups = new Set();
-    //     const prioritizedKeywords = [];
-
-    //     // 0. PRIORITY: If the adventure title matches a known keyword exactly (whole word), use that as the top keyword
-    //     const titleWords = fullText.split(/\s+/).map(w => w.replace(/[’'".,!?]/g, '').toLowerCase());
-    //     let foundTitleKeyword = null;
-    //     Object.values(keywordMappings).forEach(config => {
-    //         config.keywords.forEach(keyword => {
-    //             const keywordLower = keyword.toLowerCase();
-    //             // Check for exact match in title words
-    //             if (titleWords.includes(keywordLower)) {
-    //                 foundTitleKeyword = keyword;
-    //             }
-    //             // Check for partial match: keyword is substring of any title word or vice versa
-    //             if (
-    //                 !foundTitleKeyword &&
-    //                 titleWords.some(word => word.includes(keywordLower) || keywordLower.includes(word))
-    //             ) {
-    //                 foundTitleKeyword = keyword;
-    //             }
-    //         });
-    //     });
-    //     if (foundTitleKeyword) {
-    //         // Add the found keyword as the highest priority and its semantic group
-    //         prioritizedKeywords.unshift({ keyword: foundTitleKeyword, priority: 100, source: 'title-exact' });
-    //     }
-
-    //     // 1. Add mood-specific keywords with priority scoring
-    //     const moodCategories = moodCategoryMappings[selectedMood.id] || [];
-    //     moodCategories.forEach((category, categoryIndex) => {
-    //         if (keywordMappings[category]) {
-    //             keywordMappings[category].keywords.forEach((keyword, keywordIndex) => {
-    //                 if (fullText.includes(keyword.toLowerCase())) {
-    //                     const priority = (moodCategories.length - categoryIndex) * 10 + (10 - keywordIndex);
-    //                     prioritizedKeywords.push({ keyword, priority, source: 'mood' });
-    //                 }
-    //             });
-    //         }
-    //     });
-
-    //     // 2. Extract keywords from adventure content with lower priority
-    //     Object.entries(keywordMappings).forEach(([category, config]) => {
-    //         config.keywords.forEach((keyword, index) => {
-    //             if (fullText.includes(keyword.toLowerCase())) {
-    //                 const priority = 5 - (index * 0.1); // Lower priority than mood keywords
-    //                 prioritizedKeywords.push({ keyword, priority, source: 'title' });
-    //             }
-    //         });
-    //     });
-
-    //     // 3. Extract keywords from adventure description with even lower priority
-    //     Object.entries(keywordMappings).forEach(([category, config]) => {
-    //         config.keywords.forEach((keyword, index) => {
-    //             if (fullDesc.includes(keyword.toLowerCase())) {
-    //                 const priority = 3 - (index * 0.05); // Even lower priority for description matches
-    //                 prioritizedKeywords.push({ keyword, priority, source: 'description' });
-    //             }
-    //         });
-    //     });
-
-
-
-
-
-
-
-
-    //     // 3. Sort by priority and add keywords avoiding semantic duplicates
-    //     prioritizedKeywords
-    //         .sort((a, b) => b.priority - a.priority)
-    //         .forEach(({ keyword }) => {
-    //             const semanticGroup = getSemanticGroup(keyword);
-
-    //             if (semanticGroup) {
-    //                 // If this semantic group hasn't been used, add the keyword
-    //                 if (!usedGroups.has(semanticGroup)) {
-    //                     keywords.add(keyword);
-    //                     usedGroups.add(semanticGroup);
-    //                 }
-    //             } else {
-    //                 // No semantic group, add directly
-    //                 keywords.add(keyword);
-    //             }
-    //         });
-
-    //     // 4. Add high-level category keywords if we need more and they don't conflict
-    //     // if (keywords.size < 6) {
-    //     //     const categoryKeywords = ['parks', 'gentle', 'activity',];
-    //     //     categoryKeywords.forEach(keyword => {
-    //     //         if (keywords.size < 8 && !getSemanticGroup(keyword)) {
-    //     //             keywords.add(keyword);
-    //     //         }
-    //     //     });
-    //     // }
-
-    //     // 5. Final cleanup and formatting
-    //     const keywordArray = Array.from(keywords)
-    //         .filter(keyword => keyword.length > 2) // Remove very short keywords
-    //         .slice(0, 5); // Limit to 8 keywords
-
-
-
-
-    //     // if (keywordArray.includes('water')) {
-    //     //     keywords.add('Towel');
-    //     //     keywords.add('Swimwear');
-    //     // }
-    //     // if (keywordArray.includes('parkour') || keywordArray.includes('fitness') || keywordArray.includes('exercise')) {
-    //     //     keywords.add('Sports shoes');
-    //     //     keywords.add('Comfortable clothes');
-    //     // }
-    //     // if (keywordArray.includes('garden') || keywordArray.includes('outdoor') || keywordArray.includes('nature')) {
-    //     //     keywords.add('Hat');
-    //     //     keywords.add('Sunscreen');
-    //     // }
-    //     // if (keywordArray.includes('reading') || keywordArray.includes('quiet') || keywordArray.includes('library')) {
-    //     //     keywords.add('Book');
-    //     //     keywords.add('Notebook');
-    //     // }
-    //     // if (keywordArray.includes('food') || keywordArray.includes('picnic')) {
-    //     //     keywords.add('Snacks');
-    //     //     keywords.add('Reusable bottle');
-    //     // }
-    //     // if (keywordArray.includes('music')) {
-    //     //     keywords.add('Headphones');
-    //     // }
-    //     // if (keywordArray.includes('photography') || keywordArray.includes('camera')) {
-    //     //     keywords.add('Camera');
-    //     // }
-    //     // if (keywordArray.includes('hike') || keywordArray.includes('hill') || keywordArray.includes('mountain')) {
-    //     //     keywords.add('Hiking shoes');
-    //     //     keywords.add('Backpack');
-    //     // }
-    //     // if (keywordArray.includes('cozy')) {
-    //     //     keywords.add('Sweater');
-    //     //     keywords.add('Blanket');
-    //     // }
-    //     // if (keywordArray.includes('sunset') || keywordArray.includes('evening')) {
-    //     //     keywords.add('Light jacket');
-    //     // }
-    //     // Avoid updating selectedAdventure here to prevent infinite loops.
-    //     // setSelectedAdventure(adventureDatabaseData[currentMood.id][idx]);
-    //     // console.log('Updated adventureDatabaseData:', adventureDatabaseData[currentMood.id][idx]);
-
-
-
-    //     // console.log('Updating whatToBring for:', selectedAdventure?.title, currentMood?.id);
-    //     // if (selectedAdventure && currentMood && adventureDatabaseData[currentMood.id]) {
-    //     //     const idx = adventureDatabaseData[currentMood.id].findIndex(
-    //     //         adv => adv.title === selectedAdventure.title
-    //     //     );
-    //     //     if (idx !== -1) {
-    //     //         adventureDatabaseData[currentMood.id][idx] = {
-    //     //             ...adventureDatabaseData[currentMood.id][idx],
-    //     //             ...selectedAdventure,
-    //     //             whatToBring: generateWhatToBring(
-    //     //                 selectedAdventure,
-    //     //                 currentMood,
-    //     //                 keywordMappings,
-    //     //                 moodCategoryMappings
-    //     //             )
-    //     //         };
-
-    //     //         setSelectedAdventure(adventureDatabaseData[currentMood.id][idx]);
-    //     //         console.log('Updated adventureDatabaseData:', adventureDatabaseData[currentMood.id][idx]);
-    //     //     }
-    //     // }
-
-    //     return keywordArray.join(', ');
-
-
-
-
-
-    // };
-
-    // Enhanced "What to Bring" recommendations based on keywords and adventure type
-   
-   
-    const generateSmartKeywords = (selectedMood, selectedAdventure, keywordMappings, moodCategoryMappings) => {
-        if (!selectedMood || !selectedAdventure) return '';
-    
-        const keywords = new Set();
-        
-        console.log(keywords, "werwerewr")
-        const fullText = `${selectedAdventure.title}`.toLowerCase();
-        const fullDesc = `${selectedAdventure.description}`.toLowerCase();
-    
-        // Define semantic groups to avoid similar keywords
-        const semanticGroups = {
-            music: ['music', 'sound', 'audio', 'rhythm', 'beat', 'melody', 'song', 'concert', 'live music', 'acoustic', 'performance', 'sing', 'dance'],
-            nature: ['trees', 'forest', 'greenery', 'plants', 'flora', 'wilderness', 'natural', 'scenic', 'landscape', 'open air', 'fresh air'],
-            water: ['water', 'lake', 'river', 'pond', 'stream', 'beach', 'waves', 'waterfront', 'swimming', 'boating', 'fishing', 'lakeside', 'riverside', 'fountain', 'cascade'],
-            peaceful: ['peaceful', 'calm', 'quiet', 'tranquil', 'serene', 'solitude', 'silence', 'mindful', 'meditation'],
-            healing: ['healing', 'wellness', 'therapy', 'recovery', 'restore', 'mend', 'relief', 'soothe', 'unwind', 'decompress', 'release', 'tension', 'overwhelming', 'breathe', 'escape', 'gentle', 'nurturing', 'care', 'solace', 'refuge'],
-            exercise: ['fitness', 'gym', 'workout', 'exercise', 'training', 'sports', 'athletic', 'run', 'jog', 'sprint', 'active', 'cardio', 'strength', 'yoga', 'cycling', 'parkour'],
-            outdoor: ['outdoor', 'outside', 'nature', 'wilderness', 'open air', 'greenery', 'park', 'hill', 'mountain', 'peak', 'summit', 'climb', 'hike', 'trek', 'altitude', 'viewpoint', 'overlook', 'ridge', 'cliff', 'valley', 'garden', 'botanical'],
-            social: ['social', 'community', 'friends', 'group', 'gathering', 'party', 'celebration', 'meet', 'connect', 'together', 'crowd', 'people', 'lively'],
-            creative: ['creative', 'art', 'artistic', 'craft', 'paint', 'draw', 'design', 'workshop', 'studio', 'pottery', 'photography', 'writing', 'expression', 'gallery', 'exhibition', 'sculpture'],
-            food: ['food', 'restaurant', 'cafe', 'dining', 'meal', 'picnic', 'eat', 'coffee', 'tea', 'cuisine', 'cooking', 'brunch', 'dessert', 'bakery', 'comfort food', 'snacks'],
-            urban: ['urban', 'city', 'downtown', 'street', 'building', 'architecture', 'metropolitan', 'district', 'skyline', 'plaza', 'square', 'commercial', 'center'],
-            heartbreak: ['heartbreak', 'broken', 'sad', 'numb', 'mend', 'solace', 'recovery'],
-            reading: ['reading', 'book', 'library', 'study', 'quiet', 'contemplate', 'reflect', 'notebook'],
-            candlelight: ['candlelight', 'candle', 'romantic', 'intimate', 'cozy', 'warm', 'snug', 'homey', 'blanket', 'fireplace', 'soft', 'cushion', 'nook', 'hideaway', 'shelter'],
-            couple: ["date", 'couple', 'lover', 'love', 'partner', 'flowers', 'gift', 'affection'],
-            sunrise: ['sunrise', 'sunset', 'dawn', 'dusk', 'evening', 'night', 'moon', 'stars', 'ambient', 'atmospheric', 'illuminated', 'late'],
-            cafe: ['cafe', 'coffee', 'coffee shop', 'tea house', 'bakery'],
-            shopping: ['shop', 'market', 'mall', 'store', 'buy', 'purchase', 'retail', 'bazaar', 'vendor', 'browse', 'window shopping', 'boutique'],
-            entertainment: ['entertainment', 'fun', 'game', 'play', 'amusement', 'cinema', 'movie', 'theater', 'show', 'performance', 'gaming', 'amusement park'],
-            elevation: ['hill', 'mountain', 'peak', 'summit', 'climb', 'hike', 'trek', 'altitude', 'viewpoint', 'overlook', 'ridge', 'cliff', 'valley'],
-            wellness: ['wellness', 'health', 'spa', 'relax', 'rejuvenate', 'heal', 'therapy', 'massage', 'yoga', 'mindfulness', 'breathing', 'restore'],
-            cozy: ['cozy', 'comfort', 'warm', 'intimate', 'snug', 'homey', 'blanket', 'fireplace', 'soft', 'cushion', 'nook', 'hideaway', 'shelter'],
-            nightlife: ['night', 'evening', 'dark', 'lights', 'illuminated', 'nightlife', 'late', 'moon', 'stars', 'ambient', 'atmospheric'],
-            adventure: ['adventure', 'thrill', 'exciting', 'adrenaline', 'extreme', 'challenge', 'daring', 'bold', 'risk', 'speed', 'intense'],
-            focus: ['focus', 'concentrate', 'productive', 'work', 'study', 'efficient', 'organized', 'clear', 'sharp', 'attentive', 'dedicated'],
-            garden: ['garden', 'botanical', 'flowers', 'plants', 'greenery', 'bloom', 'flora', 'herb', 'roses', 'petals', 'fragrance', 'blossom', 'orchid', 'tulip'],
-            park: ['park', 'playground', 'recreation', 'green space', 'picnic', 'lawn', 'field', 'grass', 'bench', 'shade', 'children', 'family'],
-        };
-    
-        // Function to check if keyword belongs to any semantic group
-        const getSemanticGroup = (keyword) => {
-            for (const [group, terms] of Object.entries(semanticGroups)) {
-                if (terms.includes(keyword.toLowerCase())) {
-                    return group;
-                }
-            }
-            return null;
-        };
-    
-        // Track which semantic groups we've already added AND track exact keywords
-        const usedGroups = new Set();
-        const usedKeywords = new Set(); // NEW: Track exact keywords to prevent duplicates
-        const prioritizedKeywords = [];
-    
-        // Helper function to add keyword with deduplication
-        const addKeywordIfUnique = (keyword, priority, source) => {
-            const keywordLower = keyword.toLowerCase();
-            
-            // Skip if exact keyword already added
-            if (usedKeywords.has(keywordLower)) {
-                return false;
-            }
-            
-            const semanticGroup = getSemanticGroup(keyword);
-            
-            // Skip if semantic group already used
-            if (semanticGroup && usedGroups.has(semanticGroup)) {
-                return false;
-            }
-            
-            // Add the keyword
-            prioritizedKeywords.push({ keyword, priority, source });
-            usedKeywords.add(keywordLower);
-            if (semanticGroup) {
-                usedGroups.add(semanticGroup);
-            }
-            
-            return true;
-        };
-    
-        // 0. PRIORITY: If the adventure title matches a known keyword exactly (whole word), use that as the top keyword
-        const titleWords = fullText.split(/\s+/).map(w => w.replace(/[''".,!?]/g, '').toLowerCase());
-        let foundTitleKeyword = null;
-        
-        Object.values(keywordMappings).forEach(config => {
-            config.keywords.forEach(keyword => {
-                const keywordLower = keyword.toLowerCase();
-                // Check for exact match in title words
-                if (titleWords.includes(keywordLower)) {
-                    foundTitleKeyword = keyword;
-                }
-                // Check for partial match: keyword is substring of any title word or vice versa
-                if (
-                    !foundTitleKeyword &&
-                    titleWords.some(word => word.includes(keywordLower) || keywordLower.includes(word))
-                ) {
-                    foundTitleKeyword = keyword;
-                }
-            });
-        });
-        
-        if (foundTitleKeyword) {
-            addKeywordIfUnique(foundTitleKeyword, 100, 'title-exact');
-        }
-    
-        // // 1. Add mood-specific keywords with priority scoring
-        // const moodCategories = moodCategoryMappings[selectedMood.id] || [];
-        // moodCategories.forEach((category, categoryIndex) => {
-        //     if (keywordMappings[category]) {
-        //         keywordMappings[category].keywords.forEach((keyword, keywordIndex) => {
-        //             if (fullText.includes(keyword.toLowerCase())) {
-        //                 const priority = (moodCategories.length - categoryIndex) * 10 + (10 - keywordIndex);
-        //                 addKeywordIfUnique(keyword, priority, 'mood');
-        //             }
-        //         });
-        //     }
-        // });
-    
-        // 2. Extract keywords from adventure content with lower priority
-        Object.entries(keywordMappings).forEach(([category, config]) => {
-            config.keywords.forEach((keyword, index) => {
-                if (fullText.includes(keyword.toLowerCase())) {
-                    const priority = 5 - (index * 0.1);
-                    addKeywordIfUnique(keyword, priority, 'title');
-                }
-            });
-        });
-    
-        // 3. Extract keywords from adventure description with even lower priority
-        // Object.entries(keywordMappings).forEach(([category, config]) => {
-        //     config.keywords.forEach((keyword, index) => {
-        //         if (fullDesc.includes(keyword.toLowerCase())) {
-        //             const priority = 3 - (index * 0.05);
-        //             addKeywordIfUnique(keyword, priority, 'description');
-        //         }
-        //     });
-        // });
-    
-        // 4. Sort by priority and build final keywords set
-        const finalKeywords = prioritizedKeywords
-            .sort((a, b) => b.priority - a.priority)
-            .map(({ keyword }) => keyword)
-            .filter(keyword => keyword.length > 2) // Remove very short keywords
-            .slice(0, 5); // Limit to 5 keywords max
-    
-        console.log('Final keywords:', finalKeywords);
-        console.log('Used groups:', Array.from(usedGroups));
-        console.log('Used keywords:', Array.from(usedKeywords));
-    
-        return finalKeywords.join(', ');
-    };
-   
-   
-   
-   
     const generateWhatToBring = (adventure, selectedMood, keywordMappings, moodCategoryMappings) => {
         const recommendations = new Set();
         const fullText = `${adventure.title} ${adventure.description} ${adventure.vibe}`.toLowerCase();
@@ -1219,6 +490,87 @@ const MoodAdventureApp = () => {
         return finalRecommendations;
     };
 
+    // Utility function to get user's current location
+    const getUserLocation = () => {
+        return new Promise((resolve) => {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        try {
+                            const { latitude, longitude } = position.coords;
+                            console.log("Got coordinates:", latitude, longitude);
+
+                            const locationData = await reverseGeocode(latitude, longitude);
+                            resolve(locationData);
+                        } catch (err) {
+                            console.error("Error in location processing:", err);
+                            resolve({ city: "Bengaluru", state: "Karnataka" });
+                        }
+                    },
+                    (error) => {
+                        console.error("Geolocation error:", error.message);
+                        resolve({ city: "Bengaluru", state: "Karnataka" });
+                    }
+                );
+            } else {
+                console.error("Geolocation not supported");
+                resolve({ city: "Bengaluru", state: "Karnataka" });
+            }
+        });
+    };
+
+    // Function to reverse geocode coordinates to city/state
+    const reverseGeocode = async (latitude, longitude) => {
+        try {
+            const apiKey = "20fdf466350e4924abc2708b462ed0fc" || process.env.REACT_APP_OPENCAGE_KEY;
+            const response = await fetch(
+                `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
+            );
+
+            if (response.status === 403) {
+                console.error("OpenCage API returned 403 Forbidden. Check your API key and usage limits.");
+                return { city: "Bengaluru", state: "Karnataka" };
+            }
+
+            const data = await response.json();
+
+            if (!data.results || data.results.length === 0) {
+                console.error("No location results found");
+                return { city: "Bengaluru", state: "Karnataka" };
+            }
+
+            const result = data.results[0];
+            const components = result.components;
+
+            const city = components.city ||
+                components.town ||
+                components.village ||
+                components.municipality ||
+                components.district ||
+                components.county ||
+                components.suburb ||
+                components.neighbourhood ||
+                "Bengaluru";
+
+
+            let normalizedCity = city.toLowerCase().replace(/\s+/g, '');
+
+
+            city = getStandardizedCityName(normalizedCity) || city;
+
+
+            // Add more mappings as needed
+            const state = components.state || "Karnataka";
+
+            console.log("Detected location:", { city, state });
+            return { city, state };
+        } catch (error) {
+            console.error("Error in reverse geocoding:", error);
+            return { city: "Bengaluru", state: "Karnataka" };
+        }
+    };
+
+
     // Generate keywords when adventure or mood changes
     useEffect(() => {
         if (currentMood && selectedAdventure) {
@@ -1228,831 +580,10 @@ const MoodAdventureApp = () => {
                 keywordMappings,
                 moodCategoryMappings
             );
-            console.log(generatedKeywords, "generatedKeywords");
-            setSearchKeywords(generatedKeywords);
+            console.log((generatedKeywords.keywords), generatedKeywords.keywords.length, "generatedKeywords");
+            setSearchKeywords(generatedKeywords.keywords);
         }
     }, [currentMood, selectedAdventure]);
-
-const [    showSearchResult,                        setShowSearchResult]=useState(false)
-   
-
-// Utility function to get user's current location
-const getUserLocation = () => {
-    return new Promise((resolve) => {
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                async (position) => {
-                    try {
-                        const { latitude, longitude } = position.coords;
-                        console.log("Got coordinates:", latitude, longitude);
-
-                        const locationData = await reverseGeocode(latitude, longitude);
-                        resolve(locationData);
-                    } catch (err) {
-                        console.error("Error in location processing:", err);
-                        resolve({ city: "Bengaluru", state: "Karnataka" });
-                    }
-                },
-                (error) => {
-                    console.error("Geolocation error:", error.message);
-                    resolve({ city: "Bengaluru", state: "Karnataka" });
-                }
-            );
-        } else {
-            console.error("Geolocation not supported");
-            resolve({ city: "Bengaluru", state: "Karnataka" });
-        }
-    });
-};
-
-// Function to reverse geocode coordinates to city/state
-const reverseGeocode = async (latitude, longitude) => {
-    try {
-        const apiKey = "20fdf466350e4924abc2708b462ed0fc" || process.env.REACT_APP_OPENCAGE_KEY;
-        const response = await fetch(
-            `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
-        );
-
-        if (response.status === 403) {
-            console.error("OpenCage API returned 403 Forbidden. Check your API key and usage limits.");
-            return { city: "Bengaluru", state: "Karnataka" };
-        }
-
-        const data = await response.json();
-
-        if (!data.results || data.results.length === 0) {
-            console.error("No location results found");
-            return { city: "Bengaluru", state: "Karnataka" };
-        }
-
-        const result = data.results[0];
-        const components = result.components;
-
-        const city = components.city ||
-            components.town ||
-            components.village ||
-            components.municipality ||
-            components.district ||
-            components.county ||
-            components.suburb ||
-            components.neighbourhood ||
-            "Bengaluru";
-
-        const state = components.state || "Karnataka";
-
-        console.log("Detected location:", { city, state });
-        return { city, state };
-    } catch (error) {
-        console.error("Error in reverse geocoding:", error);
-        return { city: "Bengaluru", state: "Karnataka" };
-    }
-};
-
-// Function to check if location data already exists in database
-const checkExistingLocationData = async (moodId, title, city, state) => {
-    try {
-        console.log("Checking existing location data for:", { moodId, title, city, state });
-
-        const response = await fetch(
-            `https://moodspace-api-production.up.railway.app/locationAndDirection?moodId=${moodId}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}`
-        );
-
-        if (!response.ok) {
-            console.log("No existing location data found or API call failed");
-            return null;
-        }
-
-        const existingData = await response.json();
-        console.log("Found existing location data:", existingData);
-
-        // Check if the response has valid locationAndDirection data
-        if (existingData?.locationAndDirection?.length > 0) {
-            return existingData.locationAndDirection;
-        }
-
-        return null;
-    } catch (error) {
-        console.error("Error checking existing location data:", error);
-        return null;
-    }
-};
-
-// Function to update adventure data locally
-const updateAdventureData = (adventure, locationResults) => {
-    const updatedAdventure = {
-        ...adventure,
-        locationAndDirection: locationResults
-    };
-
-    setSelectedAdventure(updatedAdventure);
-
-    // Update local adventure database data
-    if (adventureDatabaseData[currentMood.id]) {
-        const idx = adventureDatabaseData[currentMood.id].findIndex(
-            adv => adv.title === adventure.title
-        );
-        if (idx !== -1) {
-            adventureDatabaseData[currentMood.id][idx] = {
-                ...adventureDatabaseData[currentMood.id][idx],
-                ...updatedAdventure
-            };
-        }
-    }
-
-    return updatedAdventure;
-};
-
-// Function to analyze search query and find relevant categories
-const analyzeSearchForCategories = (query) => {
-    const keywordMappings = {
-        parks: {
-            keywords: ['quiet', 'garden', 'botanical', 'park', 'nature', 'peaceful', 'green'],
-            searchTerms: ['botanical garden', 'park', 'garden', 'nature park']
-        },
-        wellness: {
-            keywords: ['spa', 'meditation', 'mindful', 'wellness', 'relax', 'peaceful'],
-            searchTerms: ['spa', 'wellness center', 'meditation center']
-        },
-        cultural: {
-            keywords: ['libraries', 'library', 'museum', 'cultural', 'art', 'reflect', 'study'],
-            searchTerms: ['library', 'museum', 'cultural center']
-        },
-        temples: {
-            keywords: ['temple', 'spiritual', 'meditation', 'peaceful', 'reflect'],
-            searchTerms: ['temple', 'spiritual center']
-        }
-    };
-
-    const searchText = query.toLowerCase();
-    const words = searchText.split(/\s+/).filter(word => word.length > 2);
-    const matchedCategories = [];
-
-    Object.entries(keywordMappings).forEach(([category, config]) => {
-        let categoryScore = 0;
-
-        config.keywords.forEach(keyword => {
-            if (searchText.includes(keyword.toLowerCase())) {
-                categoryScore += 10;
-            }
-
-            words.forEach(word => {
-                if (word === keyword.toLowerCase()) {
-                    categoryScore += 8;
-                } else if (word.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(word)) {
-                    categoryScore += 5;
-                }
-            });
-        });
-
-        if (categoryScore > 0) {
-            matchedCategories.push({
-                category,
-                searchTerms: config.searchTerms,
-                priority: categoryScore
-            });
-        }
-    });
-
-    return matchedCategories
-        .sort((a, b) => b.priority - a.priority)
-        .slice(0, 3);
-};
-
-// Function to perform direct search when no categories match
-const performDirectSearch = async (query, city, apiKey) => {
-    const cleanQuery = query.split(' ').slice(0, 2).join(' ');
-    const directSearchQuery = `${cleanQuery} ${city}`;
-
-    console.log("Direct search query:", directSearchQuery);
-
-    try {
-        const searchResponse = await fetch(
-            `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(directSearchQuery)}&key=${apiKey}&limit=5&countrycode=IN`
-        );
-        const searchData = await searchResponse.json();
-
-        if (searchData.results && searchData.results.length > 0) {
-            return searchData.results.slice(0, 5).map(result => ({
-                address: result.formatted,
-                gettingThere: "Check local transit apps for directions",
-                parking: "Street parking typically available",
-                category: "general",
-                coordinates: {
-                    lat: result.geometry.lat,
-                    lng: result.geometry.lng
-                }
-            }));
-        }
-    } catch (error) {
-        console.error("Direct search error:", error);
-    }
-
-    return [];
-};
-
-// Function to search by categories
-const searchByCategories = async (categories, city, state, apiKey) => {
-    const locationResults = [];
-
-    for (const categoryConfig of categories.slice(0, 3)) {
-        for (const searchTerm of categoryConfig.searchTerms.slice(0, 2)) {
-            const cleanSearchQuery = `${searchTerm} ${city}`;
-            console.log("Category search query:", cleanSearchQuery);
-
-            try {
-                const searchResponse = await fetch(
-                    `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(cleanSearchQuery)}&key=${apiKey}&limit=1&countrycode=IN`
-                );
-
-                console.log("Search response status:", searchResponse.status);
-                const searchData = await searchResponse.json();
-
-                if (searchData.results && searchData.results.length > 0) {
-                    const relevantResults = searchData.results
-                        .filter(result => {
-                            const components = result.components || {};
-                            const resultCity = components.city || components.town || components.village || '';
-                            const resultState = components.state || '';
-
-                            return (
-                                resultCity.toLowerCase().includes(city.toLowerCase()) ||
-                                resultState.toLowerCase().includes(state.toLowerCase()) ||
-                                result.formatted.toLowerCase().includes(city.toLowerCase())
-                            );
-                        })
-                        .slice(0, 2)
-                        .map(result => ({
-                            address: result.formatted,
-                            gettingThere: result.components?.road
-                                ? `Accessible via ${result.components.road}. Check local transit for details.`
-                                : "Best accessed by car or public transport. Check local transit apps for real-time directions.",
-                            parking: "Street parking typically available. Check for any time restrictions or meters.",
-                            category: categoryConfig.category,
-                            searchTerm: searchTerm,
-                            coordinates: {
-                                lat: result.geometry.lat,
-                                lng: result.geometry.lng
-                            }
-                        }));
-
-                    console.log("Relevant results for", searchTerm, ":", relevantResults);
-                    locationResults.push(...relevantResults);
-                }
-            } catch (searchError) {
-                console.error(`Error searching for ${cleanSearchQuery}:`, searchError);
-            }
-
-            // Rate limiting
-            await new Promise(resolve => setTimeout(resolve, 300));
-        }
-    }
-
-    // Remove duplicates and return results
-    return locationResults
-        .filter((result, index, self) =>
-            index === self.findIndex(r => r.address === result.address)
-        )
-        .slice(0, 5);
-};
-
-// Function to search for places using OpenCage API
-const searchPlacesWithOpenCage = async (query, city, state) => {
-    const apiKey = "20fdf466350e4924abc2708b462ed0fc" || process.env.REACT_APP_OPENCAGE_KEY;
-
-    if (!apiKey) {
-        console.error("Missing OpenCage API key. Please set REACT_APP_OPENCAGE_KEY in your environment.");
-        return [];
-    }
-
-    try {
-        const categories = analyzeSearchForCategories(query);
-        console.log("Matched categories:", categories);
-
-        let results = [];
-
-        if (categories.length === 0) {
-            // No categories match, try direct search
-            results = await performDirectSearch(query, city, apiKey);
-        } else {
-            // Search using categories
-            results = await searchByCategories(categories, city, state, apiKey);
-        }
-
-        console.log("Final search results:", results);
-        return results;
-
-    } catch (error) {
-        console.error("Error searching for places:", error);
-        return [];
-    }
-};
-
-// Function to save results to database
-const saveLocationDataToDatabase = async (moodId, title, city, state, locationResults) => {
-    try {
-        const payload = {
-            moodId: moodId,
-            title: title,
-            state: state,
-            location: city,
-            locationAndDirection: locationResults
-        };
-
-        console.log("Saving to database with payload:", payload);
-
-        const saveResponse = await fetch(
-            'https://moodspace-api-production.up.railway.app/locationAndDirection',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            }
-        );
-
-        if (saveResponse.ok) {
-            const savedData = await saveResponse.json();
-            console.log("Successfully saved to database:", savedData);
-            return true;
-        } else {
-            console.error("Failed to save to database:", saveResponse.status, await saveResponse.text());
-            return false;
-        }
-    } catch (saveError) {
-        console.error("Error saving to database:", saveError);
-        return false;
-    }
-};
-
-// Main search handler function - much cleaner now
-const handleSearch = async (searchQuery) => {
-    try {
-        // Step 1: Get user's current location
-        const { city, state } = await getUserLocation();
-        console.log("Using location for search:", { city, state });
-
-        // Step 2: Check if data already exists in database
-        let locationResults = null;
-        
-        if (currentMood && selectedAdventure) {
-            locationResults = await checkExistingLocationData(
-                currentMood.id, 
-                selectedAdventure.title, 
-                city, 
-                state
-            );
-        }
-
-        // Step 3: If data exists, use it and skip API calls
-        if (locationResults) {
-            console.log("Using existing location data, skipping OpenCage API call");
-            updateAdventureData(selectedAdventure, locationResults);
-            setShowSearchResult(true);
-            return locationResults;
-        }
-
-        // Step 4: No existing data found, search using OpenCage API
-        console.log("No existing location data found, calling OpenCage API");
-        const searchResults = await searchPlacesWithOpenCage(searchQuery, city, state);
-
-        // Step 5: Update local state with new results
-        if (searchResults && searchResults.length > 0 && currentMood && selectedAdventure) {
-            // Filter out invalid results
-            const validResults = searchResults.filter(result =>
-                result.address &&
-                result.address.trim() !== '' &&
-                !result.address.toLowerCase().includes('no address found')
-            );
-
-            if (validResults.length > 0) {
-                // Update local state
-                updateAdventureData(selectedAdventure, validResults);
-
-                // Save to database (don't await to avoid blocking UI)
-                saveLocationDataToDatabase(
-                    currentMood.id,
-                    selectedAdventure.title,
-                    city,
-                    state,
-                    validResults
-                );
-            } else {
-                console.log("No valid results with proper addresses found, skipping database save");
-            }
-        }
-
-        setShowSearchResult(true);
-        return searchResults;
-
-    } catch (error) {
-        console.error("Error in handleSearch:", error);
-        return [];
-    }
-};
-
-
-
-
-// const handleSearch = async (searchQuery) => {
-//         try {
-//             // Get user's current location first
-//             const getUserLocation = () => {
-//                 return new Promise((resolve) => {
-//                     if ("geolocation" in navigator) {
-//                         navigator.geolocation.getCurrentPosition(
-//                             async (position) => {
-//                                 try {
-//                                     const { latitude, longitude } = position.coords;
-//                                     console.log("Got coordinates:", latitude, longitude);
-
-//                                     const response = await fetch(
-//                                         `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
-//                                     );
-
-//                                     if (response.status === 403) {
-//                                         console.error("OpenCage API returned 403 Forbidden. Check your API key and usage limits.");
-//                                         resolve({ city: "Bengaluru", state: "Karnataka" });
-//                                         return;
-//                                     }
-
-//                                     const data = await response.json();
-
-//                                     if (!data.results || data.results.length === 0) {
-//                                         console.error("No location results found");
-//                                         resolve({ city: "Bengaluru", state: "Karnataka" });
-//                                         return;
-//                                     }
-
-//                                     const result = data.results[0];
-//                                     const components = result.components;
-
-//                                     const city = components.city ||
-//                                         components.town ||
-//                                         components.village ||
-//                                         components.municipality ||
-//                                         components.district ||
-//                                         components.county ||
-//                                         components.suburb ||
-//                                         components.neighbourhood ||
-//                                         "Bengaluru";
-
-//                                     const state = components.state || "Karnataka";
-
-//                                     console.log("Detected location:", { city, state });
-//                                     resolve({ city, state });
-
-//                                 } catch (err) {
-//                                     console.error("Error in location processing:", err);
-//                                     resolve({ city: "Bengaluru", state: "Karnataka" });
-//                                 }
-//                             },
-//                             (error) => {
-//                                 console.error("Geolocation error:", error.message);
-//                                 resolve({ city: "Bengaluru", state: "Karnataka" });
-//                             }
-//                         );
-//                     } else {
-//                         console.error("Geolocation not supported");
-//                         resolve({ city: "Bengaluru", state: "Karnataka" });
-//                     }
-//                 });
-//             };
-
-//             // Get current location first
-//             const { city, state } = await getUserLocation();
-//             console.log("Using location for search:", { city, state });
-
-//             // Step 1: Check if locationAndDirection data exists for this moodId, title, and state
-//             const checkExistingLocationData = async (moodId, title, state) => {
-//                 try {
-//                     console.log("Checking existing location data for:", { moodId, title, state });
-
-//                     const response = await fetch(
-//                         `https://moodspace-api-production.up.railway.app/locationAndDirection?moodId=${moodId}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}`
-//                     );
-
-//                     if (response.ok) {
-//                         const existingData = await response.json();
-//                         console.log("Found existing location data:", existingData);
-
-//                         // Check if the response has valid locationAndDirection data
-//                         if (existingData && existingData.locationAndDirection && existingData.locationAndDirection.length > 0) {
-                           
-//                             return existingData.locationAndDirection;
-//                         }
-//                     }
-//                     else {
-//                     console.log("No existing location data found or API call failed");
-//                     return null;
-//                     }
-//                 } catch (error) {
-//                     console.error("Error checking existing location data:", error);
-//                     return null;
-//                 }
-//             };
-
-//             // Step 2: If data exists, use it; otherwise call OpenCage API
-//             let locationResults = null;
-
-//             if (currentMood && selectedAdventure) {
-//                 locationResults = await checkExistingLocationData(currentMood.id, selectedAdventure.title, state);
-//             }
-
-//             if (locationResults) {
-//                 console.log("Using existing location data, skipping OpenCage API call");
-
-//                 // Update local state with existing data
-//                 if (currentMood && selectedAdventure) {
-//                     const updatedAdventure = {
-//                         ...selectedAdventure,
-//                         locationAndDirection: locationResults
-//                     };
-                   
-//                     setSelectedAdventure(updatedAdventure);
-
-//                     // Update local adventure database data
-//                     if (adventureDatabaseData[currentMood.id]) {
-//                         const idx = adventureDatabaseData[currentMood.id].findIndex(
-//                             adv => adv.title === selectedAdventure.title
-//                         );
-//                         if (idx !== -1) {
-//                             adventureDatabaseData[currentMood.id][idx] = {
-//                                 ...adventureDatabaseData[currentMood.id][idx],
-//                                 ...updatedAdventure
-//                             };
-//                         }
-//                     }
-//                 }
-//                 setShowSearchResult(true)
-//                 return locationResults;
-//             }
-
-//             // Step 3: No existing data found, proceed with OpenCage API call
-//             console.log("No existing location data found, calling OpenCage API");
-
-//             const apiKey = "20fdf466350e4924abc2708b462ed0fc" || process.env.REACT_APP_OPENCAGE_KEY;
-
-//             if (!apiKey) {
-//                 console.error("Missing OpenCage API key. Please set REACT_APP_OPENCAGE_KEY in your environment.");
-//                 return [];
-//             }
-
-//             console.log("Starting search for:", searchQuery);
-
-//             // Define keyword mappings for categories
-//             // const keywordMappings = {
-//             //     parks: {
-//             //         keywords: ['quiet', 'garden', 'botanical', 'park', 'nature', 'peaceful', 'green'],
-//             //         searchTerms: ['botanical garden', 'park', 'garden', 'nature park']
-//             //     },
-//             //     wellness: {
-//             //         keywords: ['spa', 'meditation', 'mindful', 'wellness', 'relax', 'peaceful'],
-//             //         searchTerms: ['spa', 'wellness center', 'meditation center']
-//             //     },
-//             //     cultural: {
-//             //         keywords: ['libraries', 'library', 'museum', 'cultural', 'art', 'reflect', 'study'],
-//             //         searchTerms: ['library', 'museum', 'cultural center']
-//             //     },
-//             //     temples: {
-//             //         keywords: ['temple', 'spiritual', 'meditation', 'peaceful', 'reflect'],
-//             //         searchTerms: ['temple', 'spiritual center']
-//             //     }
-//             // };
-
-//             // Analyze search query to find relevant categories
-//             const analyzeSearchForCategories = (query) => {
-//                 const searchText = query.toLowerCase();
-//                 const words = searchText.split(/\s+/).filter(word => word.length > 2);
-//                 const matchedCategories = [];
-
-//                 Object.entries(keywordMappings).forEach(([category, config]) => {
-//                     let categoryScore = 0;
-
-//                     config.keywords.forEach(keyword => {
-//                         if (searchText.includes(keyword.toLowerCase())) {
-//                             categoryScore += 10;
-//                         }
-
-//                         words.forEach(word => {
-//                             if (word === keyword.toLowerCase()) {
-//                                 categoryScore += 8;
-//                             } else if (word.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(word)) {
-//                                 categoryScore += 5;
-//                             }
-//                         });
-//                     });
-
-//                     if (categoryScore > 0) {
-//                         matchedCategories.push({
-//                             category,
-//                             searchTerms: config.searchTerms,
-//                             priority: categoryScore
-//                         });
-//                     }
-//                 });
-
-//                 return matchedCategories
-//                     .sort((a, b) => b.priority - a.priority)
-//                     .slice(0, 3);
-//             };
-
-//             // Search for places with proper query formatting
-//             const searchPlacesForQuery = async (query, detectedCity, detectedState) => {
-//                 try {
-//                     const categories = analyzeSearchForCategories(query);
-//                     console.log("Matched categories:", categories);
-
-//                     const locationResults = [];
-
-//                     if (categories.length === 0) {
-//                         // If no categories match, try a simple direct search with the main query
-//                         const cleanQuery = query.split(' ').slice(0, 2).join(' '); // Take first 2 words only
-//                         const directSearchQuery = `${cleanQuery} ${detectedCity}`;
-
-//                         console.log("Direct search query:", directSearchQuery);
-
-//                         try {
-//                             const searchResponse = await fetch(
-//                                 `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(directSearchQuery)}&key=${apiKey}&limit=5&countrycode=IN`
-//                             );
-//                             const searchData = await searchResponse.json();
-
-//                             if (searchData.results && searchData.results.length > 0) {
-//                                 return searchData.results.slice(0, 5).map(result => ({
-//                                     address: result.formatted,
-//                                     gettingThere: "Check local transit apps for directions",
-//                                     parking: "Street parking typically available",
-//                                     category: "general",
-//                                     coordinates: {
-//                                         lat: result.geometry.lat,
-//                                         lng: result.geometry.lng
-//                                     }
-//                                 }));
-//                             }
-//                         } catch (error) {
-//                             console.error("Direct search error:", error);
-//                         }
-//                     }
-
-//                     // Search using categories with proper query format
-//                     for (const categoryConfig of categories.slice(0, 3)) {
-//                         for (const searchTerm of categoryConfig.searchTerms.slice(0, 2)) {
-//                             // Create a clean, simple search query
-//                             const cleanSearchQuery = `${searchTerm} ${detectedCity}`;
-//                             console.log("Category search query:", cleanSearchQuery);
-
-//                             try {
-//                                 const searchResponse = await fetch(
-//                                     `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(cleanSearchQuery)}&key=${apiKey}&limit=1&countrycode=IN`
-//                                 );
-
-//                                 console.log("Search response status:", searchResponse.status);
-//                                 const searchData = await searchResponse.json();
-//                                 console.log("Search response data:", searchData);
-
-//                                 if (searchData.results && searchData.results.length > 0) {
-//                                     const relevantResults = searchData.results
-//                                         .filter(result => {
-//                                             // More lenient filtering - just check if it's in the right state or city
-//                                             const components = result.components || {};
-//                                             const resultCity = components.city || components.town || components.village || '';
-//                                             const resultState = components.state || '';
-
-//                                             return (
-//                                                 resultCity.toLowerCase().includes(detectedCity.toLowerCase()) ||
-//                                                 resultState.toLowerCase().includes(detectedState.toLowerCase()) ||
-//                                                 result.formatted.toLowerCase().includes(detectedCity.toLowerCase())
-//                                             );
-//                                         })
-//                                         .slice(0, 2)
-//                                         .map(result => ({
-//                                             address: result.formatted,
-//                                             gettingThere: result.components?.road
-//                                                 ? `Accessible via ${result.components.road}. Check local transit for details.`
-//                                                 : "Best accessed by car or public transport. Check local transit apps for real-time directions.",
-//                                             parking: "Street parking typically available. Check for any time restrictions or meters.",
-//                                             category: categoryConfig.category,
-//                                             searchTerm: searchTerm,
-//                                             coordinates: {
-//                                                 lat: result.geometry.lat,
-//                                                 lng: result.geometry.lng
-//                                             }
-//                                         }));
-
-//                                     console.log("Relevant results for", searchTerm, ":", relevantResults);
-//                                     locationResults.push(...relevantResults);
-//                                 }
-//                             } catch (searchError) {
-//                                 console.error(`Error searching for ${cleanSearchQuery}:`, searchError);
-//                             }
-
-//                             // Rate limiting - important for API
-//                             await new Promise(resolve => setTimeout(resolve, 300));
-//                         }
-//                     }
-
-//                     // Remove duplicates and return results
-//                     const uniqueResults = locationResults
-//                         .filter((result, index, self) =>
-//                             index === self.findIndex(r => r.address === result.address)
-//                         )
-//                         .slice(0, 5);
-
-//                     console.log("Final results:", uniqueResults);
-//                     return uniqueResults;
-
-//                 } catch (error) {
-//                     console.error("Error searching for places:", error);
-//                     return [];
-//                 }
-//             };
-
-//             // Perform the search
-//             const results = await searchPlacesForQuery(searchQuery, city, state);
-
-//             console.log("Search completed, returning:", results);
-
-//             // Step 4: Save results to database if we have results and proper addresses
-//             if (results && results.length > 0 && currentMood && selectedAdventure) {
-//                 // Check if results have proper addresses (not empty or generic)
-//                 const validResults = results.filter(result =>
-//                     result.address &&
-//                     result.address.trim() !== '' &&
-//                     !result.address.toLowerCase().includes('no address found')
-//                 );
-
-//                 if (validResults.length > 0) {
-//                     // Update selectedAdventure with new locationAndDirection
-//                     const updatedAdventure = {
-//                         ...selectedAdventure,
-//                         locationAndDirection: validResults
-//                     };
-
-//                     setSelectedAdventure(updatedAdventure);
-
-//                     // Also update adventureDatabaseData for persistence
-//                     if (adventureDatabaseData[currentMood.id]) {
-//                         const idx = adventureDatabaseData[currentMood.id].findIndex(
-//                             adv => adv.title === selectedAdventure.title
-//                         );
-//                         if (idx !== -1) {
-//                             adventureDatabaseData[currentMood.id][idx] = {
-//                                 ...adventureDatabaseData[currentMood.id][idx],
-//                                 ...updatedAdventure
-//                             };
-//                         }
-//                     }
-
-//                     // Save to database via PUT API
-//                     const saveToDatabase = async () => {
-//                         try {
-//                             const payload = {
-//                                 moodId: currentMood.id,
-//                                 title: selectedAdventure.title,
-//                                 state: state,
-//                                 location: city,
-//                                 locationAndDirection: validResults
-//                             };
-
-//                             console.log("Saving to database with payload:", payload);
-
-//                             const saveResponse = await fetch(
-//                                 'https://moodspace-api-production.up.railway.app/locationAndDirection',
-//                                 {
-//                                     method: 'POST',
-//                                     headers: {
-//                                         'Content-Type': 'application/json',
-//                                     },
-//                                     body: JSON.stringify(payload)
-//                                 }
-//                             );
-
-//                             if (saveResponse.ok) {
-//                                 const savedData = await saveResponse.json();
-//                                 console.log("Successfully saved to database:", savedData);
-//                             } else {
-//                                 console.error("Failed to save to database:", saveResponse.status, await saveResponse.text());
-//                             }
-//                         } catch (saveError) {
-//                             console.error("Error saving to database:", saveError);
-//                         }
-//                     };
-
-//                     // Call save function (don't await to avoid blocking UI)
-//                     saveToDatabase();
-//                 } else {
-//                     console.log("No valid results with proper addresses found, skipping database save");
-//                 }
-//             }
-//             setShowSearchResult(true)
-//             return results;
-
-//         } catch (error) {
-//             console.error("Error in handleSearch:", error);
-//             return [];
-//         }
-//     };
 
 
     useEffect(() => {
@@ -2060,6 +591,456 @@ const handleSearch = async (searchQuery) => {
             console.log('Updated adventureDatabaseData:', adventureDatabaseData, selectedAdventure);
         }
     }, [selectedAdventure]);
+
+
+    const handleSearch = async (searchQuery) => {
+        console.log(searchQuery, "searchQuery");
+        try {
+            // Step 1: Get user's current location
+            const { city, state } = await getUserLocation();
+            console.log("Using location for search:", { city, state });
+            let searchResults
+            // Step 2: Generate smart search strategy
+            const smartSearchResult = await handleSmartSearch(
+                currentMood,
+                selectedAdventure,
+                city,
+                state,
+                keywordMappings,
+                moodCategoryMappings
+            );
+
+            console.log("Smart search result:", smartSearchResult);
+
+            // Step 3: Handle indoor adventures with static results
+            if (smartSearchResult.searchType === 'indoor' && smartSearchResult.results?.length > 0) {
+                console.log("Using static indoor results, no database/API calls needed");
+                updateAdventureData(selectedAdventure, smartSearchResult.results, city, state);
+                setShowSearchResult(true);
+
+                return {
+                    results: smartSearchResult.results,
+                    searchType: 'indoor',
+                    message: smartSearchResult.message
+                };
+            }
+
+            // Step 4: For outdoor/mixed adventures, check existing database data first
+            let locationResults = null;
+            if (currentMood?.id && selectedAdventure?.title) {
+                locationResults = await checkExistingLocationData(
+                    currentMood.id,
+                    selectedAdventure.title,
+                    city,
+                    state
+                );
+            }
+
+            // Step 5: If existing data found, use it
+            if (locationResults?.length > 0) {
+                console.log("Using existing location data, skipping API calls");
+                updateAdventureData(selectedAdventure, locationResults, city, state);
+                setShowSearchResult(true);
+
+                return {
+                    results: locationResults,
+                    searchType: smartSearchResult.searchType,
+                    message: "Found existing location data"
+                };
+            }
+
+            // Step 6: No existing data - proceed with API search ONLY if needed
+            if (smartSearchResult.shouldSearch && smartSearchResult.keywords) {
+                console.log("No existing location data found, proceeding with API search");
+                console.log("Using smart keywords for search:", smartSearchResult.keywords);
+
+
+
+                // Function to get search terms based on selected mood and adventure title
+                function getSearchTermsFromMappings(selectedMood, adventureTitle, keywordMappings) {
+                    console.log(selectedIntensity,adventureTitle,"rwerwerwerrwer")
+                    const relevantSearchTerms = [];
+                    const matchedCategories = [];
+
+                    // Convert inputs to lowercase for better matching
+                    const moodLower = selectedMood.toLowerCase();
+                    const titleLower = adventureTitle.toLowerCase();
+
+                    // Iterate through all keyword mappings
+                    Object.entries(keywordMappings).forEach(([category, data]) => {
+                        const { keywords, searchTerms, moods } = data;
+
+                        // Check if the selected mood matches any mood in this category
+                        const moodMatch = moods.some(mood => mood.toLowerCase() === moodLower);
+
+                        // Check if any keywords from this category appear in the adventure title
+                        const keywordMatch = keywords.some(keyword =>
+                            titleLower.includes(keyword.toLowerCase())
+                        );
+
+                        // If either mood or keyword matches, include the search terms
+                        if (moodMatch || keywordMatch) {
+                            matchedCategories.push(category);
+                            relevantSearchTerms.push(...searchTerms);
+                        }
+                    });
+
+                    // Remove duplicates and return unique search terms
+                    const uniqueSearchTerms = [...new Set(relevantSearchTerms)];
+
+                    return {
+                        searchTerms: uniqueSearchTerms,
+                        matchedCategories: matchedCategories,
+                        totalMatches: uniqueSearchTerms.length
+                    };
+                }
+
+                // Usage before your performOptimizedSearch call:
+                // Assuming you have selectedMood and adventureTitle variables
+                const selectedMood = currentMood?.id || ""; // Use the actual selected mood id
+                const adventureTitle = selectedAdventure?.title || ""; // Use the actual adventure title
+
+                // Extract search terms based on mappings
+                const extractedSearchInfo = getSearchTermsFromMappings(selectedMood, adventureTitle, keywordMappings);
+
+                console.log("Extracted search terms:", extractedSearchInfo.searchTerms);
+                console.log("Matched categories:", extractedSearchInfo.matchedCategories);
+                console.log("Total search terms found:", extractedSearchInfo.totalMatches);
+
+                // Combine the extracted search terms with your existing keywords
+                const enhancedKeywords = [
+                    // ...smartSearchResult.keywords,
+                    ...extractedSearchInfo.searchTerms
+                ];
+
+                console.log("Enhanced keywords for search:", enhancedKeywords);
+
+                // Now perform the optimized search with enhanced keywords
+                searchResults = await performOptimizedSearch(
+                    enhancedKeywords, // Use enhanced keywords instead of just smartSearchResult.keywords
+                    city,
+                    state,
+                    smartSearchResult.searchType
+                );
+                console.log("API search results:", searchResults, "results found");
+
+                // searchResults = await performOptimizedSearch(
+                //     smartSearchResult.keywords,
+                //     city,
+                //     state,
+                //     smartSearchResult.searchType
+                // );
+                console.log("API search results:", searchResults, "results found");
+            } else {
+                console.log("No API search needed - using existing results");
+                searchResults = smartSearchResult.results || [];
+            }
+
+            // Step 7: Process and save results
+            if (searchResults?.length > 0 && currentMood?.id && selectedAdventure?.title) {
+                // Filter out invalid results
+                const validResults = searchResults.filter(result =>
+                    result.address &&
+                    result.address.trim() !== '' &&
+                    !result.address.toLowerCase().includes('no address found') &&
+                    !result.isStatic
+                );
+
+                if (validResults.length > 0) {
+                    // Update local state
+                    updateAdventureData(selectedAdventure, searchResults, city, state);
+
+                    // Save to database (async, non-blocking)
+                    saveLocationDataToDatabase(
+                        currentMood.id,
+                        selectedAdventure.title,
+                        city,
+                        state,
+                        validResults
+                    ).catch(error => console.error("Database save error:", error));
+
+                    console.log(`Saved ${validResults.length} valid results to database`);
+                } else if (searchResults.some(result => result.isStatic)) {
+                    updateAdventureData(selectedAdventure, searchResults, city, state);
+                    console.log("Updated UI with static/mixed results");
+                } else {
+                    console.log("No valid results with proper addresses found");
+                }
+            }
+
+            setShowSearchResult(true);
+            console.log("final search results: drwerwerewr", {
+                results: searchResults,
+                searchType: smartSearchResult.searchType,
+                keywords: smartSearchResult.keywords,
+                message: smartSearchResult.message || `Found ${searchResults.length} results`
+            });
+            return {
+                results: searchResults,
+                searchType: smartSearchResult.searchType,
+                keywords: smartSearchResult.keywords,
+                message: smartSearchResult.message || `Found ${searchResults.length} results`
+            };
+
+        } catch (error) {
+            console.error("Error in enhanced handleSearch:", error);
+            setShowSearchResult(true);
+            return {
+                results: [],
+                searchType: 'outdoor',
+                message: "Search failed. Please try again.",
+                error: true
+            };
+        }
+    };
+
+    const performOptimizedSearch = async (searchQuery, city, state, searchType) => {
+        const apiKey = "20fdf466350e4924abc2708b462ed0fc";
+
+        // Single API call with best query
+        const query = `${searchQuery} ${city}`;
+        console.log("API Search query:", query);
+
+        // try {
+        //     const response = await fetch(
+        //         `https://api.opencagedata.com/geocode/v1/json?` +
+        //         `q=${encodeURIComponent(query)}` +
+        //         `&key=${apiKey}` +
+        //         `&limit=5` +
+        //         `&countrycode=in` +
+        //         `&language=en`
+        //     );
+
+        //     if (!response.ok) {
+        //         throw new Error(`API request failed: ${response.status}`);
+        //     }
+
+        //     const data = await response.json();
+        //     console.log(`API Results:`, data.results?.length || 0);
+
+        //     if (!data.results?.length) {
+        //         return [];
+        //     }
+
+        //     // Filter and process results in one go
+        //     const cityLower = city.toLowerCase();
+        //     return data.results
+
+        //         .map(result => ({
+        //             address: result.formatted,
+        //             gettingThere: generateSimpleGettingThere(result.components),
+        //             parking: generateSimpleParking(result.components),
+        //             category: searchType || 'general',
+        //             coordinates: {
+        //                 lat: result.geometry.lat,
+        //                 lng: result.geometry.lng
+        //             },
+        //             confidence: result.confidence,
+        //             searchType: searchType
+        //         }));
+
+        // } catch (error) {
+        //     console.error(`API Search error:`, error);
+        //     return [];
+        // }
+    };
+
+    const handleSmartSearch = async (selectedMood, selectedAdventure, city, state, keywordMappings, moodCategoryMappings) => {
+        try {
+            // Generate smart keywords with indoor/outdoor detection
+            const keywordResult = generateSmartKeywords(selectedMood, selectedAdventure, keywordMappings, moodCategoryMappings);
+            console.log("final search result:drwerwerewr", keywordResult);
+
+            // Handle indoor adventures with static results
+            if (keywordResult.searchType === 'indoor' && keywordResult.staticResults?.length > 0) {
+                console.log("Returning static indoor results");
+                return {
+                    results: keywordResult.staticResults.map(result => ({
+                        address: result.name,
+                        description: result.description,
+                        gettingThere: "This is an indoor activity - location depends on your choice",
+                        parking: "Check specific venue for parking availability",
+                        category: 'indoor_activity',
+                        searchTerm: 'static',
+                        confidence: 100,
+                        contextRelevance: 90,
+                        isStatic: true,
+                        searchType: 'indoor'
+                    })),
+                    searchType: 'indoor',
+                    keywords: keywordResult.keywords,
+                    message: "These are curated indoor suggestions for your adventure. No location search needed!"
+                };
+            }
+
+            // For outdoor/mixed adventures, just return the search strategy
+            if (keywordResult.shouldSearch && keywordResult.keywords) {
+                console.log("Returning search strategy for outdoor location search");
+                return {
+                    results: [], // Empty - will be filled by handleSearch
+                    searchType: keywordResult.searchType,
+                    keywords: keywordResult.keywords,
+                    shouldSearch: true,
+                    message: `Ready to search for ${keywordResult.searchType} locations`
+                };
+            }
+
+            // Fallback case
+            return {
+                results: keywordResult.staticResults || [],
+                searchType: keywordResult.searchType || 'mixed',
+                keywords: keywordResult.keywords,
+                message: "No specific locations found. Consider the suggested indoor activities or try a different adventure."
+            };
+
+        } catch (error) {
+            console.error("Smart search failed:", error);
+            return {
+                results: [],
+                searchType: 'outdoor',
+                keywords: null,
+                message: "Search failed. Please try again or check your internet connection.",
+                error: true
+            };
+        }
+    };
+
+
+
+
+    // Function to check if location data already exists in database
+    const checkExistingLocationData = async (moodId, title, city, state) => {
+        try {
+            console.log("Checking existing location data for:", { moodId, title, city, state });
+
+            const response = await fetch(
+                `https://moodspace-api-production.up.railway.app/locationAndDirection?moodId=${moodId}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}`
+            );
+
+            if (!response.ok) {
+                console.log("No existing location data found or API call failed");
+                return null;
+            }
+
+            const existingData = await response.json();
+            console.log("Found existing location data:", existingData);
+
+            // Check if the response has valid locationAndDirection data
+            if (existingData?.data?.locationAndDirection?.length > 0) {
+                return existingData.data?.locationAndDirection;
+            }
+
+            return null;
+        } catch (error) {
+            console.error("Error checking existing location data:", error);
+            return null;
+        }
+    };
+
+    // Function to update adventure data locally
+    const updateAdventureData = (adventure, locationResults, city, state) => {
+        const updatedAdventure = {
+            ...adventure,
+            location: `${city},${state}`,
+            locationAndDirection: locationResults
+        };
+
+        setSelectedAdventure(updatedAdventure);
+
+        // Update local adventure database data
+        // if (adventureDatabaseData[currentMood.id]) {
+        //     const idx = adventureDatabaseData[currentMood.id].findIndex(
+        //         adv => adv.title === adventure.title
+        //     );
+        //     if (idx !== -1) {
+        //         adventureDatabaseData[currentMood.id][idx] = {
+        //             ...adventureDatabaseData[currentMood.id][idx],
+        //             ...updatedAdventure
+        //         };
+        //     }
+        // }
+
+        return updatedAdventure;
+    };
+
+
+
+
+
+
+
+
+
+
+    const saveLocationDataToDatabase = async (moodId, title, city, state, locationResults) => {
+        try {
+            const payload = {
+                moodId: moodId,
+                title: title,
+                state: state,
+                location: city,
+                locationAndDirection: locationResults
+            };
+
+            console.log("Saving to database with payload:", payload);
+
+            const saveResponse = await fetch(
+                'https://moodspace-api-production.up.railway.app/locationAndDirection',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                }
+            );
+
+            if (saveResponse.ok) {
+                const savedData = await saveResponse.json();
+                console.log("Successfully saved to database:", savedData);
+                return true;
+            } else {
+                console.error("Failed to save to database:", saveResponse.status, await saveResponse.text());
+                return false;
+            }
+        } catch (saveError) {
+            console.error("Error saving to database:", saveError);
+            return false;
+        }
+    };
+
+
+
+    // Simplified helper functions
+    const generateSimpleGettingThere = (components) => {
+        if (!components) return "Check local transport for directions";
+
+        const road = components.road;
+        const area = components.suburb || components.neighbourhood;
+
+        if (road && area) {
+            return `Located on ${road} in ${area}. Use local transport or private vehicle.`;
+        } else if (road) {
+            return `Located on ${road}. Accessible by local transport.`;
+        } else if (area) {
+            return `Located in ${area}. Check local transport options.`;
+        }
+
+        return "Check local transport apps for directions";
+    };
+
+    const generateSimpleParking = (components) => {
+        if (!components) return "Street parking usually available";
+
+        if (components.amenity === 'restaurant' || components.amenity === 'cafe') {
+            return "Restaurant/cafe parking available";
+        }
+        if (components.tourism || components.leisure) {
+            return "Tourist area - limited parking, arrive early";
+        }
+
+        return "Street parking typically available";
+    };
 
 
     return (
@@ -2317,7 +1298,7 @@ const handleSearch = async (searchQuery) => {
                             {/* Header */}
                             <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 relative">
                                 <button
-                                    onClick={() => {setShowAdventureDetail(false);setShowSearchResult(false)}}
+                                    onClick={() => { setShowAdventureDetail(false); setShowSearchResult(false) }}
                                     className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                                 >
                                     <X className="w-5 h-5" />
@@ -2383,7 +1364,7 @@ const handleSearch = async (searchQuery) => {
                                                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                                                 <input
                                                     type="text"
-                                                    value={searchKeywords}
+                                                    value={searchKeywords.join(',')}
                                                     readOnly
                                                     placeholder="Keywords will appear here based on your selection..."
                                                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-700 cursor-not-allowed"
@@ -2392,7 +1373,7 @@ const handleSearch = async (searchQuery) => {
                                             </div>
                                             <button
                                                 onClick={() => {
-                                                    handleSearch(searchKeywords)
+                                                    handleSearch(searchKeywords.join(','))
                                                     // Here you can implement the actual search functionality
                                                     console.log('Searching with keywords:', searchKeywords);
                                                 }}
@@ -2404,18 +1385,19 @@ const handleSearch = async (searchQuery) => {
                                         </div>
 
                                         {/* Keyword Tags Display */}
-                                        {searchKeywords && (
+                                        {Array.isArray(searchKeywords) && (
                                             <div className="mt-3">
                                                 <p className="text-xs text-gray-500 mb-2">Generated keywords:</p>
                                                 <div className="flex flex-wrap gap-2">
-                                                    {searchKeywords.split(', ').map((keyword, index) => (
-                                                        <span
-                                                            key={index}
-                                                            className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
-                                                        >
-                                                            {keyword}
-                                                        </span>
-                                                    ))}
+                                                    {searchKeywords.length > 0 &&
+                                                        searchKeywords.map((keyword, index) => (
+                                                            <span
+                                                                key={index}
+                                                                className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                                                            >
+                                                                {keyword}
+                                                            </span>
+                                                        ))}
                                                 </div>
                                             </div>
                                         )}
@@ -2424,64 +1406,64 @@ const handleSearch = async (searchQuery) => {
                                             💡 Keywords are automatically generated based on your selected mood ({currentMood?.name})
                                             and adventure preferences. Use these to search for relevant locations!
                                         </p>
-                                        </div>
-                                        </div>
+                                    </div>
+                                </div>
 
-                                        {/* Location & Directions - only show if selectedAdventure.locationAndDirection exists and has results */}
-                                        {showSearchResult&&selectedAdventure.locationAndDirection && Array.isArray(selectedAdventure.locationAndDirection) && selectedAdventure.locationAndDirection.length > 0 && (
-                                            <div>
-                                                <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                                                    <MapPin className="w-5 h-5 text-blue-500" />
-                                                    Location & Directions
-                                                </h3>
-                                                <div className="bg-blue-50 rounded-xl p-4 space-y-4">
-                                                    {selectedAdventure.locationAndDirection.map((loc, idx) => (
-                                                        <div key={idx} className="border-b last:border-b-0 border-blue-100 pb-4 last:pb-0 mb-4 last:mb-0">
-                                                            <div className="flex items-start gap-2 mb-2">
-                                                                <MapPin className="w-4 h-4 text-blue-400" />
-                                                                <div className='text-left'>
-                                                                    <span className="font-medium text-gray-800 block">Address:</span>
-                                                                    <p className="text-gray-600 ">{loc.address || "Location details available in your area - check local listings for specific venues"}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="flex items-start gap-2 mb-2">
-                                                                <Compass className="w-4 h-4 text-purple-400 mt-1" />
-                                                                <div className='text-left'>
-                                                                    <span className="font-medium text-gray-800 block">Getting There:</span>
-                                                                    <p className="text-gray-600">
-                                                                        {loc.gettingThere || "Best accessed by car or public transport. Check local transit apps for real-time directions."}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="flex items-start gap-2 mb-2">
-                                                                <ParkingCircleIcon className="w-4 h-4 text-green-400 mt-1" />
-                                                                <div className='text-left'>
-                                                                    <span className="font-medium text-gray-800 block">Parking:</span>
-                                                                    <p className="text-gray-600">
-                                                                        {loc.parking || "Street parking typically available. Check for any time restrictions or meters."}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
+                                {/* Location & Directions - only show if selectedAdventure.locationAndDirection exists and has results */}
+                                {showSearchResult && selectedAdventure.locationAndDirection && Array.isArray(selectedAdventure.locationAndDirection) && selectedAdventure.locationAndDirection.length > 0 && (
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                                            <MapPin className="w-5 h-5 text-blue-500" />
+                                            Location & Directions
+                                        </h3>
+                                        <div className="bg-blue-50 rounded-xl p-4 space-y-4">
+                                            {selectedAdventure.locationAndDirection.map((loc, idx) => (
+                                                <div key={idx} className="border-b last:border-b-0 border-blue-100 pb-4 last:pb-0 mb-4 last:mb-0">
+                                                    <div className="flex items-start gap-2 mb-2">
+                                                        <MapPin className="w-4 h-4 text-blue-400" />
+                                                        <div className='text-left'>
+                                                            <span className="font-medium text-gray-800 block">Address:</span>
+                                                            <p className="text-gray-600 ">{loc.address || "Location details available in your area - check local listings for specific venues"}</p>
                                                         </div>
-                                                    ))}
+                                                    </div>
+                                                    <div className="flex items-start gap-2 mb-2">
+                                                        <Compass className="w-4 h-4 text-purple-400 mt-1" />
+                                                        <div className='text-left'>
+                                                            <span className="font-medium text-gray-800 block">Getting There:</span>
+                                                            <p className="text-gray-600">
+                                                                {loc.gettingThere || "Best accessed by car or public transport. Check local transit apps for real-time directions."}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-start gap-2 mb-2">
+                                                        <ParkingCircleIcon className="w-4 h-4 text-green-400 mt-1" />
+                                                        <div className='text-left'>
+                                                            <span className="font-medium text-gray-800 block">Parking:</span>
+                                                            <p className="text-gray-600">
+                                                                {loc.parking || "Street parking typically available. Check for any time restrictions or meters."}
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
-                                        {/* If no results, show fallback message */}
-                                        {showSearchResult && (!selectedAdventure.locationAndDirection || !Array.isArray(selectedAdventure.locationAndDirection) || selectedAdventure.locationAndDirection.length === 0) && (
-                                            <div className="text-center py-6">
-                                                <p className="font-semibold text-gray-700 mb-2">
-                                                    Sorry, we couldn't find any matching locations or directions for your search.
-                                                </p>
-                                                <p className="text-gray-500 text-sm">
-                                                    Try adjusting your keywords, or search for a different adventure or mood. You can also check local listings or maps for more options!
-                                                </p>
-                                                <p className="text-gray-400 text-xs mt-3">
-                                                    For this key, try yourself finding a place nearby or check your favorite map app!
-                                                </p>
-                                            </div>
-                                        )}
-                                        {/* what to bring */}
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                {/* If no results, show fallback message */}
+                                {showSearchResult && (!selectedAdventure.locationAndDirection || !Array.isArray(selectedAdventure.locationAndDirection) || selectedAdventure.locationAndDirection.length === 0) && (
+                                    <div className="text-center py-6">
+                                        <p className="font-semibold text-gray-700 mb-2">
+                                            Sorry, we couldn't find any matching locations or directions for your search.
+                                        </p>
+                                        <p className="text-gray-500 text-sm">
+                                            Try adjusting your keywords, or search for a different adventure or mood. You can also check local listings or maps for more options!
+                                        </p>
+                                        <p className="text-gray-400 text-xs mt-3">
+                                            For this key, try yourself finding a place nearby or check your favorite map app!
+                                        </p>
+                                    </div>
+                                )}
+                                {/* what to bring */}
 
 
 
@@ -2543,7 +1525,7 @@ const handleSearch = async (searchQuery) => {
                         <div className="flex items-center justify-between">
                             <h2 className="text-xl font-bold">How are you feeling?</h2>
                             <button
-                            onClick={() => {setShowMoodMenu(false);setShowSearchResult(false)}}
+                                onClick={() => { setShowMoodMenu(false); setShowSearchResult(false) }}
                                 className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
                             >
                                 <X className="w-5 h-5" />
