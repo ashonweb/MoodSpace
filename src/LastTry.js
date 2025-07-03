@@ -377,9 +377,7 @@ const MoodAdventureApp = () => {
                                     </div>
                                 </div>
                             )}
-                            {/* api four squre fsq3CnV2HrmnFAtV0ylJz/edhy4GoqoZkPPPC9Hv5mbYAKo= */}
-                            {/* foursquar Bearer DBLYJXGO152UFIA4AUTKY3DJNWDSI3XWH55QRNGTJ4XHEHZ3 */}
-                            {/*  google api AIzaSyAhmXqXXRTdQ2Fa5f9lkruaNxIxV8JOL2U */}
+                          
 
                             {/* <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
                                 <h2 className="text-2xl font-bold text-gray-800 mb-6"> Location Search</h2>
