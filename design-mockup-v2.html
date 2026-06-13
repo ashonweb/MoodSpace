@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodSpace — Karnataka Weekend Getaways</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:         #f7f6f3;
+      --white:      #ffffff;
+      --dark:       #111111;
+      --dark2:      #1e1e1e;
+      --dark3:      #2a2a2a;
+      --dark4:      #3a3a3a;
+      --text:       #1a1a1a;
+      --text2:      #6b7280;
+      --text3:      #9ca3af;
+      --border:     #e5e7eb;
+      --accent:     #c2410c;
+      --accent-l:   #fff3ee;
+      --radius:     12px;
+      --radius-sm:  8px;
+    }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--dark);
+      height: 56px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: baseline; gap: 8px; }
+    .nav-brand-name { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+    .nav-brand-sub {
+      font-size: 10px; font-weight: 600; color: var(--accent);
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+    .nav-right { display: flex; align-items: center; gap: 6px; }
+    .nav-saved {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: #555; cursor: not-allowed;
+    }
+    .nav-saved-badge {
+      font-size: 9px; padding: 2px 6px;
+      background: #2a2a2a; color: #666;
+      border-radius: 4px; letter-spacing: 0.3px;
+    }
+
+    /* ─── MOOD HERO ─── */
+    .mood-hero {
+      background: var(--dark2);
+      padding: 44px 24px 40px;
+    }
+    .mood-hero-text { text-align: center; margin-bottom: 32px; }
+    .mood-hero-text h1 {
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 800; color: #fff;
+      letter-spacing: -0.6px; margin-bottom: 8px;
+    }
+    .mood-hero-text p { font-size: 13px; color: #6b7280; }
+    .mood-hero-text p a {
+      color: var(--accent); cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+
+    .mood-grid {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; max-width: 760px; margin: 0 auto;
+    }
+    .mood-card {
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 15px;
+      background: var(--dark3);
+      border: 1.5px solid var(--dark4);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, transform 0.12s;
+      flex: 1 1 150px; min-width: 150px; max-width: 200px;
+      user-select: none;
+    }
+    .mood-card:hover { border-color: var(--accent); background: #333; transform: translateY(-1px); }
+    .mood-card.active {
+      background: var(--accent); border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .mood-icon {
+      width: 34px; height: 34px; flex-shrink: 0;
+      border-radius: 8px; background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mood-card.active .mood-icon { background: rgba(255,255,255,0.2); }
+    .mood-icon svg { width: 16px; height: 16px; stroke: #9ca3af; }
+    .mood-card.active .mood-icon svg { stroke: #fff; }
+    .mood-info { flex: 1; min-width: 0; }
+    .mood-name { display: block; font-size: 13px; font-weight: 600; color: #e5e7eb; }
+    .mood-card.active .mood-name { color: #fff; }
+    .mood-tagline {
+      display: block; font-size: 10px; color: #6b7280;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px;
+    }
+    .mood-card.active .mood-tagline { color: rgba(255,255,255,0.65); }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      position: sticky; top: 56px; z-index: 90;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px 12px;
+    }
+    .filter-row1 {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px; margin-bottom: 11px;
+    }
+    .filter-count { font-size: 13px; color: var(--text2); }
+    .filter-count b { color: var(--text); font-weight: 700; }
+    .active-mood-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--accent-l); border: 1px solid #f97316;
+      color: var(--accent); font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px; cursor: pointer;
+    }
+    .active-mood-chip:hover { background: #ffe4d6; }
+    .dist-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pill {
+      padding: 5px 13px; border-radius: 20px;
+      border: 1.5px solid var(--border); background: var(--white);
+      font-size: 11px; font-weight: 500; color: var(--text2);
+      cursor: pointer; transition: all 0.12s; white-space: nowrap;
+    }
+    .pill:hover { border-color: var(--text2); color: var(--text); }
+    .pill.active { background: var(--text); border-color: var(--text); color: #fff; }
+
+    .cat-row {
+      display: flex; gap: 6px;
+      overflow-x: auto; padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .cat-row::-webkit-scrollbar { display: none; }
+    .chip {
+      padding: 4px 12px; border-radius: 20px;
+      border: 1.5px solid var(--border); background: var(--white);
+      font-size: 11px; font-weight: 500; color: var(--text2);
+      cursor: pointer; transition: all 0.12s; white-space: nowrap; flex-shrink: 0;
+    }
+    .chip:hover { border-color: var(--text2); color: var(--text); }
+    .chip.active { background: var(--text); border-color: var(--text); color: #fff; }
+
+    /* ─── CARD GRID ─── */
+    .results { padding: 24px; max-width: 1200px; margin: 0 auto; }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* ─── CARD ─── */
+    .card {
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden; cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.09);
+    }
+    .card-photo { position: relative; height: 200px; overflow: hidden; background: #e9e9e9; }
+    .card-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .card-photo img { transform: scale(1.04); }
+    .card-photo-grad {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 72px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.48));
+    }
+    .card-badge-type {
+      position: absolute; top: 11px; right: 11px;
+      background: rgba(0,0,0,0.52); backdrop-filter: blur(6px);
+      color: #fff; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .card-badge-dist {
+      position: absolute; top: 11px; left: 11px;
+      background: rgba(0,0,0,0.52); backdrop-filter: blur(6px);
+      color: #fff; font-size: 11px; font-weight: 500;
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .card-body { padding: 16px; }
+    .card-title { font-size: 15px; font-weight: 700; letter-spacing: -0.2px; margin-bottom: 5px; }
+    .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .card-season {
+      font-size: 11px; color: var(--text2);
+      display: flex; align-items: center; gap: 4px;
+    }
+    .dot-green {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #10b981; flex-shrink: 0;
+    }
+    .card-duration { font-size: 11px; color: var(--text3); }
+    .card-teaser {
+      font-size: 12px; color: var(--text2); line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+      overflow: hidden; margin-bottom: 14px;
+    }
+    .card-footer { display: flex; gap: 8px; }
+    .btn-detail {
+      flex: 1; padding: 8px 0;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: var(--radius-sm);
+      font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-detail:hover { background: #b03a0a; }
+    .btn-map {
+      width: 34px; height: 34px; flex-shrink: 0;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--white); color: var(--text2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.12s; text-decoration: none;
+    }
+    .btn-map:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-map svg { width: 14px; height: 14px; }
+
+    /* ─── EMPTY STATE ─── */
+    .empty {
+      grid-column: 1/-1; text-align: center; padding: 56px 24px;
+    }
+    .empty p { font-size: 14px; color: var(--text2); margin-bottom: 12px; }
+    .empty button {
+      padding: 8px 20px; background: var(--accent); color: #fff;
+      border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+
+    /* ─── MODAL OVERLAY ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.48);
+      display: none; align-items: flex-end; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    @media (min-width: 640px) { .modal-overlay { align-items: center; } }
+
+    .modal {
+      background: var(--white);
+      width: 100%; max-width: 580px; max-height: 92vh;
+      overflow-y: auto; border-radius: 20px 20px 0 0;
+      animation: slideUp 0.22s ease;
+    }
+    @media (min-width: 640px) {
+      .modal { border-radius: 16px; animation: scaleIn 0.18s ease; }
+    }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .modal-photo { position: relative; height: 240px; overflow: hidden; background: #e9e9e9; }
+    .modal-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-photo-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 20px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.72));
+    }
+    .modal-photo-type { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .modal-photo-title { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.4px; line-height: 1.2; }
+    .modal-close {
+      position: absolute; top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.4); border: none; border-radius: 50%;
+      color: #fff; font-size: 20px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .modal-close:hover { background: rgba(0,0,0,0.65); }
+
+    .modal-body { padding: 18px 20px; }
+
+    .stat-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .stat-pill {
+      display: flex; align-items: center; gap: 5px;
+      padding: 6px 12px; background: var(--bg);
+      border-radius: 20px; font-size: 12px; color: var(--text2);
+    }
+    .stat-pill b { color: var(--text); font-weight: 700; }
+    .stat-pill svg { width: 12px; height: 12px; opacity: 0.6; }
+
+    .mood-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+    .mood-tag {
+      padding: 3px 10px; background: var(--accent-l);
+      border-radius: 4px; font-size: 11px; font-weight: 600; color: var(--accent);
+    }
+
+    .section-label {
+      font-size: 9px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text3); margin-bottom: 6px; margin-top: 16px;
+    }
+    .modal-about { font-size: 14px; color: var(--text2); line-height: 1.7; }
+
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .detail-item { background: var(--bg); padding: 10px 12px; border-radius: 8px; }
+    .detail-item .dl { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text3); }
+    .detail-item .dv { font-size: 13px; font-weight: 500; color: var(--text); margin-top: 2px; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+    .tag { padding: 3px 9px; background: var(--bg); border-radius: 4px; font-size: 11px; color: var(--text2); }
+
+    .modal-footer {
+      padding: 14px 20px 20px;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 10px;
+    }
+    .btn-maps {
+      flex: 1; padding: 12px; background: var(--accent); color: #fff;
+      border: none; border-radius: 10px; font-size: 13px; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-maps:hover { background: #b03a0a; }
+    .btn-maps svg { width: 14px; height: 14px; }
+    .btn-save {
+      flex: 1; padding: 12px; background: var(--bg); color: #aaa;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 13px; cursor: not-allowed;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-save svg { width: 14px; height: 14px; opacity: 0.5; }
+    .soon-tag {
+      font-size: 9px; padding: 1px 5px;
+      background: #e5e7eb; color: #9ca3af; border-radius: 3px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .mood-card { min-width: 140px; max-width: none; }
+      .filter-bar { padding: 12px 16px 10px; }
+      .results { padding: 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-name">MoodSpace</span>
+    <span class="nav-brand-sub">Karnataka</span>
+  </div>
+  <div class="nav-right">
+    <div class="nav-saved">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      Saved Trips
+      <span class="nav-saved-badge">Coming soon</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOOD HERO ── -->
+<section class="mood-hero" id="moodHero">
+  <div class="mood-hero-text">
+    <h1>What's your vibe this weekend?</h1>
+    <p>89 places across Karnataka &nbsp;·&nbsp; <a onclick="skipMood()">Skip — browse all</a></p>
+  </div>
+  <div class="mood-grid" id="moodGrid"></div>
+</section>
+
+<!-- ── FILTER BAR ── -->
+<div class="filter-bar">
+  <div class="filter-row1">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="filter-count"><b id="resultCount">89</b> places</span>
+      <div id="activeMoodChip"></div>
+    </div>
+    <div class="dist-pills" id="distPills">
+      <button class="pill active" onclick="setDist('all',this)">All distances</button>
+      <button class="pill" onclick="setDist('100',this)">&lt; 100 km</button>
+      <button class="pill" onclick="setDist('200',this)">100 – 200 km</button>
+      <button class="pill" onclick="setDist('400',this)">200 – 400 km</button>
+      <button class="pill" onclick="setDist('400+',this)">400+ km</button>
+    </div>
+  </div>
+  <div class="cat-row" id="catRow">
+    <button class="chip active" onclick="setCat('all',this)">All types</button>
+    <button class="chip" onclick="setCat('Hill Station',this)">Hill Station</button>
+    <button class="chip" onclick="setCat('Beach',this)">Beach</button>
+    <button class="chip" onclick="setCat('Waterfall',this)">Waterfall</button>
+    <button class="chip" onclick="setCat('Historical',this)">Historical</button>
+    <button class="chip" onclick="setCat('Temple',this)">Temple</button>
+    <button class="chip" onclick="setCat('Wildlife',this)">Wildlife</button>
+    <button class="chip" onclick="setCat('Trekking',this)">Trekking</button>
+    <button class="chip" onclick="setCat('Adventure',this)">Adventure</button>
+    <button class="chip" onclick="setCat('Religious',this)">Religious</button>
+    <button class="chip" onclick="setCat('Nature',this)">Nature</button>
+    <button class="chip" onclick="setCat('Garden',this)">Garden</button>
+  </div>
+</div>
+
+<!-- ── RESULTS ── -->
+<div class="results">
+  <div class="card-grid" id="cardGrid"></div>
+</div>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="maybeClose(event)">
+  <div class="modal" id="modal">
+    <div class="modal-photo">
+      <img id="mImg" src="" alt=""
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#d1d5db,#9ca3af)'">
+      <div class="modal-photo-overlay">
+        <div class="modal-photo-type" id="mType"></div>
+        <div class="modal-photo-title" id="mTitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="stat-row" id="mStats"></div>
+      <div class="mood-tags" id="mMoods"></div>
+      <div class="section-label">About</div>
+      <div class="modal-about" id="mAbout"></div>
+      <div id="mDetails"></div>
+      <div class="tag-row" id="mTags"></div>
+    </div>
+    <div class="modal-footer">
+      <a class="btn-maps" id="mMapsBtn" href="#" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Open in Google Maps
+      </a>
+      <button class="btn-save">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        Save to Trip
+        <span class="soon-tag">Soon</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────── SVG ICONS ─────────────────── -->
+<svg style="display:none" id="svgDefs">
+  <symbol id="ic-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="ic-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></symbol>
+  <symbol id="ic-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+  <symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="ic-mountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 20 15.5 4 22 20"/><polyline points="3 20 10 10 14 14"/></symbol>
+  <symbol id="ic-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+</svg>
+
+<script>
+function icon(id, w, h) {
+  return `<svg width="${w||16}" height="${h||16}"><use href="#ic-${id}"/></svg>`;
+}
+
+// ─── DATA ───
+const MOODS = [
+  { id:'energetic',   name:'Energetic',   tagline:'Ready to move and push limits', icon:'zap'      },
+  { id:'peaceful',    name:'Peaceful',     tagline:'Seeking calm and stillness',    icon:'cloud'    },
+  { id:'adventurous', name:'Adventurous',  tagline:'Craving the wild and unknown',  icon:'compass'  },
+  { id:'curious',     name:'Curious',      tagline:'Want to discover something new',icon:'search'   },
+  { id:'spiritual',   name:'Spiritual',    tagline:'Seeking peace and meaning',     icon:'star'     },
+  { id:'romantic',    name:'Romantic',     tagline:'A getaway for two',             icon:'heart'    },
+  { id:'social',      name:'Social',       tagline:'Better with a crew',            icon:'users'    },
+  { id:'reflective',  name:'Reflective',   tagline:'Need space to think and feel',  icon:'mountain' },
+  { id:'creative',    name:'Creative',     tagline:'Inspiration is calling',        icon:'camera'   }
+];
+
+// 12 representative locations for mockup
+const LOCATIONS = [
+  {
+    id:'nandi-hills', name:'Nandi Hills', type:'Hill Station', district:'Chikkaballapur',
+    distance_km:60, drive_display:'~1.5 hrs',
+    image:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    moods:['peaceful','energetic','reflective','romantic'],
+    best_time:'Oct – Mar', duration:'1 day',
+    teaser:'Misty sunrise views and ancient hilltop temples just 60 km from Bangalore',
+    about:'Famous for spectacular early morning mist and Tipu Sultan\'s summer residence. Nandi Fort sits at the summit with panoramic views of the Deccan plateau.',
+    details:{'Trek':'Easy walk to summit','Viewpoint':'Sunrise Point','Entry fee':'₹20 per person','Timings':'6 AM – 10 PM'},
+    tags:['sunrise','photography','temple','day-trip','fort'], lat:13.3702, lng:77.6835
+  },
+  {
+    id:'hampi', name:'Hampi', type:'Historical', district:'Vijayanagara',
+    distance_km:340, drive_display:'~6 hrs',
+    image:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    moods:['curious','creative','adventurous','reflective'],
+    best_time:'Oct – Feb', duration:'2–3 days',
+    teaser:'Ruins of a 14th-century empire scattered across a surreal boulder landscape',
+    about:'Hampi was the capital of the Vijayanagara Empire — once one of the world\'s largest cities. Over 1,600 monuments dot a landscape of giant granite boulders and the Tungabhadra river.',
+    details:{'UNESCO':'World Heritage Site','Key site':'Vittala Temple','Entry':'₹30 (Indian)','Duration':'2–3 days'},
+    tags:['UNESCO','ruins','empire','photography','temple'], lat:15.335, lng:76.4601
+  },
+  {
+    id:'coorg', name:'Coorg (Madikeri)', type:'Hill Station', district:'Kodagu',
+    distance_km:260, drive_display:'~5 hrs',
+    image:'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80',
+    moods:['peaceful','romantic','reflective','creative'],
+    best_time:'Oct – Feb', duration:'2–3 days',
+    teaser:'Scotland of India — coffee estates, misty peaks and the Abbey Falls',
+    about:'Coorg is Karnataka\'s most popular hill destination. Coffee and spice plantations carpet the hills, punctuated by waterfalls, tribal villages and the ancient Madikeri Fort.',
+    details:{'Key spots':'Abbey Falls, Raja\'s Seat','Stay type':'Plantation homestay','Activity':'Coffee estate walk','Drive':'~5 hrs from Bangalore'},
+    tags:['coffee','waterfall','fort','nature','homestay'], lat:12.4244, lng:75.7382
+  },
+  {
+    id:'gokarna', name:'Gokarna', type:'Beach', district:'Uttara Kannada',
+    distance_km:480, drive_display:'~8 hrs',
+    image:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+    moods:['peaceful','adventurous','spiritual','social'],
+    best_time:'Oct – Mar', duration:'2–3 days',
+    teaser:'Sacred beach town with cliff-hop trails between secluded coves',
+    about:'Gokarna is a sacred Hindu town with one of the most beautiful beach trails in India. Om Beach, Half Moon Beach and Paradise Beach are reachable by cliff trail — mostly free of commercial development.',
+    details:{'Beach trail':'8 km cliff walk','Beaches':'5 connected coves','Temple':'Mahabaleshwara (Shiva)','Vibe':'Laid-back, spiritual'},
+    tags:['beach','temple','cliff-trail','spiritual','backpacker'], lat:14.5479, lng:74.3188
+  },
+  {
+    id:'kudremukh', name:'Kudremukh', type:'Trekking', district:'Chikkamagaluru',
+    distance_km:310, drive_display:'~5.5 hrs',
+    image:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80',
+    moods:['energetic','adventurous','reflective'],
+    best_time:'Oct – Feb', duration:'2 days',
+    teaser:'Horse-face peak over rolling grasslands and shola forests in the Western Ghats',
+    about:'Kudremukh is a UNESCO World Heritage site and one of Karnataka\'s most scenic treks. The route passes through dense shola forest, grasslands and streams.',
+    details:{'Difficulty':'Moderate–Difficult','Peak height':'1,894 m','Permit':'Forest dept required','Trek distance':'~17 km return'},
+    tags:['trekking','national-park','UNESCO','ghats','permit'], lat:13.1709, lng:75.2539
+  },
+  {
+    id:'kabini', name:'Kabini River Camps', type:'Wildlife', district:'Mysuru',
+    distance_km:215, drive_display:'~4 hrs',
+    image:'https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800&q=80',
+    moods:['adventurous','peaceful','romantic','curious'],
+    best_time:'Oct – Jun', duration:'2 days',
+    teaser:'Boat safaris at dusk where elephants wade across the Kabini backwaters',
+    about:'Kabini is the southern zone of Nagarhole Tiger Reserve. The reservoir backwaters attract hundreds of animals at dusk — the evening boat safari is among India\'s finest wildlife experiences.',
+    details:{'Safari':'Boat + Jeep','Highlight':'Black Panther sightings','Stay':'Jungle Lodges & Resorts','Booking':'Advance required'},
+    tags:['safari','boat-safari','black-panther','elephant','tiger'], lat:11.9369, lng:76.3658
+  },
+  {
+    id:'skandagiri', name:'Skandagiri', type:'Trekking', district:'Chikkaballapur',
+    distance_km:65, drive_display:'~1.5 hrs',
+    image:'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80',
+    moods:['energetic','adventurous','reflective'],
+    best_time:'Nov – Feb', duration:'Night trek (1 day)',
+    teaser:'Bangalore\'s most famous night trek — summit above the clouds at sunrise',
+    about:'Skandagiri is Karnataka\'s most popular night trek. The 8 km trail climbs to a ruined Tipu Sultan fort at 1,450 m. Cloud inversion at dawn — Nandi Hills visible above a sea of clouds — is legendary.',
+    details:{'Night trek':'Dec–Feb (cloud season)','Peak height':'1,450 m','Fort':'Tipu Sultan era','Permit':'Required at gate'},
+    tags:['trekking','night-trek','sunrise','fort','clouds','day-trip'], lat:13.4429, lng:77.6998
+  },
+  {
+    id:'shettyhalli', name:'Shettyhalli Church', type:'Historical', district:'Hassan',
+    distance_km:215, drive_display:'~4 hrs',
+    image:'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80',
+    moods:['curious','creative','reflective'],
+    best_time:'Aug – Oct', duration:'Half day',
+    teaser:'A 19th-century French church rising ghost-like from the Hemavathi reservoir',
+    about:'Built by French missionaries in the 1860s and submerged when the Hemavathi dam was completed in the 1960s. In summer when water levels drop, the Gothic ruins re-emerge dramatically — a photographer\'s favourite.',
+    details:{'Built':'1860s (French missionaries)','Submerged':'1960s (dam)','Best view':'Aug–Oct (partial)','Access':'Short boat ride'},
+    tags:['ruins','church','submerged','photography','gothic','unique'], lat:13.1441, lng:75.9281
+  },
+  {
+    id:'jog-falls', name:'Jog Falls', type:'Waterfall', district:'Shimoga',
+    distance_km:380, drive_display:'~7 hrs',
+    image:'https://images.unsplash.com/photo-1534158089564-2b13af5ef72c?w=800&q=80',
+    moods:['energetic','adventurous','creative','reflective'],
+    best_time:'Aug – Oct', duration:'1–2 days',
+    teaser:'India\'s second highest waterfall — four streams plunging 253 m into a misty gorge',
+    about:'Jog Falls is formed by the Sharavathi river plunging 253 m in four distinct streams — Raja, Rani, Rocket and Roarer. Best visited during monsoon when flow is at its peak.',
+    details:{'Height':'253 m','Streams':'Raja, Rani, Rocket, Roarer','Viewpoint':'Free observation deck','Best time':'Aug–Oct'},
+    tags:['waterfall','highest','monsoon','photography','nature'], lat:14.2256, lng:74.7913
+  },
+  {
+    id:'golden-temple', name:'Golden Temple, Bylakuppe', type:'Religious', district:'Kodagu',
+    distance_km:220, drive_display:'~4 hrs',
+    image:'https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=800&q=80',
+    moods:['spiritual','curious','peaceful'],
+    best_time:'Oct – Mar', duration:'Half day',
+    teaser:'A Tibetan Buddhist monastery with 40-foot golden Buddhas in rural Karnataka',
+    about:'The Namdroling Monastery in Bylakuppe was established by Tibetan refugees in 1963. It houses three 40-foot golden statues — Guru Padmasambhava, Buddha Sakyamuni and Amitayus — in an ornate golden hall.',
+    details:{'Monastery':'Namdroling Nyingmapa','Statues':'3 × 40-ft golden','Entry':'Free','Timings':'9 AM – 8 PM'},
+    tags:['Buddhist','monastery','Tibetan','golden','peaceful'], lat:12.3289, lng:75.9937
+  },
+  {
+    id:'murdeshwar', name:'Murdeshwar', type:'Beach', district:'Uttara Kannada',
+    distance_km:480, drive_display:'~8 hrs',
+    image:'https://images.unsplash.com/photo-1590935217281-8f102120d683?w=800&q=80',
+    moods:['spiritual','creative','adventurous'],
+    best_time:'Oct – Mar', duration:'1 day',
+    teaser:'World\'s second-tallest Shiva statue rising 123 feet over the Arabian Sea',
+    about:'Murdeshwar is a coastal temple town dominated by the iconic 123-foot Shiva statue on a rocky promontory. A 20-storey gopuram with a lift offers sweeping coastal views.',
+    details:{'Shiva statue':'123 ft (world\'s 2nd tallest)','Gopuram':'20 storeys with lift','Beach':'Below temple complex','Scuba diving':'Available locally'},
+    tags:['temple','Shiva','statue','beach','coastal','photography'], lat:14.3225, lng:74.1119
+  },
+  {
+    id:'savandurga', name:'Savandurga', type:'Trekking', district:'Ramanagara',
+    distance_km:50, drive_display:'~1 hr',
+    image:'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800&q=80',
+    moods:['energetic','adventurous'],
+    best_time:'Oct – Mar', duration:'1 day',
+    teaser:'One of Asia\'s largest monolith hills — a bare granite dome above the Bangalore plains',
+    about:'Savandurga is one of the largest monolithic rocks in Asia at 1,226 m. The two peaks — Karigudda (black hill) and Biligudda (white hill) — offer a challenging scramble up bare granite with fort ruins at the top.',
+    details:{'Difficulty':'Moderate–Difficult','Peak height':'1,226 m','Rock type':'Monolithic granite','Claim':'Asia\'s largest monolith'},
+    tags:['trekking','monolith','granite','bouldering','day-trip'], lat:12.9186, lng:77.2933
+  }
+];
+
+// ─── STATE ───
+let activeMood = null;
+let activeDist = 'all';
+let activeCat  = 'all';
+let visibleList = [];
+
+// ─── INIT ───
+buildMoodGrid();
+renderCards();
+
+// ─── MOOD GRID ───
+function buildMoodGrid() {
+  document.getElementById('moodGrid').innerHTML = MOODS.map(m => `
+    <div class="mood-card ${activeMood===m.id?'active':''}"
+         onclick="toggleMood('${m.id}')">
+      <div class="mood-icon">${icon(m.icon)}</div>
+      <div class="mood-info">
+        <span class="mood-name">${m.name}</span>
+        <span class="mood-tagline">${m.tagline}</span>
+      </div>
+    </div>`
+  ).join('');
+}
+
+function toggleMood(id) {
+  activeMood = activeMood===id ? null : id;
+  buildMoodGrid();
+  updateMoodChip();
+  renderCards();
+  if (activeMood) {
+    setTimeout(()=> document.querySelector('.filter-bar').scrollIntoView({behavior:'smooth',block:'start'}), 120);
+  }
+}
+
+function skipMood() {
+  activeMood = null;
+  buildMoodGrid();
+  updateMoodChip();
+  renderCards();
+  document.querySelector('.filter-bar').scrollIntoView({behavior:'smooth'});
+}
+
+function updateMoodChip() {
+  const el = document.getElementById('activeMoodChip');
+  if (activeMood) {
+    const m = MOODS.find(x=>x.id===activeMood);
+    el.innerHTML = `<span class="active-mood-chip" onclick="toggleMood('${activeMood}')">
+      ${m.name} <span>×</span>
+    </span>`;
+  } else {
+    el.innerHTML = '';
+  }
+}
+
+// ─── FILTERS ───
+function setDist(val, btn) {
+  activeDist = val;
+  document.querySelectorAll('.dist-pills .pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
+}
+
+function setCat(val, btn) {
+  activeCat = val;
+  document.querySelectorAll('.cat-row .chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
+}
+
+function filtered() {
+  return LOCATIONS.filter(l => {
+    if (activeMood && !l.moods.includes(activeMood)) return false;
+    if (activeDist==='100'  && l.distance_km >= 100) return false;
+    if (activeDist==='200'  && (l.distance_km < 100 || l.distance_km >= 200)) return false;
+    if (activeDist==='400'  && (l.distance_km < 200 || l.distance_km >= 400)) return false;
+    if (activeDist==='400+' && l.distance_km < 400) return false;
+    if (activeCat!=='all'   && l.type !== activeCat) return false;
+    return true;
+  });
+}
+
+// ─── CARDS ───
+function renderCards() {
+  const list = filtered();
+  visibleList = list;
+  document.getElementById('resultCount').textContent = list.length;
+
+  const grid = document.getElementById('cardGrid');
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty">
+      <p>No places match your filters.</p>
+      <button onclick="clearAll()">Clear all filters</button>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map((l,i) => `
+    <div class="card" onclick="openModal(${i})">
+      <div class="card-photo">
+        <img src="${l.image}" alt="${l.name}" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(135deg,#d1d5db,#9ca3af)'">
+        <div class="card-photo-grad"></div>
+        <span class="card-badge-type">${l.type}</span>
+        <span class="card-badge-dist">${l.distance_km} km &middot; ${l.drive_display}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${l.name}</div>
+        <div class="card-meta">
+          <span class="card-season"><span class="dot-green"></span>${l.best_time}</span>
+          <span class="card-duration">&middot; ${l.duration}</span>
+        </div>
+        <div class="card-teaser">${l.teaser}</div>
+        <div class="card-footer">
+          <button class="btn-detail">View Details</button>
+          <a class="btn-map" title="Directions"
+             href="https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}"
+             target="_blank"
+             onclick="event.stopPropagation()">
+            ${icon('pin',14,14)}
+          </a>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+}
+
+function clearAll() {
+  activeMood=null; activeDist='all'; activeCat='all';
+  document.querySelectorAll('.pill').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.dist-pills .pill').classList.add('active');
+  document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.cat-row .chip').classList.add('active');
+  buildMoodGrid();
+  updateMoodChip();
+  renderCards();
+}
+
+// ─── MODAL ───
+function openModal(idx) {
+  const l = visibleList[idx]; if (!l) return;
+
+  document.getElementById('mImg').src   = l.image;
+  document.getElementById('mImg').alt   = l.name;
+  document.getElementById('mType').textContent  = l.type + ' · ' + l.district;
+  document.getElementById('mTitle').textContent = l.name;
+
+  document.getElementById('mStats').innerHTML = `
+    <div class="stat-pill">${icon('pin')} <b>${l.distance_km} km</b>&nbsp;from Bangalore</div>
+    <div class="stat-pill">${icon('clock')} <b>${l.drive_display}</b>&nbsp;drive</div>
+    <div class="stat-pill">${icon('sun')} <b>${l.best_time}</b></div>
+    <div class="stat-pill" style="background:#f0fdf4;color:#15803d">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      &nbsp;<b>${l.duration}</b>
+    </div>`;
+
+  document.getElementById('mMoods').innerHTML =
+    l.moods.map(id => `<span class="mood-tag">${MOODS.find(m=>m.id===id)?.name||id}</span>`).join('');
+
+  document.getElementById('mAbout').textContent = l.about;
+
+  if (l.details && Object.keys(l.details).length) {
+    document.getElementById('mDetails').innerHTML = `
+      <div class="section-label">Details</div>
+      <div class="details-grid">${
+        Object.entries(l.details).map(([k,v])=>
+          `<div class="detail-item"><div class="dl">${k}</div><div class="dv">${v}</div></div>`
+        ).join('')
+      }</div>`;
+  } else {
+    document.getElementById('mDetails').innerHTML = '';
+  }
+
+  document.getElementById('mTags').innerHTML =
+    l.tags.map(t=>`<span class="tag">#${t}</span>`).join('');
+
+  document.getElementById('mMapsBtn').href =
+    `https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}`;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function maybeClose(e) {
+  if (e.target.id==='modalOverlay') closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>

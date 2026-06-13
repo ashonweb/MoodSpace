@@ -1,0 +1,83 @@
+[
+  {
+    "id": "energetic",
+    "name": "Energetic",
+    "tagline": "Ready to move and push limits",
+    "description": "You want sweat, effort and a view that rewards it",
+    "icon": "Zap",
+    "color": "#dc2626",
+    "bg": "#fef2f2"
+  },
+  {
+    "id": "peaceful",
+    "name": "Peaceful",
+    "tagline": "Seeking calm and stillness",
+    "description": "Misty mornings, quiet forests and slow afternoons",
+    "icon": "Cloud",
+    "color": "#0891b2",
+    "bg": "#ecfeff"
+  },
+  {
+    "id": "adventurous",
+    "name": "Adventurous",
+    "tagline": "Craving the wild and unknown",
+    "description": "Wildlife, rapids, boulders and untamed terrain",
+    "icon": "Compass",
+    "color": "#16a34a",
+    "bg": "#f0fdf4"
+  },
+  {
+    "id": "curious",
+    "name": "Curious",
+    "tagline": "Want to discover something new",
+    "description": "Ancient empires, cave temples and stories carved in stone",
+    "icon": "Search",
+    "color": "#7c3aed",
+    "bg": "#f5f3ff"
+  },
+  {
+    "id": "spiritual",
+    "name": "Spiritual",
+    "tagline": "Seeking peace and meaning",
+    "description": "Sacred temples, hilltop shrines and quiet pilgrimage towns",
+    "icon": "Flower",
+    "color": "#d97706",
+    "bg": "#fffbeb"
+  },
+  {
+    "id": "romantic",
+    "name": "Romantic",
+    "tagline": "A getaway for two",
+    "description": "Coffee hills, misty sunrises and slow sunset beaches",
+    "icon": "Heart",
+    "color": "#db2777",
+    "bg": "#fdf2f8"
+  },
+  {
+    "id": "social",
+    "name": "Social",
+    "tagline": "Better with a crew",
+    "description": "Beach shacks, group treks, bonfires and shared memories",
+    "icon": "Users",
+    "color": "#ea580c",
+    "bg": "#fff7ed"
+  },
+  {
+    "id": "reflective",
+    "name": "Reflective",
+    "tagline": "Need space to think and feel",
+    "description": "High ridges, rainforest silence and places that slow you down",
+    "icon": "Mountain",
+    "color": "#475569",
+    "bg": "#f8fafc"
+  },
+  {
+    "id": "creative",
+    "name": "Creative",
+    "tagline": "Inspiration is calling",
+    "description": "Dramatic ruins, rock formations and landscapes worth photographing",
+    "icon": "Camera",
+    "color": "#0284c7",
+    "bg": "#f0f9ff"
+  }
+]
