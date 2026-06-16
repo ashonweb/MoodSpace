@@ -8,9 +8,17 @@
     "distance_km": 60,
     "drive_hours": 1.5,
     "drive_display": "~1.5 hrs",
-    "coordinates": { "lat": 13.3702, "lng": 77.6835 },
+    "coordinates": {
+      "lat": 13.3702,
+      "lng": 77.6835
+    },
     "image": "nandihills.jpg",
-    "moods": ["peaceful", "energetic", "reflective", "romantic"],
+    "moods": [
+      "peaceful",
+      "energetic",
+      "reflective",
+      "romantic"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Misty sunrise views and ancient hilltop temples just 60 km from Bangalore",
@@ -21,7 +29,13 @@
       "entry_fee": "₹20 per person",
       "timings": "6:00 AM – 10:00 PM"
     },
-    "tags": ["sunrise", "photography", "temple", "day-trip", "fort"],
+    "tags": [
+      "sunrise",
+      "photography",
+      "temple",
+      "day-trip",
+      "fort"
+    ],
     "active": true
   },
   {
@@ -33,19 +47,41 @@
     "distance_km": 260,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 12.4244, "lng": 75.7382 },
+    "coordinates": {
+      "lat": 12.4244,
+      "lng": 75.7382
+    },
     "image": "coorg.jpg",
-    "moods": ["peaceful", "romantic", "reflective", "creative"],
+    "moods": [
+      "peaceful",
+      "romantic",
+      "reflective",
+      "creative"
+    ],
     "best_time": "Oct – Feb",
     "duration": "2–3 days",
     "teaser": "Scotland of India — coffee estates, misty peaks and the Abbey Falls",
     "about": "Coorg is Karnataka's most popular hill destination. Coffee and spice plantations carpet the hills, punctuated by waterfalls, tribal villages and the ancient Madikeri Fort.",
     "details": {
-      "key_attractions": ["Abbey Falls", "Raja's Seat", "Madikeri Fort", "Nagarhole"],
-      "stay_options": ["Plantation homestays", "Luxury resorts"],
+      "key_attractions": [
+        "Abbey Falls",
+        "Raja's Seat",
+        "Madikeri Fort",
+        "Nagarhole"
+      ],
+      "stay_options": [
+        "Plantation homestays",
+        "Luxury resorts"
+      ],
       "best_for": "Couples, families"
     },
-    "tags": ["coffee", "waterfall", "fort", "nature", "homestay"],
+    "tags": [
+      "coffee",
+      "waterfall",
+      "fort",
+      "nature",
+      "homestay"
+    ],
     "active": true
   },
   {
@@ -57,19 +93,38 @@
     "distance_km": 245,
     "drive_hours": 4.5,
     "drive_display": "~4.5 hrs",
-    "coordinates": { "lat": 13.3153, "lng": 75.7754 },
+    "coordinates": {
+      "lat": 13.3153,
+      "lng": 75.7754
+    },
     "image": "chickmangalur.jpg",
-    "moods": ["peaceful", "adventurous", "energetic", "romantic"],
+    "moods": [
+      "peaceful",
+      "adventurous",
+      "energetic",
+      "romantic"
+    ],
     "best_time": "Sep – Feb",
     "duration": "2–3 days",
     "teaser": "Birthplace of coffee in India, with misty peaks and trekking trails",
     "about": "Chikmagalur sits in the Baba Budan Giri range. Home to Mullayanagiri — Karnataka's highest peak — and vast coffee estates. Ideal for trekking and nature walks.",
     "details": {
       "highest_peak": "Mullayanagiri (1,930 m)",
-      "key_attractions": ["Mullayanagiri Peak", "Baba Budangiri", "Hebbe Falls", "Kudremukh"],
+      "key_attractions": [
+        "Mullayanagiri Peak",
+        "Baba Budangiri",
+        "Hebbe Falls",
+        "Kudremukh"
+      ],
       "trek_difficulty": "Moderate"
     },
-    "tags": ["coffee", "trekking", "peak", "waterfall", "nature"],
+    "tags": [
+      "coffee",
+      "trekking",
+      "peak",
+      "waterfall",
+      "nature"
+    ],
     "active": true
   },
   {
@@ -81,18 +136,37 @@
     "distance_km": 220,
     "drive_hours": 4,
     "drive_display": "~4 hrs",
-    "coordinates": { "lat": 12.9477, "lng": 75.7832 },
+    "coordinates": {
+      "lat": 12.9477,
+      "lng": 75.7832
+    },
     "image": "sakleshpur.jpg",
-    "moods": ["peaceful", "adventurous", "reflective", "romantic"],
+    "moods": [
+      "peaceful",
+      "adventurous",
+      "reflective",
+      "romantic"
+    ],
     "best_time": "Oct – Jan",
     "duration": "1–2 days",
     "teaser": "Misty coffee hills and the scenic Bisle Forest trek gateway",
     "about": "A quieter alternative to Coorg. Sakleshpur is surrounded by coffee and cardamom estates, with the famous Bisle Ghat viewpoint and heritage railway trail nearby.",
     "details": {
-      "key_attractions": ["Bisle Ghat", "Manjarabad Fort", "Hemavati River", "Heritage Railway Trail"],
+      "key_attractions": [
+        "Bisle Ghat",
+        "Manjarabad Fort",
+        "Hemavati River",
+        "Heritage Railway Trail"
+      ],
       "trek_difficulty": "Easy to Moderate"
     },
-    "tags": ["coffee", "forest", "fort", "trekking", "offbeat"],
+    "tags": [
+      "coffee",
+      "forest",
+      "fort",
+      "trekking",
+      "offbeat"
+    ],
     "active": true
   },
   {
@@ -104,18 +178,37 @@
     "distance_km": 270,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 13.5318, "lng": 75.6518 },
+    "coordinates": {
+      "lat": 13.5318,
+      "lng": 75.6518
+    },
     "image": "kemmangundi.jpg",
-    "moods": ["peaceful", "reflective", "creative", "energetic"],
+    "moods": [
+      "peaceful",
+      "reflective",
+      "creative",
+      "energetic"
+    ],
     "best_time": "Sep – Mar",
     "duration": "1–2 days",
     "teaser": "A hidden hill garden with rose parks, rhododendrons and valley viewpoints",
     "about": "Kemmangundi was Mysore's royal retreat. Known for its botanical gardens, Shanti Falls and the Raj Bhavan bungalow. Z-point offers sweeping Western Ghats views.",
     "details": {
-      "key_attractions": ["Z-Point Viewpoint", "Shanti Falls", "Raj Bhavan Garden", "Hebbe Falls"],
+      "key_attractions": [
+        "Z-Point Viewpoint",
+        "Shanti Falls",
+        "Raj Bhavan Garden",
+        "Hebbe Falls"
+      ],
       "entry_fee": "₹30 per person"
     },
-    "tags": ["garden", "viewpoint", "waterfall", "offbeat", "royal"],
+    "tags": [
+      "garden",
+      "viewpoint",
+      "waterfall",
+      "offbeat",
+      "royal"
+    ],
     "active": true
   },
   {
@@ -127,9 +220,16 @@
     "distance_km": 310,
     "drive_hours": 5.5,
     "drive_display": "~5.5 hrs",
-    "coordinates": { "lat": 13.1709, "lng": 75.2539 },
+    "coordinates": {
+      "lat": 13.1709,
+      "lng": 75.2539
+    },
     "image": "kudremukh.jpg",
-    "moods": ["energetic", "adventurous", "reflective"],
+    "moods": [
+      "energetic",
+      "adventurous",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "2 days",
     "teaser": "Horse-face peak over rolling grasslands and shola forests in the Ghats",
@@ -140,7 +240,13 @@
       "permit_required": true,
       "forest_dept_permit": "Required from Kudremukh National Park"
     },
-    "tags": ["trekking", "national-park", "UNESCO", "ghats", "permit"],
+    "tags": [
+      "trekking",
+      "national-park",
+      "UNESCO",
+      "ghats",
+      "permit"
+    ],
     "active": true
   },
   {
@@ -152,9 +258,17 @@
     "distance_km": 340,
     "drive_hours": 6,
     "drive_display": "~6 hrs",
-    "coordinates": { "lat": 14.0279, "lng": 74.8569 },
+    "coordinates": {
+      "lat": 14.0279,
+      "lng": 74.8569
+    },
     "image": "kodachadri.jpg",
-    "moods": ["energetic", "adventurous", "spiritual", "reflective"],
+    "moods": [
+      "energetic",
+      "adventurous",
+      "spiritual",
+      "reflective"
+    ],
     "best_time": "Oct – Jan",
     "duration": "2 days",
     "teaser": "Trek through shola forests to a hilltop Mookambika shrine and sea views",
@@ -165,7 +279,13 @@
       "key_attraction": "Sarvajna Peetha Shrine",
       "camping": "Permitted at summit"
     },
-    "tags": ["trekking", "temple", "forest", "ghats", "camping"],
+    "tags": [
+      "trekking",
+      "temple",
+      "forest",
+      "ghats",
+      "camping"
+    ],
     "active": true
   },
   {
@@ -177,9 +297,15 @@
     "distance_km": 280,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 12.8413, "lng": 75.6865 },
-    "image": null,
-    "moods": ["energetic", "adventurous"],
+    "coordinates": {
+      "lat": 12.8413,
+      "lng": 75.6865
+    },
+    "image": "kumara-parvata.jpg",
+    "moods": [
+      "energetic",
+      "adventurous"
+    ],
     "best_time": "Oct – Feb",
     "duration": "2 days",
     "teaser": "Karnataka's toughest peak trek — 13 km of steep ghats forest",
@@ -190,7 +316,13 @@
       "base_camp": "Kukke Subramanya",
       "permit_required": true
     },
-    "tags": ["trekking", "difficult", "ghats", "permit", "camping"],
+    "tags": [
+      "trekking",
+      "difficult",
+      "ghats",
+      "permit",
+      "camping"
+    ],
     "active": true
   },
   {
@@ -202,9 +334,16 @@
     "distance_km": 265,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 11.9897, "lng": 75.8329 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "reflective"],
+    "coordinates": {
+      "lat": 11.9897,
+      "lng": 75.8329
+    },
+    "image": "tadiandamol.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1–2 days",
     "teaser": "Coorg's highest peak through misty shola forest and open meadows",
@@ -214,7 +353,13 @@
       "peak_height": "1,748 m",
       "base_village": "Kakkabe"
     },
-    "tags": ["trekking", "coorg", "peak", "meadow", "ghats"],
+    "tags": [
+      "trekking",
+      "coorg",
+      "peak",
+      "meadow",
+      "ghats"
+    ],
     "active": true
   },
   {
@@ -226,9 +371,15 @@
     "distance_km": 275,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 13.4218, "lng": 75.5521 },
-    "image": null,
-    "moods": ["energetic", "adventurous"],
+    "coordinates": {
+      "lat": 13.4218,
+      "lng": 75.5521
+    },
+    "image": "ettina-bhuja.jpg",
+    "moods": [
+      "energetic",
+      "adventurous"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "Ox-shoulder ridge trek with dramatic cliff-edge views over Chikmagalur valley",
@@ -238,7 +389,13 @@
       "peak_height": "1,253 m",
       "base_village": "Kalasa"
     },
-    "tags": ["trekking", "ridge", "ghats", "views", "adventure"],
+    "tags": [
+      "trekking",
+      "ridge",
+      "ghats",
+      "views",
+      "adventure"
+    ],
     "active": true
   },
   {
@@ -250,18 +407,34 @@
     "distance_km": 95,
     "drive_hours": 2,
     "drive_display": "~2 hrs",
-    "coordinates": { "lat": 13.3745, "lng": 77.1728 },
+    "coordinates": {
+      "lat": 13.3745,
+      "lng": 77.1728
+    },
     "image": "Devarayandurga.jpg",
-    "moods": ["energetic", "adventurous", "spiritual"],
+    "moods": [
+      "energetic",
+      "adventurous",
+      "spiritual"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Granite boulder fortress with twin peaks and ancient temples near Tumkur",
     "about": "Devarayanadurga is a rocky hill fortress with two peaks — Narasimha Swamy Betta and Bhoga Narasimha Betta. The rocky terrain makes it great for a quick day climb from Bangalore.",
     "details": {
       "trek_difficulty": "Easy to Moderate",
-      "key_temples": ["Bhoga Narasimha Temple", "Yoga Narasimha Temple"]
+      "key_temples": [
+        "Bhoga Narasimha Temple",
+        "Yoga Narasimha Temple"
+      ]
     },
-    "tags": ["trekking", "temple", "fort", "day-trip", "boulders"],
+    "tags": [
+      "trekking",
+      "temple",
+      "fort",
+      "day-trip",
+      "boulders"
+    ],
     "active": true
   },
   {
@@ -273,9 +446,16 @@
     "distance_km": 250,
     "drive_hours": 4.5,
     "drive_display": "~4.5 hrs",
-    "coordinates": { "lat": 13.5012, "lng": 75.7237 },
+    "coordinates": {
+      "lat": 13.5012,
+      "lng": 75.7237
+    },
     "image": "baba-budangiri.jpg",
-    "moods": ["spiritual", "peaceful", "reflective"],
+    "moods": [
+      "spiritual",
+      "peaceful",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "Misty sacred peaks where a Sufi saint brought coffee seeds to India",
@@ -285,7 +465,13 @@
       "religious_significance": "Shared Hindu-Sufi shrine",
       "coffee_history": "First coffee estate in India"
     },
-    "tags": ["spiritual", "history", "coffee", "pilgrimage", "viewpoint"],
+    "tags": [
+      "spiritual",
+      "history",
+      "coffee",
+      "pilgrimage",
+      "viewpoint"
+    ],
     "active": true
   },
   {
@@ -297,9 +483,17 @@
     "distance_km": 290,
     "drive_hours": 5.5,
     "drive_display": "~5.5 hrs",
-    "coordinates": { "lat": 12.3521, "lng": 75.7014 },
-    "image": null,
-    "moods": ["peaceful", "reflective", "creative", "romantic"],
+    "coordinates": {
+      "lat": 12.3521,
+      "lng": 75.7014
+    },
+    "image": "mandalpatti.jpg",
+    "moods": [
+      "peaceful",
+      "reflective",
+      "creative",
+      "romantic"
+    ],
     "best_time": "Oct – Jan",
     "duration": "1 day",
     "teaser": "A secret plateau above the clouds reachable only by jeep safari from Madikeri",
@@ -309,7 +503,13 @@
       "jeep_from": "Abbey Falls Gate, Madikeri",
       "height": "1,500 m"
     },
-    "tags": ["jeep-safari", "clouds", "viewpoint", "offbeat", "plateau"],
+    "tags": [
+      "jeep-safari",
+      "clouds",
+      "viewpoint",
+      "offbeat",
+      "plateau"
+    ],
     "active": true
   },
   {
@@ -321,9 +521,16 @@
     "distance_km": 370,
     "drive_hours": 6.5,
     "drive_display": "~6.5 hrs",
-    "coordinates": { "lat": 13.7539, "lng": 75.1362 },
-    "image": null,
-    "moods": ["spiritual", "adventurous", "reflective"],
+    "coordinates": {
+      "lat": 13.7539,
+      "lng": 75.1362
+    },
+    "image": "kundadri.jpg",
+    "moods": [
+      "spiritual",
+      "adventurous",
+      "reflective"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "Jain hilltop temple and panoramic Ghats views on an off-the-radar peak",
@@ -333,7 +540,13 @@
       "peak_height": "905 m",
       "key_attraction": "Jain Temple at summit"
     },
-    "tags": ["jain", "temple", "trekking", "forest", "offbeat"],
+    "tags": [
+      "jain",
+      "temple",
+      "trekking",
+      "forest",
+      "offbeat"
+    ],
     "active": true
   },
   {
@@ -345,19 +558,41 @@
     "distance_km": 360,
     "drive_hours": 6.5,
     "drive_display": "~6.5 hrs",
-    "coordinates": { "lat": 13.5029, "lng": 75.0952 },
+    "coordinates": {
+      "lat": 13.5029,
+      "lng": 75.0952
+    },
     "image": "agumbe.jpg",
-    "moods": ["adventurous", "peaceful", "creative", "reflective"],
+    "moods": [
+      "adventurous",
+      "peaceful",
+      "creative",
+      "reflective"
+    ],
     "best_time": "Jun – Sep (rainforest), Nov – Feb (wildlife)",
     "duration": "1–2 days",
     "teaser": "The Cherrapunji of South India — king cobra territory and monsoon waterfalls",
     "about": "Agumbe receives the second highest rainfall in India. It's famous for king cobra research (ARRS), dense rainforest, sunset point and beautiful waterfalls that peak in the monsoon.",
     "details": {
-      "key_attractions": ["Sunset View Point", "Barkana Falls", "King Cobra Research Centre"],
-      "wildlife": ["King Cobra", "Lion-tailed Macaque", "Malabar Giant Squirrel"],
+      "key_attractions": [
+        "Sunset View Point",
+        "Barkana Falls",
+        "King Cobra Research Centre"
+      ],
+      "wildlife": [
+        "King Cobra",
+        "Lion-tailed Macaque",
+        "Malabar Giant Squirrel"
+      ],
       "best_for": "Wildlife, rainforest photography"
     },
-    "tags": ["rainforest", "wildlife", "waterfall", "sunset", "king-cobra"],
+    "tags": [
+      "rainforest",
+      "wildlife",
+      "waterfall",
+      "sunset",
+      "king-cobra"
+    ],
     "active": true
   },
   {
@@ -369,19 +604,41 @@
     "distance_km": 220,
     "drive_hours": 4,
     "drive_display": "~4 hrs",
-    "coordinates": { "lat": 12.0479, "lng": 76.0847 },
-    "image": null,
-    "moods": ["adventurous", "peaceful", "curious"],
+    "coordinates": {
+      "lat": 12.0479,
+      "lng": 76.0847
+    },
+    "image": "nagarhole.jpg",
+    "moods": [
+      "adventurous",
+      "peaceful",
+      "curious"
+    ],
     "best_time": "Oct – May",
     "duration": "1–2 days",
     "teaser": "Tigers, elephants and leopards in Karnataka's finest jungle reserve",
     "about": "Nagarhole (Rajiv Gandhi National Park) is part of the Nilgiri Biosphere Reserve. It boasts high densities of tiger, leopard, wild elephant, gaur and more. Kabini River runs through its heart.",
     "details": {
-      "wildlife": ["Tiger", "Leopard", "Wild Elephant", "Gaur", "Dhole"],
-      "safari_types": ["Jeep safari", "Boat safari (Kabini)"],
+      "wildlife": [
+        "Tiger",
+        "Leopard",
+        "Wild Elephant",
+        "Gaur",
+        "Dhole"
+      ],
+      "safari_types": [
+        "Jeep safari",
+        "Boat safari (Kabini)"
+      ],
       "park_zone": "Kabini, Taraka"
     },
-    "tags": ["safari", "tiger", "elephant", "jungle", "boat-safari"],
+    "tags": [
+      "safari",
+      "tiger",
+      "elephant",
+      "jungle",
+      "boat-safari"
+    ],
     "active": true
   },
   {
@@ -393,19 +650,41 @@
     "distance_km": 220,
     "drive_hours": 3.5,
     "drive_display": "~3.5 hrs",
-    "coordinates": { "lat": 11.6605, "lng": 76.6354 },
-    "image": null,
-    "moods": ["adventurous", "curious", "peaceful"],
+    "coordinates": {
+      "lat": 11.6605,
+      "lng": 76.6354
+    },
+    "image": "bandipur.jpg",
+    "moods": [
+      "adventurous",
+      "curious",
+      "peaceful"
+    ],
     "best_time": "Oct – May",
     "duration": "1–2 days",
     "teaser": "One of India's best tiger reserves on the Mysore–Ooty highway",
     "about": "Bandipur Tiger Reserve spans 912 sq km and is part of the Nilgiri Biosphere. Dry deciduous forests host tiger, elephant, sloth bear and hundreds of bird species.",
     "details": {
-      "wildlife": ["Tiger", "Wild Elephant", "Sloth Bear", "Leopard", "Chital"],
-      "safari_types": ["Jeep safari", "Bus safari"],
+      "wildlife": [
+        "Tiger",
+        "Wild Elephant",
+        "Sloth Bear",
+        "Leopard",
+        "Chital"
+      ],
+      "safari_types": [
+        "Jeep safari",
+        "Bus safari"
+      ],
       "en_route": "Mysore (80 km)"
     },
-    "tags": ["safari", "tiger", "tiger-reserve", "jungle", "wildlife"],
+    "tags": [
+      "safari",
+      "tiger",
+      "tiger-reserve",
+      "jungle",
+      "wildlife"
+    ],
     "active": true
   },
   {
@@ -417,19 +696,41 @@
     "distance_km": 260,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 13.5619, "lng": 75.6574 },
-    "image": null,
-    "moods": ["adventurous", "curious", "peaceful"],
+    "coordinates": {
+      "lat": 13.5619,
+      "lng": 75.6574
+    },
+    "image": "bhadra-wildlife.jpg",
+    "moods": [
+      "adventurous",
+      "curious",
+      "peaceful"
+    ],
     "best_time": "Oct – May",
     "duration": "1–2 days",
     "teaser": "Boat safari through a tiger reserve hidden in the Chikmagalur hills",
     "about": "Bhadra Tiger Reserve is one of Karnataka's least-crowded wildlife destinations. Boat safaris on the Bhadra reservoir offer sightings of sloth bear, leopard, tiger and large herds of gaur.",
     "details": {
-      "wildlife": ["Tiger", "Leopard", "Gaur", "Sloth Bear", "Elephant"],
-      "safari_types": ["Jeep safari", "Boat safari"],
+      "wildlife": [
+        "Tiger",
+        "Leopard",
+        "Gaur",
+        "Sloth Bear",
+        "Elephant"
+      ],
+      "safari_types": [
+        "Jeep safari",
+        "Boat safari"
+      ],
       "highlight": "Boat safari on Bhadra reservoir"
     },
-    "tags": ["safari", "tiger", "boat-safari", "offbeat", "reservoir"],
+    "tags": [
+      "safari",
+      "tiger",
+      "boat-safari",
+      "offbeat",
+      "reservoir"
+    ],
     "active": true
   },
   {
@@ -441,19 +742,36 @@
     "distance_km": 335,
     "drive_hours": 5.5,
     "drive_display": "~5.5 hrs",
-    "coordinates": { "lat": 15.2041, "lng": 76.3979 },
-    "image": null,
-    "moods": ["curious", "adventurous"],
+    "coordinates": {
+      "lat": 15.2041,
+      "lng": 76.3979
+    },
+    "image": "daroji.jpg",
+    "moods": [
+      "curious",
+      "adventurous"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "India's only dedicated sloth bear sanctuary next to Hampi's boulder landscape",
     "about": "Daroji is Asia's largest sloth bear sanctuary. The rocky, scrub-forested terrain near Hampi hosts over 120 sloth bears. An elevated viewing platform gives safe, close sightings.",
     "details": {
-      "wildlife": ["Sloth Bear", "Hyena", "Jackal", "Monitor Lizard"],
+      "wildlife": [
+        "Sloth Bear",
+        "Hyena",
+        "Jackal",
+        "Monitor Lizard"
+      ],
       "best_viewing_time": "5:00 PM – 6:30 PM",
       "combo_with": "Hampi (15 km)"
     },
-    "tags": ["sloth-bear", "sanctuary", "wildlife", "hampi-combo", "unique"],
+    "tags": [
+      "sloth-bear",
+      "sanctuary",
+      "wildlife",
+      "hampi-combo",
+      "unique"
+    ],
     "active": true
   },
   {
@@ -465,20 +783,41 @@
     "distance_km": 340,
     "drive_hours": 6,
     "drive_display": "~6 hrs",
-    "coordinates": { "lat": 15.335, "lng": 76.4601 },
+    "coordinates": {
+      "lat": 15.335,
+      "lng": 76.4601
+    },
     "image": "hampi.jpg",
-    "moods": ["curious", "creative", "adventurous", "reflective"],
+    "moods": [
+      "curious",
+      "creative",
+      "adventurous",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "2–3 days",
     "teaser": "Ruins of a 14th-century empire scattered across a surreal boulder landscape",
     "about": "Hampi was the capital of the Vijayanagara Empire, once one of the world's largest cities. Over 1,600 monuments — temples, market streets, palaces and water tanks — dot a landscape of giant granite boulders and the Tungabhadra river.",
     "details": {
       "UNESCO": true,
-      "key_monuments": ["Virupaksha Temple", "Vittala Temple (Stone Chariot)", "Lotus Mahal", "Elephant Stables", "Hampi Bazaar"],
+      "key_monuments": [
+        "Virupaksha Temple",
+        "Vittala Temple (Stone Chariot)",
+        "Lotus Mahal",
+        "Elephant Stables",
+        "Hampi Bazaar"
+      ],
       "entry_fee": "₹30 (Indian) / ₹500 (Foreign)",
       "river_crossing": "Coracle boats available"
     },
-    "tags": ["UNESCO", "ruins", "empire", "photography", "temple", "history"],
+    "tags": [
+      "UNESCO",
+      "ruins",
+      "empire",
+      "photography",
+      "temple",
+      "history"
+    ],
     "active": true
   },
   {
@@ -490,20 +829,38 @@
     "distance_km": 490,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 15.9144, "lng": 75.6794 },
-    "image": "badami.JPG",
-    "moods": ["curious", "creative", "adventurous"],
+    "coordinates": {
+      "lat": 15.9144,
+      "lng": 75.6794
+    },
+    "image": "badami.jpg",
+    "moods": [
+      "curious",
+      "creative",
+      "adventurous"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1–2 days",
     "teaser": "6th-century Chalukya cave temples carved into red sandstone cliffs",
     "about": "Badami's four rock-cut cave temples (3 Hindu, 1 Jain) are among India's finest early temple architecture. Carved into a red sandstone gorge above a sacred lake, they date to 578 AD.",
     "details": {
-      "key_attractions": ["Cave Temples 1–4", "Bhutanatha Temple", "Badami Fort", "Archaeological Museum"],
+      "key_attractions": [
+        "Cave Temples 1–4",
+        "Bhutanatha Temple",
+        "Badami Fort",
+        "Archaeological Museum"
+      ],
       "dynasty": "Chalukya",
       "period": "6th–8th century",
       "entry_fee": "₹30 (Indian) / ₹500 (Foreign)"
     },
-    "tags": ["cave-temple", "rock-cut", "Chalukya", "archaeology", "history"],
+    "tags": [
+      "cave-temple",
+      "rock-cut",
+      "Chalukya",
+      "archaeology",
+      "history"
+    ],
     "active": true
   },
   {
@@ -515,20 +872,38 @@
     "distance_km": 500,
     "drive_hours": 8.5,
     "drive_display": "~8.5 hrs",
-    "coordinates": { "lat": 16.0142, "lng": 75.8831 },
+    "coordinates": {
+      "lat": 16.0142,
+      "lng": 75.8831
+    },
     "image": "aihole.jpg",
-    "moods": ["curious", "creative", "reflective"],
+    "moods": [
+      "curious",
+      "creative",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "The cradle of Indian temple architecture — 125 temples in a single village",
     "about": "Called the 'Cradle of Indian Architecture', Aihole has over 125 temple structures spanning 1,500 years of experiment. The Durga Temple is one of India's earliest examples of the apsidal plan.",
     "details": {
-      "key_temples": ["Durga Temple", "Lad Khan Temple", "Ravanaphadi Cave Temple", "Meguti Temple"],
+      "key_temples": [
+        "Durga Temple",
+        "Lad Khan Temple",
+        "Ravanaphadi Cave Temple",
+        "Meguti Temple"
+      ],
       "dynasty": "Chalukya",
       "period": "4th–12th century",
       "combo_with": "Badami (35 km), Pattadakal (17 km)"
     },
-    "tags": ["temple", "archaeology", "Chalukya", "architecture", "history"],
+    "tags": [
+      "temple",
+      "archaeology",
+      "Chalukya",
+      "architecture",
+      "history"
+    ],
     "active": true
   },
   {
@@ -540,20 +915,36 @@
     "distance_km": 497,
     "drive_hours": 8.5,
     "drive_display": "~8.5 hrs",
-    "coordinates": { "lat": 15.9494, "lng": 75.8175 },
+    "coordinates": {
+      "lat": 15.9494,
+      "lng": 75.8175
+    },
     "image": "patadakal.jpg",
-    "moods": ["curious", "creative"],
+    "moods": [
+      "curious",
+      "creative"
+    ],
     "best_time": "Oct – Feb",
     "duration": "Half day",
     "teaser": "UNESCO Chalukya temple complex where North and South Indian styles first met",
     "about": "Pattadakal is a UNESCO World Heritage Site with 10 major Chalukya temples from the 7th–8th century. It represents the earliest known synthesis of North Indian (Nagara) and South Indian (Dravida) temple architecture.",
     "details": {
       "UNESCO": true,
-      "key_temples": ["Virupaksha Temple", "Papanatha Temple", "Sangameshvara Temple"],
+      "key_temples": [
+        "Virupaksha Temple",
+        "Papanatha Temple",
+        "Sangameshvara Temple"
+      ],
       "dynasty": "Chalukya",
       "entry_fee": "₹30 (Indian) / ₹500 (Foreign)"
     },
-    "tags": ["UNESCO", "temple", "Chalukya", "archaeology", "history"],
+    "tags": [
+      "UNESCO",
+      "temple",
+      "Chalukya",
+      "archaeology",
+      "history"
+    ],
     "active": true
   },
   {
@@ -565,9 +956,15 @@
     "distance_km": 530,
     "drive_hours": 9,
     "drive_display": "~9 hrs",
-    "coordinates": { "lat": 16.8302, "lng": 75.7218 },
+    "coordinates": {
+      "lat": 16.8302,
+      "lng": 75.7218
+    },
     "image": "golgumbaz.jpg",
-    "moods": ["curious", "creative"],
+    "moods": [
+      "curious",
+      "creative"
+    ],
     "best_time": "Oct – Feb",
     "duration": "Half–1 day",
     "teaser": "India's second largest dome and the whispering gallery of Mohammed Adil Shah",
@@ -578,7 +975,13 @@
       "dynasty": "Adil Shahi",
       "entry_fee": "₹30 (Indian) / ₹500 (Foreign)"
     },
-    "tags": ["mausoleum", "dome", "Adil-Shahi", "architecture", "history"],
+    "tags": [
+      "mausoleum",
+      "dome",
+      "Adil-Shahi",
+      "architecture",
+      "history"
+    ],
     "active": true
   },
   {
@@ -590,20 +993,37 @@
     "distance_km": 620,
     "drive_hours": 10,
     "drive_display": "~10 hrs",
-    "coordinates": { "lat": 17.9219, "lng": 77.5187 },
+    "coordinates": {
+      "lat": 17.9219,
+      "lng": 77.5187
+    },
     "image": "bidar-fort.jpg",
-    "moods": ["curious", "reflective"],
+    "moods": [
+      "curious",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "15th-century Bahmani capital with Persian-tiled palaces and hidden hammams",
     "about": "Bidar Fort is the largest medieval fort in Karnataka, built by the Bahmani Sultanate in 1428. Inside are the Rangin Mahal with coloured tile work, a Turkish bath and a 1.5 km deep moat.",
     "details": {
-      "key_attractions": ["Rangin Mahal", "Tarkash Mahal", "Gagan Mahal", "Bidar Madrasa"],
+      "key_attractions": [
+        "Rangin Mahal",
+        "Tarkash Mahal",
+        "Gagan Mahal",
+        "Bidar Madrasa"
+      ],
       "dynasty": "Bahmani Sultanate",
       "period": "15th century",
       "bidar_ware": "Famous for Bidriware metal craft"
     },
-    "tags": ["fort", "Bahmani", "Persian", "history", "offbeat"],
+    "tags": [
+      "fort",
+      "Bahmani",
+      "Persian",
+      "history",
+      "offbeat"
+    ],
     "active": true
   },
   {
@@ -615,9 +1035,14 @@
     "distance_km": 590,
     "drive_hours": 9,
     "drive_display": "~9 hrs",
-    "coordinates": { "lat": 17.3317, "lng": 76.8169 },
+    "coordinates": {
+      "lat": 17.3317,
+      "lng": 76.8169
+    },
     "image": "gulbargaFort.jpg",
-    "moods": ["curious"],
+    "moods": [
+      "curious"
+    ],
     "best_time": "Oct – Feb",
     "duration": "Half day",
     "teaser": "First Bahmani Sultanate capital with a unique indoor mosque and royal tombs",
@@ -627,7 +1052,13 @@
       "dynasty": "Bahmani Sultanate",
       "period": "14th century"
     },
-    "tags": ["fort", "mosque", "Bahmani", "history", "unique"],
+    "tags": [
+      "fort",
+      "mosque",
+      "Bahmani",
+      "history",
+      "unique"
+    ],
     "active": true
   },
   {
@@ -639,9 +1070,15 @@
     "distance_km": 500,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 15.6166, "lng": 74.9818 },
+    "coordinates": {
+      "lat": 15.6166,
+      "lng": 74.9818
+    },
     "image": "kitturfort.jpg",
-    "moods": ["curious", "reflective"],
+    "moods": [
+      "curious",
+      "reflective"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "Where Rani Chennamma fought the British East India Company in 1824",
@@ -651,7 +1088,13 @@
       "historical_significance": "Rani Chennamma's revolt 1824",
       "dynasty": "Kittur Desai"
     },
-    "tags": ["fort", "history", "freedom-struggle", "museum", "rani-chennamma"],
+    "tags": [
+      "fort",
+      "history",
+      "freedom-struggle",
+      "museum",
+      "rani-chennamma"
+    ],
     "active": true
   },
   {
@@ -663,19 +1106,39 @@
     "distance_km": 135,
     "drive_hours": 2.5,
     "drive_display": "~2.5 hrs",
-    "coordinates": { "lat": 12.2156, "lng": 77.0296 },
-    "image": null,
-    "moods": ["curious", "spiritual", "reflective"],
+    "coordinates": {
+      "lat": 12.2156,
+      "lng": 77.0296
+    },
+    "image": "talakad.jpg",
+    "moods": [
+      "curious",
+      "spiritual",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "A sand-buried ancient city of 30 Shiva temples on the banks of the Kaveri",
     "about": "Talakad is a mysterious ancient town on the Kaveri river where shifting sand dunes have buried most of its 30+ Shiva temples over centuries. Excavations still reveal new structures. Holds deep religious significance for the Panchalinga darshan.",
     "details": {
-      "key_temples": ["Vaidyeshvara Temple", "Pathaleshvara", "Arkeshvara", "Maruleshvara", "Mallikarjuna"],
+      "key_temples": [
+        "Vaidyeshvara Temple",
+        "Pathaleshvara",
+        "Arkeshvara",
+        "Maruleshvara",
+        "Mallikarjuna"
+      ],
       "unique": "Sand-buried temples",
       "religious_event": "Panchalinga Darshana (every 12 years)"
     },
-    "tags": ["temple", "sand-buried", "Shiva", "history", "mystery", "kaveri"],
+    "tags": [
+      "temple",
+      "sand-buried",
+      "Shiva",
+      "history",
+      "mystery",
+      "kaveri"
+    ],
     "active": true
   },
   {
@@ -687,9 +1150,16 @@
     "distance_km": 138,
     "drive_hours": 2.5,
     "drive_display": "~2.5 hrs",
-    "coordinates": { "lat": 12.2629, "lng": 76.8883 },
+    "coordinates": {
+      "lat": 12.2629,
+      "lng": 76.8883
+    },
     "image": "somanathpura.jpg",
-    "moods": ["curious", "spiritual", "creative"],
+    "moods": [
+      "curious",
+      "spiritual",
+      "creative"
+    ],
     "best_time": "Oct – Feb",
     "duration": "Half day",
     "teaser": "A perfect star-shaped Hoysala masterpiece with 200 intricate friezes",
@@ -700,7 +1170,13 @@
       "built": "1268 AD",
       "entry_fee": "₹30 (Indian) / ₹500 (Foreign)"
     },
-    "tags": ["Hoysala", "temple", "sculpture", "UNESCO-tentative", "history"],
+    "tags": [
+      "Hoysala",
+      "temple",
+      "sculpture",
+      "UNESCO-tentative",
+      "history"
+    ],
     "active": true
   },
   {
@@ -712,9 +1188,16 @@
     "distance_km": 222,
     "drive_hours": 4,
     "drive_display": "~4 hrs",
-    "coordinates": { "lat": 13.1643, "lng": 75.8655 },
+    "coordinates": {
+      "lat": 13.1643,
+      "lng": 75.8655
+    },
     "image": "Chennakeshava-Temple-Belur.jpg",
-    "moods": ["curious", "spiritual", "creative"],
+    "moods": [
+      "curious",
+      "spiritual",
+      "creative"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half–1 day",
     "teaser": "Hoysala masterwork — 103 years in the making, 648 elephants at the base",
@@ -725,7 +1208,13 @@
       "completed": "1117 AD (main sanctum), later additions",
       "combo_with": "Halebidu (16 km)"
     },
-    "tags": ["Hoysala", "temple", "sculpture", "architecture", "history"],
+    "tags": [
+      "Hoysala",
+      "temple",
+      "sculpture",
+      "architecture",
+      "history"
+    ],
     "active": true
   },
   {
@@ -737,9 +1226,16 @@
     "distance_km": 158,
     "drive_hours": 3,
     "drive_display": "~3 hrs",
-    "coordinates": { "lat": 12.8556, "lng": 76.4839 },
+    "coordinates": {
+      "lat": 12.8556,
+      "lng": 76.4839
+    },
     "image": "shrvanabelagola.jpg",
-    "moods": ["spiritual", "curious", "reflective"],
+    "moods": [
+      "spiritual",
+      "curious",
+      "reflective"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "The 57-foot monolithic Gomateshvara — tallest freestanding statue in the world",
@@ -750,7 +1246,13 @@
       "mahamastakabhisheka": "Every 12 years (next 2030)",
       "steps_to_climb": "614 steps"
     },
-    "tags": ["Jain", "monolith", "pilgrimage", "history", "statue"],
+    "tags": [
+      "Jain",
+      "monolith",
+      "pilgrimage",
+      "history",
+      "statue"
+    ],
     "active": true
   },
   {
@@ -762,9 +1264,16 @@
     "distance_km": 133,
     "drive_hours": 2.5,
     "drive_display": "~2.5 hrs",
-    "coordinates": { "lat": 12.6588, "lng": 76.6494 },
-    "image": null,
-    "moods": ["spiritual", "reflective", "peaceful"],
+    "coordinates": {
+      "lat": 12.6588,
+      "lng": 76.6494
+    },
+    "image": "melukote.jpg",
+    "moods": [
+      "spiritual",
+      "reflective",
+      "peaceful"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "Hilltop Vaishnava town where Ramanuja once lived and composed treatises",
@@ -774,7 +1283,13 @@
       "festival": "Vairamudi Festival (Ugadi period)",
       "saint": "Ramanuja (12th century)"
     },
-    "tags": ["Vaishnava", "temple", "pilgrimage", "hilltop", "saint"],
+    "tags": [
+      "Vaishnava",
+      "temple",
+      "pilgrimage",
+      "hilltop",
+      "saint"
+    ],
     "active": true
   },
   {
@@ -786,9 +1301,15 @@
     "distance_km": 165,
     "drive_hours": 3,
     "drive_display": "~3 hrs",
-    "coordinates": { "lat": 11.8697, "lng": 76.6804 },
-    "image": null,
-    "moods": ["spiritual", "curious"],
+    "coordinates": {
+      "lat": 11.8697,
+      "lng": 76.6804
+    },
+    "image": "nanjangud.jpg",
+    "moods": [
+      "spiritual",
+      "curious"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "One of South India's most important Shiva temples on the Kabini river",
@@ -799,7 +1320,13 @@
       "title": "Dakshina Kashi",
       "combo_with": "Mysore (25 km)"
     },
-    "tags": ["Shiva", "temple", "pilgrimage", "river-ghat", "historic"],
+    "tags": [
+      "Shiva",
+      "temple",
+      "pilgrimage",
+      "river-ghat",
+      "historic"
+    ],
     "active": true
   },
   {
@@ -811,9 +1338,15 @@
     "distance_km": 280,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 12.8486, "lng": 75.7399 },
+    "coordinates": {
+      "lat": 12.8486,
+      "lng": 75.7399
+    },
     "image": "kukke.jpg",
-    "moods": ["spiritual", "adventurous"],
+    "moods": [
+      "spiritual",
+      "adventurous"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Sacred snake temple in a valley surrounded by the Pushpagiri hills",
@@ -824,7 +1357,13 @@
       "ritual": "Sarpa Samskara (snake affliction remedy)",
       "forest_setting": true
     },
-    "tags": ["temple", "snake", "pilgrimage", "forest", "ritual"],
+    "tags": [
+      "temple",
+      "snake",
+      "pilgrimage",
+      "forest",
+      "ritual"
+    ],
     "active": true
   },
   {
@@ -836,9 +1375,15 @@
     "distance_km": 290,
     "drive_hours": 5.5,
     "drive_display": "~5.5 hrs",
-    "coordinates": { "lat": 12.9686, "lng": 75.3706 },
+    "coordinates": {
+      "lat": 12.9686,
+      "lng": 75.3706
+    },
     "image": "Dharmasthala_Temple.jpg",
-    "moods": ["spiritual", "curious"],
+    "moods": [
+      "spiritual",
+      "curious"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "A unique pilgrimage town serving free meals to 10,000 devotees daily",
@@ -849,7 +1394,14 @@
       "free_meals_per_day": "10,000+",
       "bahubali_statue": "39 ft"
     },
-    "tags": ["temple", "Shiva", "Jain", "pilgrimage", "free-meals", "harmony"],
+    "tags": [
+      "temple",
+      "Shiva",
+      "Jain",
+      "pilgrimage",
+      "free-meals",
+      "harmony"
+    ],
     "active": true
   },
   {
@@ -861,9 +1413,15 @@
     "distance_km": 380,
     "drive_hours": 6.5,
     "drive_display": "~6.5 hrs",
-    "coordinates": { "lat": 13.8617, "lng": 74.8119 },
+    "coordinates": {
+      "lat": 13.8617,
+      "lng": 74.8119
+    },
     "image": "Kollur.jpg",
-    "moods": ["spiritual", "peaceful"],
+    "moods": [
+      "spiritual",
+      "peaceful"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Sacred Devi temple in a forest valley at the foot of Kodachadri",
@@ -873,7 +1431,13 @@
       "significance": "Mukti Kshetra",
       "at_base_of": "Kodachadri Peak"
     },
-    "tags": ["temple", "Devi", "pilgrimage", "forest", "Mukti-Kshetra"],
+    "tags": [
+      "temple",
+      "Devi",
+      "pilgrimage",
+      "forest",
+      "Mukti-Kshetra"
+    ],
     "active": true
   },
   {
@@ -885,9 +1449,15 @@
     "distance_km": 315,
     "drive_hours": 5.5,
     "drive_display": "~5.5 hrs",
-    "coordinates": { "lat": 13.3875, "lng": 75.3649 },
+    "coordinates": {
+      "lat": 13.3875,
+      "lng": 75.3649
+    },
     "image": "hornadu.jpg",
-    "moods": ["spiritual", "peaceful"],
+    "moods": [
+      "spiritual",
+      "peaceful"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "A forest-island temple of the goddess of food, with free meals for all",
@@ -897,7 +1467,13 @@
       "setting": "River island",
       "free_meals": true
     },
-    "tags": ["temple", "Devi", "pilgrimage", "river-island", "free-meals"],
+    "tags": [
+      "temple",
+      "Devi",
+      "pilgrimage",
+      "river-island",
+      "free-meals"
+    ],
     "active": true
   },
   {
@@ -909,9 +1485,16 @@
     "distance_km": 340,
     "drive_hours": 6,
     "drive_display": "~6 hrs",
-    "coordinates": { "lat": 13.4194, "lng": 75.2553 },
+    "coordinates": {
+      "lat": 13.4194,
+      "lng": 75.2553
+    },
     "image": "sringeri.jpg",
-    "moods": ["spiritual", "peaceful", "reflective"],
+    "moods": [
+      "spiritual",
+      "peaceful",
+      "reflective"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Adi Shankaracharya's first and most sacred monastery by the Tunga river",
@@ -922,7 +1505,13 @@
       "significance": "First Shankaracharya Matha",
       "river": "Tunga"
     },
-    "tags": ["temple", "Advaita", "Shankaracharya", "pilgrimage", "learning"],
+    "tags": [
+      "temple",
+      "Advaita",
+      "Shankaracharya",
+      "pilgrimage",
+      "learning"
+    ],
     "active": true
   },
   {
@@ -934,9 +1523,16 @@
     "distance_km": 400,
     "drive_hours": 7,
     "drive_display": "~7 hrs",
-    "coordinates": { "lat": 13.3406, "lng": 74.7528 },
+    "coordinates": {
+      "lat": 13.3406,
+      "lng": 74.7528
+    },
     "image": "udupi.jpg",
-    "moods": ["spiritual", "curious", "social"],
+    "moods": [
+      "spiritual",
+      "curious",
+      "social"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "800-year-old Krishna temple famed for the window-of-nine-holes darshan",
@@ -947,7 +1543,13 @@
       "unique": "Kanakana Kindi (nine-hole window darshan)",
       "festival": "Paryaya (every 2 years)"
     },
-    "tags": ["temple", "Krishna", "pilgrimage", "Madhva", "Udupi"],
+    "tags": [
+      "temple",
+      "Krishna",
+      "pilgrimage",
+      "Madhva",
+      "Udupi"
+    ],
     "active": true
   },
   {
@@ -959,9 +1561,15 @@
     "distance_km": 10,
     "drive_hours": 0.5,
     "drive_display": "~30 min",
-    "coordinates": { "lat": 13.0094, "lng": 77.5556 },
+    "coordinates": {
+      "lat": 13.0094,
+      "lng": 77.5556
+    },
     "image": "iskcon.jpg",
-    "moods": ["spiritual", "peaceful"],
+    "moods": [
+      "spiritual",
+      "peaceful"
+    ],
     "best_time": "Year-round",
     "duration": "2–3 hrs",
     "teaser": "One of ISKCON's largest temples — an island of calm in the heart of Bangalore",
@@ -971,7 +1579,13 @@
       "timings": "7:15 AM – 1:00 PM, 4:15 PM – 8:30 PM",
       "location": "Rajajinagar, Bangalore"
     },
-    "tags": ["ISKCON", "Krishna", "temple", "city", "spiritual"],
+    "tags": [
+      "ISKCON",
+      "Krishna",
+      "temple",
+      "city",
+      "spiritual"
+    ],
     "active": true
   },
   {
@@ -983,9 +1597,15 @@
     "distance_km": 100,
     "drive_hours": 2,
     "drive_display": "~2 hrs",
-    "coordinates": { "lat": 13.5273, "lng": 78.193 },
+    "coordinates": {
+      "lat": 13.5273,
+      "lng": 78.193
+    },
     "image": "kotilingeshwara-temple.jpg",
-    "moods": ["spiritual", "curious"],
+    "moods": [
+      "spiritual",
+      "curious"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "108-foot Shivalinga surrounded by a crore (10 million) Shivalingas",
@@ -995,7 +1615,13 @@
       "total_lingas": "Over 1 crore",
       "area": "15 acres"
     },
-    "tags": ["Shiva", "temple", "unique", "pilgrimage", "massive"],
+    "tags": [
+      "Shiva",
+      "temple",
+      "unique",
+      "pilgrimage",
+      "massive"
+    ],
     "active": true
   },
   {
@@ -1007,9 +1633,16 @@
     "distance_km": 55,
     "drive_hours": 1,
     "drive_display": "~1 hr",
-    "coordinates": { "lat": 12.7231, "lng": 77.2819 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "social"],
+    "coordinates": {
+      "lat": 12.7231,
+      "lng": 77.2819
+    },
+    "image": "ramanagara.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "social"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Iconic silk city boulders — Bollywood's Sholay location and a rock climber's playground",
@@ -1018,9 +1651,17 @@
       "key_activity": "Rock climbing (beginner to expert routes)",
       "known_for": "Sholay filming location",
       "silk_market": "Largest in world",
-      "operators": ["Bangalore Rock Climbing Club"]
+      "operators": [
+        "Bangalore Rock Climbing Club"
+      ]
     },
-    "tags": ["rock-climbing", "boulders", "adventure", "Sholay", "day-trip"],
+    "tags": [
+      "rock-climbing",
+      "boulders",
+      "adventure",
+      "Sholay",
+      "day-trip"
+    ],
     "active": true
   },
   {
@@ -1032,20 +1673,37 @@
     "distance_km": 130,
     "drive_hours": 2.5,
     "drive_display": "~2.5 hrs",
-    "coordinates": { "lat": 12.2612, "lng": 77.1603 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "romantic", "social"],
+    "coordinates": {
+      "lat": 12.2612,
+      "lng": 77.1603
+    },
+    "image": "shivanasamudra.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "romantic",
+      "social"
+    ],
     "best_time": "Jul – Oct (peak), Nov – Feb (calm for coracles)",
     "duration": "1 day",
     "teaser": "India's first hydroelectric falls — twin cascades of the Kaveri over the Deccan edge",
     "about": "Shivanasamudra is a segmented waterfall where the Kaveri river splits around an island and plunges 90 m in two streams — Gaganachukki and Bharachukki. Site of India's first hydroelectric plant (1902).",
     "details": {
       "falls_height": "90 m",
-      "two_falls": ["Gaganachukki", "Bharachukki"],
+      "two_falls": [
+        "Gaganachukki",
+        "Bharachukki"
+      ],
       "coracle_rides": "Available at Bharachukki (post-monsoon)",
       "historic": "First hydroelectric plant in Asia (1902)"
     },
-    "tags": ["waterfall", "Kaveri", "coracle", "history", "nature"],
+    "tags": [
+      "waterfall",
+      "Kaveri",
+      "coracle",
+      "history",
+      "nature"
+    ],
     "active": true
   },
   {
@@ -1057,20 +1715,39 @@
     "distance_km": 380,
     "drive_hours": 7,
     "drive_display": "~7 hrs",
-    "coordinates": { "lat": 14.2256, "lng": 74.7913 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "creative", "reflective"],
+    "coordinates": {
+      "lat": 14.2256,
+      "lng": 74.7913
+    },
+    "image": "jog-falls.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "creative",
+      "reflective"
+    ],
     "best_time": "Aug – Oct",
     "duration": "1–2 days",
     "teaser": "India's second highest waterfall — four streams plunging 253 m into a misty gorge",
     "about": "Jog Falls is formed by the Sharavathi river plunging 253 m in four distinct streams — Raja, Rani, Rocket and Roarer. Best viewed during and immediately after monsoon when flow is maximum.",
     "details": {
       "height": "253 m",
-      "four_streams": ["Raja", "Rani", "Rocket", "Roarer"],
+      "four_streams": [
+        "Raja",
+        "Rani",
+        "Rocket",
+        "Roarer"
+      ],
       "best_from": "Observation platform (free)",
       "trek_down": "Available to base (steep, monsoon-risky)"
     },
-    "tags": ["waterfall", "highest", "monsoon", "photography", "nature"],
+    "tags": [
+      "waterfall",
+      "highest",
+      "monsoon",
+      "photography",
+      "nature"
+    ],
     "active": true
   },
   {
@@ -1082,9 +1759,16 @@
     "distance_km": 263,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 12.4452, "lng": 75.7133 },
-    "image": null,
-    "moods": ["peaceful", "romantic", "creative"],
+    "coordinates": {
+      "lat": 12.4452,
+      "lng": 75.7133
+    },
+    "image": "abbey-falls.jpg",
+    "moods": [
+      "peaceful",
+      "romantic",
+      "creative"
+    ],
     "best_time": "Jul – Jan",
     "duration": "Half day",
     "teaser": "A 70-foot cascade surrounded by coffee estate canopy in the heart of Coorg",
@@ -1095,7 +1779,13 @@
       "bridge": "Hanging bridge viewpoint",
       "timings": "8:00 AM – 6:00 PM"
     },
-    "tags": ["waterfall", "coorg", "coffee", "romantic", "easy"],
+    "tags": [
+      "waterfall",
+      "coorg",
+      "coffee",
+      "romantic",
+      "easy"
+    ],
     "active": true
   },
   {
@@ -1107,9 +1797,16 @@
     "distance_km": 360,
     "drive_hours": 6.5,
     "drive_display": "~6.5 hrs",
-    "coordinates": { "lat": 13.5842, "lng": 75.2476 },
-    "image": null,
-    "moods": ["peaceful", "adventurous", "creative"],
+    "coordinates": {
+      "lat": 13.5842,
+      "lng": 75.2476
+    },
+    "image": "sirimane-falls.jpg",
+    "moods": [
+      "peaceful",
+      "adventurous",
+      "creative"
+    ],
     "best_time": "Jul – Jan",
     "duration": "Half day",
     "teaser": "A hidden three-tiered waterfall deep in the Agumbe forest — swimming allowed",
@@ -1121,7 +1818,13 @@
       "entry_fee": "₹50",
       "trek": "2 km forest walk"
     },
-    "tags": ["waterfall", "swimming", "forest", "offbeat", "nature"],
+    "tags": [
+      "waterfall",
+      "swimming",
+      "forest",
+      "offbeat",
+      "nature"
+    ],
     "active": true
   },
   {
@@ -1133,9 +1836,16 @@
     "distance_km": 440,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 14.8254, "lng": 74.5621 },
-    "image": null,
-    "moods": ["adventurous", "creative", "peaceful"],
+    "coordinates": {
+      "lat": 14.8254,
+      "lng": 74.5621
+    },
+    "image": "magod-falls.jpg",
+    "moods": [
+      "adventurous",
+      "creative",
+      "peaceful"
+    ],
     "best_time": "Aug – Nov",
     "duration": "1 day",
     "teaser": "Twin falls plunging into a dramatic gorge in the dense Uttara Kannada forest",
@@ -1146,7 +1856,13 @@
       "viewpoint": "Roadside viewpoint, no trekking required",
       "nearby": "Yellapura (40 km)"
     },
-    "tags": ["waterfall", "offbeat", "ghats", "viewpoint", "forest"],
+    "tags": [
+      "waterfall",
+      "offbeat",
+      "ghats",
+      "viewpoint",
+      "forest"
+    ],
     "active": true
   },
   {
@@ -1158,9 +1874,16 @@
     "distance_km": 430,
     "drive_hours": 7.5,
     "drive_display": "~7.5 hrs",
-    "coordinates": { "lat": 14.9473, "lng": 74.6294 },
-    "image": null,
-    "moods": ["adventurous", "peaceful", "creative"],
+    "coordinates": {
+      "lat": 14.9473,
+      "lng": 74.6294
+    },
+    "image": "sathodi-falls.jpg",
+    "moods": [
+      "adventurous",
+      "peaceful",
+      "creative"
+    ],
     "best_time": "Jul – Jan",
     "duration": "1 day",
     "teaser": "Karnataka's Niagara — a wide curtain fall over moss-covered boulders",
@@ -1171,7 +1894,13 @@
       "permit_required": true,
       "nickname": "Karnataka's Niagara"
     },
-    "tags": ["waterfall", "trek", "wide-falls", "offbeat", "monsoon"],
+    "tags": [
+      "waterfall",
+      "trek",
+      "wide-falls",
+      "offbeat",
+      "monsoon"
+    ],
     "active": true
   },
   {
@@ -1183,9 +1912,16 @@
     "distance_km": 275,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 12.5247, "lng": 75.8463 },
-    "image": null,
-    "moods": ["adventurous", "peaceful", "energetic"],
+    "coordinates": {
+      "lat": 12.5247,
+      "lng": 75.8463
+    },
+    "image": "mallalli-falls.jpg",
+    "moods": [
+      "adventurous",
+      "peaceful",
+      "energetic"
+    ],
     "best_time": "Jul – Dec",
     "duration": "1 day",
     "teaser": "A powerful 200-foot single drop in the Coorg jungle — surprisingly uncrowded",
@@ -1196,7 +1932,13 @@
       "trek": "2 km forest trail",
       "crowd_level": "Low"
     },
-    "tags": ["waterfall", "trek", "coorg", "offbeat", "monsoon"],
+    "tags": [
+      "waterfall",
+      "trek",
+      "coorg",
+      "offbeat",
+      "monsoon"
+    ],
     "active": true
   },
   {
@@ -1208,20 +1950,40 @@
     "distance_km": 480,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 14.5479, "lng": 74.3188 },
+    "coordinates": {
+      "lat": 14.5479,
+      "lng": 74.3188
+    },
     "image": "gokarna-beach.jpg",
-    "moods": ["peaceful", "adventurous", "spiritual", "social"],
+    "moods": [
+      "peaceful",
+      "adventurous",
+      "spiritual",
+      "social"
+    ],
     "best_time": "Oct – Mar",
     "duration": "2–3 days",
     "teaser": "Sacred beach town with cliff-hop trails between secluded coves",
     "about": "Gokarna is a sacred Hindu town with one of the most beautiful beach trails in India. The Om Beach (shaped like the om symbol), Half Moon Beach and Paradise Beach are reachable by cliff trail or boat — mostly free of commercial development.",
     "details": {
-      "beaches": ["Om Beach", "Half Moon Beach", "Paradise Beach", "Gokarna Main Beach", "Kudle Beach"],
+      "beaches": [
+        "Om Beach",
+        "Half Moon Beach",
+        "Paradise Beach",
+        "Gokarna Main Beach",
+        "Kudle Beach"
+      ],
       "beach_trail": "8 km cliff trail between beaches",
       "mahabaleshwar_temple": "One of India's most sacred Shiva temples",
       "vibe": "Laid-back, backpacker-friendly"
     },
-    "tags": ["beach", "temple", "cliff-trail", "spiritual", "backpacker"],
+    "tags": [
+      "beach",
+      "temple",
+      "cliff-trail",
+      "spiritual",
+      "backpacker"
+    ],
     "active": true
   },
   {
@@ -1233,9 +1995,17 @@
     "distance_km": 483,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 14.5142, "lng": 74.309 },
+    "coordinates": {
+      "lat": 14.5142,
+      "lng": 74.309
+    },
     "image": "Om_Beach.jpg",
-    "moods": ["peaceful", "social", "romantic", "creative"],
+    "moods": [
+      "peaceful",
+      "social",
+      "romantic",
+      "creative"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "The beach shaped like the Om symbol — Gokarna's iconic curved cove",
@@ -1245,7 +2015,13 @@
       "dolphin_watching": "Boat rides from beach",
       "water_sports": "Basic (kayak, banana boat)"
     },
-    "tags": ["beach", "scenic", "dolphin", "photography", "relaxed"],
+    "tags": [
+      "beach",
+      "scenic",
+      "dolphin",
+      "photography",
+      "relaxed"
+    ],
     "active": true
   },
   {
@@ -1257,9 +2033,16 @@
     "distance_km": 481,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 14.5236, "lng": 74.3066 },
+    "coordinates": {
+      "lat": 14.5236,
+      "lng": 74.3066
+    },
     "image": "Kudle_beach.jpg",
-    "moods": ["peaceful", "social", "romantic"],
+    "moods": [
+      "peaceful",
+      "social",
+      "romantic"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "A long calm crescent beach with beach shacks and a traveller village vibe",
@@ -1270,7 +2053,13 @@
       "sunset": "Excellent western-facing sunset",
       "trail_to": "Om Beach (30 min cliff walk)"
     },
-    "tags": ["beach", "shacks", "sunset", "budget", "relaxed"],
+    "tags": [
+      "beach",
+      "shacks",
+      "sunset",
+      "budget",
+      "relaxed"
+    ],
     "active": true
   },
   {
@@ -1282,19 +2071,37 @@
     "distance_km": 510,
     "drive_hours": 8.5,
     "drive_display": "~8.5 hrs",
-    "coordinates": { "lat": 14.8127, "lng": 74.1236 },
+    "coordinates": {
+      "lat": 14.8127,
+      "lng": 74.1236
+    },
     "image": "karwar-beach.jpg",
-    "moods": ["peaceful", "reflective", "romantic"],
+    "moods": [
+      "peaceful",
+      "reflective",
+      "romantic"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "Rabindranath Tagore's inspiration — a calm bay at the mouth of the Kali river",
     "about": "Karwar is a calm, non-touristy coastal town where Rabindranath Tagore stayed in 1882 and wrote poetry inspired by the beauty of the bay. The INS Chapal Warship Museum is also here.",
     "details": {
-      "key_attractions": ["Karwar Beach", "INS Chapal Warship Museum", "Sadashivgad Fort", "Devbagh Beach"],
+      "key_attractions": [
+        "Karwar Beach",
+        "INS Chapal Warship Museum",
+        "Sadashivgad Fort",
+        "Devbagh Beach"
+      ],
       "naval_base": "Adjoins INS Kadamba (largest naval base in Asia)",
       "tagore_connection": true
     },
-    "tags": ["beach", "calm", "history", "warship", "literature"],
+    "tags": [
+      "beach",
+      "calm",
+      "history",
+      "warship",
+      "literature"
+    ],
     "active": true
   },
   {
@@ -1306,9 +2113,16 @@
     "distance_km": 400,
     "drive_hours": 7,
     "drive_display": "~7 hrs",
-    "coordinates": { "lat": 13.3473, "lng": 74.7168 },
+    "coordinates": {
+      "lat": 13.3473,
+      "lng": 74.7168
+    },
     "image": "malpe.jpg",
-    "moods": ["social", "energetic", "adventurous"],
+    "moods": [
+      "social",
+      "energetic",
+      "adventurous"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "Boat to St. Mary's Island — Vasco da Gama's landing point with hexagonal basalt columns",
@@ -1319,7 +2133,13 @@
       "vasco_da_gama": "First Indian landing site 1498",
       "water_sports": "Jet ski, banana boat, speed boat"
     },
-    "tags": ["beach", "St-Marys-Island", "geology", "water-sports", "history"],
+    "tags": [
+      "beach",
+      "St-Marys-Island",
+      "geology",
+      "water-sports",
+      "history"
+    ],
     "active": true
   },
   {
@@ -1331,9 +2151,16 @@
     "distance_km": 403,
     "drive_hours": 7,
     "drive_display": "~7 hrs",
-    "coordinates": { "lat": 13.3733, "lng": 74.6667 },
+    "coordinates": {
+      "lat": 13.3733,
+      "lng": 74.6667
+    },
     "image": "st-marys-island.jpg",
-    "moods": ["curious", "adventurous", "creative"],
+    "moods": [
+      "curious",
+      "adventurous",
+      "creative"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "An island of ancient basalt hexagons — geology and history in the Arabian Sea",
@@ -1344,7 +2171,13 @@
       "access": "Boat from Malpe Beach (15 min)",
       "declared": "National Geological Monument"
     },
-    "tags": ["geology", "island", "basalt", "history", "protected"],
+    "tags": [
+      "geology",
+      "island",
+      "basalt",
+      "history",
+      "protected"
+    ],
     "active": true
   },
   {
@@ -1356,19 +2189,37 @@
     "distance_km": 345,
     "drive_hours": 6,
     "drive_display": "~6 hrs",
-    "coordinates": { "lat": 12.9318, "lng": 74.8024 },
+    "coordinates": {
+      "lat": 12.9318,
+      "lng": 74.8024
+    },
     "image": "panambur.jpg",
-    "moods": ["social", "energetic", "adventurous"],
+    "moods": [
+      "social",
+      "energetic",
+      "adventurous"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "Mangalore's wide golden beach with kite-flying festivals and water sports",
     "about": "Panambur Beach is one of Mangalore's best beaches, known for annual sand art and kite festivals. Water sports options include jet ski, parasailing and banana boat. The port area has interesting backwater scenery.",
     "details": {
-      "water_sports": ["Jet ski", "Parasailing", "Banana boat", "Speed boat"],
+      "water_sports": [
+        "Jet ski",
+        "Parasailing",
+        "Banana boat",
+        "Speed boat"
+      ],
       "festival": "Panambur Kite Festival (January)",
       "sand_art": "Occasional competitions"
     },
-    "tags": ["beach", "water-sports", "kite-festival", "Mangalore", "family"],
+    "tags": [
+      "beach",
+      "water-sports",
+      "kite-festival",
+      "Mangalore",
+      "family"
+    ],
     "active": true
   },
   {
@@ -1380,9 +2231,16 @@
     "distance_km": 480,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 14.3225, "lng": 74.1119 },
+    "coordinates": {
+      "lat": 14.3225,
+      "lng": 74.1119
+    },
     "image": "Murdeshwar-Beach.png",
-    "moods": ["spiritual", "creative", "adventurous"],
+    "moods": [
+      "spiritual",
+      "creative",
+      "adventurous"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "World's second-tallest Shiva statue rising 123 feet over the Arabian Sea",
@@ -1393,7 +2251,14 @@
       "beach": "Sandy beach below the temple complex",
       "scuba_diving": "Available from local operators"
     },
-    "tags": ["temple", "Shiva", "statue", "beach", "coastal", "photography"],
+    "tags": [
+      "temple",
+      "Shiva",
+      "statue",
+      "beach",
+      "coastal",
+      "photography"
+    ],
     "active": true
   },
   {
@@ -1405,9 +2270,16 @@
     "distance_km": 515,
     "drive_hours": 8.5,
     "drive_display": "~8.5 hrs",
-    "coordinates": { "lat": 14.7945, "lng": 74.1193 },
+    "coordinates": {
+      "lat": 14.7945,
+      "lng": 74.1193
+    },
     "image": "devbagh-beach.jpg",
-    "moods": ["peaceful", "romantic", "adventurous"],
+    "moods": [
+      "peaceful",
+      "romantic",
+      "adventurous"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "A secluded island beach where the Kali river meets the Arabian Sea",
@@ -1418,7 +2290,13 @@
       "snorkelling": "Available",
       "stay": "Jungle Lodges & Resorts (KSTDC)"
     },
-    "tags": ["beach", "island", "dolphin", "snorkelling", "peaceful"],
+    "tags": [
+      "beach",
+      "island",
+      "dolphin",
+      "snorkelling",
+      "peaceful"
+    ],
     "active": true
   },
   {
@@ -1430,9 +2308,16 @@
     "distance_km": 390,
     "drive_hours": 7,
     "drive_display": "~7 hrs",
-    "coordinates": { "lat": 13.7386, "lng": 74.6751 },
+    "coordinates": {
+      "lat": 13.7386,
+      "lng": 74.6751
+    },
     "image": "maravante.jpg",
-    "moods": ["peaceful", "romantic", "creative"],
+    "moods": [
+      "peaceful",
+      "romantic",
+      "creative"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "A beach pinched between the sea and the Souparnika river — sunrise and sunset from one spot",
@@ -1442,7 +2327,13 @@
       "width": "Narrow sandbar (~100–200 m)",
       "combo_with": "Byndoor (5 km), Trasi (3 km)"
     },
-    "tags": ["beach", "estuary", "sunrise-sunset", "photography", "peaceful"],
+    "tags": [
+      "beach",
+      "estuary",
+      "sunrise-sunset",
+      "photography",
+      "peaceful"
+    ],
     "active": true
   },
   {
@@ -1454,9 +2345,16 @@
     "distance_km": 350,
     "drive_hours": 6.5,
     "drive_display": "~6.5 hrs",
-    "coordinates": { "lat": 12.9035, "lng": 74.8091 },
+    "coordinates": {
+      "lat": 12.9035,
+      "lng": 74.8091
+    },
     "image": "someshwara-beach.webp",
-    "moods": ["peaceful", "reflective", "creative"],
+    "moods": [
+      "peaceful",
+      "reflective",
+      "creative"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half–1 day",
     "teaser": "Rocky shore, ancient Shiva temple and the best sunset in Mangalore",
@@ -1466,7 +2364,13 @@
       "character": "Rocky, photogenic",
       "combo_with": "Ullal Beach (5 km)"
     },
-    "tags": ["beach", "rocky", "temple", "sunset", "photography"],
+    "tags": [
+      "beach",
+      "rocky",
+      "temple",
+      "sunset",
+      "photography"
+    ],
     "active": true
   },
   {
@@ -1478,9 +2382,15 @@
     "distance_km": 354,
     "drive_hours": 6.5,
     "drive_display": "~6.5 hrs",
-    "coordinates": { "lat": 12.8068, "lng": 74.8588 },
+    "coordinates": {
+      "lat": 12.8068,
+      "lng": 74.8588
+    },
     "image": "ullal.jpg",
-    "moods": ["peaceful", "reflective"],
+    "moods": [
+      "peaceful",
+      "reflective"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "A wide, quiet beach next to the tomb of Sayyed Mohammed Shareef — Tipu Sultan's favourite",
@@ -1490,7 +2400,13 @@
       "dargah": "Sayed Mohammed Shareef",
       "character": "Quiet, uncrowded"
     },
-    "tags": ["beach", "history", "Rani-Abbakka", "dargah", "peaceful"],
+    "tags": [
+      "beach",
+      "history",
+      "Rani-Abbakka",
+      "dargah",
+      "peaceful"
+    ],
     "active": true
   },
   {
@@ -1502,9 +2418,16 @@
     "distance_km": 486,
     "drive_hours": 8,
     "drive_display": "~8 hrs",
-    "coordinates": { "lat": 14.501, "lng": 74.3061 },
+    "coordinates": {
+      "lat": 14.501,
+      "lng": 74.3061
+    },
     "image": "HalfMoonBeach.jpg",
-    "moods": ["peaceful", "adventurous", "social"],
+    "moods": [
+      "peaceful",
+      "adventurous",
+      "social"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 days",
     "teaser": "No road, no noise — only reachable by a 30-min cliff trail or boat from Om Beach",
@@ -1515,7 +2438,13 @@
       "camping": "Basic campsites available",
       "crowd_level": "Very low"
     },
-    "tags": ["beach", "secluded", "camping", "no-road", "hike-in"],
+    "tags": [
+      "beach",
+      "secluded",
+      "camping",
+      "no-road",
+      "hike-in"
+    ],
     "active": true
   },
   {
@@ -1527,9 +2456,17 @@
     "distance_km": 145,
     "drive_hours": 3,
     "drive_display": "~3 hrs",
-    "coordinates": { "lat": 12.3052, "lng": 76.6551 },
+    "coordinates": {
+      "lat": 12.3052,
+      "lng": 76.6551
+    },
     "image": "palace.jpg",
-    "moods": ["curious", "creative", "romantic", "social"],
+    "moods": [
+      "curious",
+      "creative",
+      "romantic",
+      "social"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half–1 day",
     "teaser": "India's most visited monument after the Taj — lit by 97,000 bulbs on Sundays",
@@ -1541,7 +2478,13 @@
       "built": "1912",
       "entry_fee": "₹100 (Indian)"
     },
-    "tags": ["palace", "royal", "architecture", "Mysore", "illumination"],
+    "tags": [
+      "palace",
+      "royal",
+      "architecture",
+      "Mysore",
+      "illumination"
+    ],
     "active": true
   },
   {
@@ -1553,20 +2496,40 @@
     "distance_km": 185,
     "drive_hours": 3.5,
     "drive_display": "~3.5 hrs",
-    "coordinates": { "lat": 11.9889, "lng": 77.1674 },
+    "coordinates": {
+      "lat": 11.9889,
+      "lng": 77.1674
+    },
     "image": "biligiriranga-hills.jpg",
-    "moods": ["adventurous", "peaceful", "spiritual", "curious"],
+    "moods": [
+      "adventurous",
+      "peaceful",
+      "spiritual",
+      "curious"
+    ],
     "best_time": "Oct – May",
     "duration": "1–2 days",
     "teaser": "The only place in India where Eastern and Western Ghats meet — elephants and Soliga tribe",
     "about": "BR Hills is a unique biodiversity hotspot where the Eastern and Western Ghats converge, creating unusually high wildlife density. Inhabited by the Soliga tribe, it has an elephant population of over 2,500 and is a Tiger Reserve.",
     "details": {
       "unique": "Junction of Eastern & Western Ghats",
-      "wildlife": ["Tiger", "Elephant", "Leopard", "Gaur", "Sloth Bear"],
+      "wildlife": [
+        "Tiger",
+        "Elephant",
+        "Leopard",
+        "Gaur",
+        "Sloth Bear"
+      ],
       "tribal_community": "Soliga",
       "biligiri_rangaswamy_temple": "Sacred hilltop temple"
     },
-    "tags": ["wildlife", "tiger", "elephant", "tribal", "biodiversity"],
+    "tags": [
+      "wildlife",
+      "tiger",
+      "elephant",
+      "tribal",
+      "biodiversity"
+    ],
     "active": true
   },
   {
@@ -1578,9 +2541,17 @@
     "distance_km": 215,
     "drive_hours": 4,
     "drive_display": "~4 hrs",
-    "coordinates": { "lat": 11.9369, "lng": 76.3658 },
-    "image": null,
-    "moods": ["adventurous", "peaceful", "romantic", "curious"],
+    "coordinates": {
+      "lat": 11.9369,
+      "lng": 76.3658
+    },
+    "image": "kabini.jpg",
+    "moods": [
+      "adventurous",
+      "peaceful",
+      "romantic",
+      "curious"
+    ],
     "best_time": "Mar – Jun (black panther sightings), Oct – Feb (general)",
     "duration": "2 days",
     "teaser": "Boat safaris at dusk where elephants wade across the Kabini river",
@@ -1591,7 +2562,13 @@
       "stay": "Jungle Lodges & Resorts, private camps",
       "zone": "Nagarhole Tiger Reserve (southern)"
     },
-    "tags": ["safari", "boat-safari", "black-panther", "elephant", "tiger"],
+    "tags": [
+      "safari",
+      "boat-safari",
+      "black-panther",
+      "elephant",
+      "tiger"
+    ],
     "active": true
   },
   {
@@ -1603,9 +2580,16 @@
     "distance_km": 215,
     "drive_hours": 4,
     "drive_display": "~4 hrs",
-    "coordinates": { "lat": 12.9162, "lng": 75.8239 },
+    "coordinates": {
+      "lat": 12.9162,
+      "lng": 75.8239
+    },
     "image": "manjarabad.jpg",
-    "moods": ["curious", "adventurous", "creative"],
+    "moods": [
+      "curious",
+      "adventurous",
+      "creative"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "Tipu Sultan's star-shaped fort perched above the coffee mist of Sakleshpur",
@@ -1616,7 +2600,13 @@
       "height": "962 m",
       "entry_fee": "₹30"
     },
-    "tags": ["fort", "Tipu-Sultan", "star-fort", "history", "viewpoint"],
+    "tags": [
+      "fort",
+      "Tipu-Sultan",
+      "star-fort",
+      "history",
+      "viewpoint"
+    ],
     "active": true
   },
   {
@@ -1628,9 +2618,15 @@
     "distance_km": 40,
     "drive_hours": 1,
     "drive_display": "~1 hr",
-    "coordinates": { "lat": 13.2497, "lng": 77.7139 },
-    "image": null,
-    "moods": ["curious", "reflective"],
+    "coordinates": {
+      "lat": 13.2497,
+      "lng": 77.7139
+    },
+    "image": "devanahalli-fort.jpg",
+    "moods": [
+      "curious",
+      "reflective"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "The birthplace of Tipu Sultan — a crumbling fort just past Bangalore airport",
@@ -1641,7 +2637,13 @@
       "key_attraction": "Tipu Sultan Birthplace Memorial",
       "nearby": "Bangalore International Airport (5 km)"
     },
-    "tags": ["fort", "Tipu-Sultan", "birthplace", "history", "day-trip"],
+    "tags": [
+      "fort",
+      "Tipu-Sultan",
+      "birthplace",
+      "history",
+      "day-trip"
+    ],
     "active": true
   },
   {
@@ -1653,9 +2655,16 @@
     "distance_km": 215,
     "drive_hours": 4,
     "drive_display": "~4 hrs",
-    "coordinates": { "lat": 13.1441, "lng": 75.9281 },
-    "image": null,
-    "moods": ["curious", "creative", "reflective"],
+    "coordinates": {
+      "lat": 13.1441,
+      "lng": 75.9281
+    },
+    "image": "shettyhalli.jpg",
+    "moods": [
+      "curious",
+      "creative",
+      "reflective"
+    ],
     "best_time": "Aug – Oct (partially submerged), Nov – Jan (dry)",
     "duration": "Half day",
     "teaser": "A 19th-century French church that rises ghost-like from the Hemavathi reservoir",
@@ -1666,7 +2675,14 @@
       "visibility": "Best Aug–Oct (partially submerged), fully visible Jan–Apr",
       "access": "Short boat ride or wade"
     },
-    "tags": ["ruins", "church", "submerged", "photography", "gothic", "unique"],
+    "tags": [
+      "ruins",
+      "church",
+      "submerged",
+      "photography",
+      "gothic",
+      "unique"
+    ],
     "active": true
   },
   {
@@ -1678,9 +2694,16 @@
     "distance_km": 130,
     "drive_hours": 2.5,
     "drive_display": "~2.5 hrs",
-    "coordinates": { "lat": 12.3975, "lng": 76.6726 },
+    "coordinates": {
+      "lat": 12.3975,
+      "lng": 76.6726
+    },
     "image": "ranganatha.jpg",
-    "moods": ["peaceful", "curious", "creative"],
+    "moods": [
+      "peaceful",
+      "curious",
+      "creative"
+    ],
     "best_time": "Jun – Nov (nesting season)",
     "duration": "Half day",
     "teaser": "Karnataka's largest bird sanctuary — 200 species, crocodiles and boat rides on the Kaveri",
@@ -1692,7 +2715,13 @@
       "boat_ride": true,
       "entry_fee": "₹30 (Indian)"
     },
-    "tags": ["bird-watching", "crocodile", "boat-ride", "sanctuary", "Kaveri"],
+    "tags": [
+      "bird-watching",
+      "crocodile",
+      "boat-ride",
+      "sanctuary",
+      "Kaveri"
+    ],
     "active": true
   },
   {
@@ -1704,9 +2733,16 @@
     "distance_km": 255,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 12.4276, "lng": 75.8934 },
-    "image": null,
-    "moods": ["adventurous", "curious", "social"],
+    "coordinates": {
+      "lat": 12.4276,
+      "lng": 75.8934
+    },
+    "image": "dubare.jpg",
+    "moods": [
+      "adventurous",
+      "curious",
+      "social"
+    ],
     "best_time": "Oct – Feb",
     "duration": "Half day",
     "teaser": "Bathe and feed forest department elephants in the Cauvery river at dawn",
@@ -1717,7 +2753,13 @@
       "operated_by": "Karnataka Forest Dept",
       "entry_fee": "₹150–₹250"
     },
-    "tags": ["elephant", "wildlife", "interactive", "family", "coorg"],
+    "tags": [
+      "elephant",
+      "wildlife",
+      "interactive",
+      "family",
+      "coorg"
+    ],
     "active": true
   },
   {
@@ -1729,9 +2771,16 @@
     "distance_km": 220,
     "drive_hours": 4,
     "drive_display": "~4 hrs",
-    "coordinates": { "lat": 12.3289, "lng": 75.9937 },
-    "image": null,
-    "moods": ["spiritual", "curious", "peaceful"],
+    "coordinates": {
+      "lat": 12.3289,
+      "lng": 75.9937
+    },
+    "image": "golden-temple-bylakuppe.jpg",
+    "moods": [
+      "spiritual",
+      "curious",
+      "peaceful"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "A Tibetan Buddhist monastery with a giant golden Buddha in rural Karnataka",
@@ -1742,7 +2791,13 @@
       "established": "1963 (Tibetan refugees)",
       "free_entry": true
     },
-    "tags": ["Buddhist", "monastery", "Tibetan", "golden", "peaceful"],
+    "tags": [
+      "Buddhist",
+      "monastery",
+      "Tibetan",
+      "golden",
+      "peaceful"
+    ],
     "active": true
   },
   {
@@ -1754,9 +2809,17 @@
     "distance_km": 5,
     "drive_hours": 0.3,
     "drive_display": "~20 min",
-    "coordinates": { "lat": 12.9507, "lng": 77.5848 },
-    "image": null,
-    "moods": ["peaceful", "romantic", "reflective", "creative"],
+    "coordinates": {
+      "lat": 12.9507,
+      "lng": 77.5848
+    },
+    "image": "lalbagh.jpg",
+    "moods": [
+      "peaceful",
+      "romantic",
+      "reflective",
+      "creative"
+    ],
     "best_time": "Jan–Feb (flower show), Oct–Mar (weather)",
     "duration": "2–3 hrs",
     "teaser": "Hyder Ali's 240-year-old botanical garden with a glass house modeled on London's Crystal Palace",
@@ -1767,7 +2830,13 @@
       "glass_house": "Modeled on Crystal Palace, London",
       "entry_fee": "₹20 (Indian)"
     },
-    "tags": ["garden", "botanical", "heritage", "flower-show", "city"],
+    "tags": [
+      "garden",
+      "botanical",
+      "heritage",
+      "flower-show",
+      "city"
+    ],
     "active": true
   },
   {
@@ -1779,19 +2848,35 @@
     "distance_km": 3,
     "drive_hours": 0.2,
     "drive_display": "~15 min",
-    "coordinates": { "lat": 12.9763, "lng": 77.5929 },
-    "image": null,
-    "moods": ["peaceful", "reflective", "social"],
+    "coordinates": {
+      "lat": 12.9763,
+      "lng": 77.5929
+    },
+    "image": "cubbon-park.jpg",
+    "moods": [
+      "peaceful",
+      "reflective",
+      "social"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1–2 hrs",
     "teaser": "A 300-acre lung of Bangalore — heritage buildings hidden among old trees",
     "about": "Cubbon Park is a 300-acre public park in central Bangalore. Laid out in 1870, it contains heritage buildings including the High Court and a State Library, as well as old banyan trees and quiet walking paths.",
     "details": {
       "area": "300 acres",
-      "heritage_buildings": ["Attara Kacheri (High Court)", "State Public Library"],
+      "heritage_buildings": [
+        "Attara Kacheri (High Court)",
+        "State Public Library"
+      ],
       "entry": "Free"
     },
-    "tags": ["park", "city", "heritage", "walking", "free"],
+    "tags": [
+      "park",
+      "city",
+      "heritage",
+      "walking",
+      "free"
+    ],
     "active": true
   },
   {
@@ -1803,9 +2888,16 @@
     "distance_km": 28,
     "drive_hours": 0.75,
     "drive_display": "~45 min",
-    "coordinates": { "lat": 12.9082, "lng": 77.3871 },
-    "image": null,
-    "moods": ["energetic", "social", "adventurous"],
+    "coordinates": {
+      "lat": 12.9082,
+      "lng": 77.3871
+    },
+    "image": "wonderla.jpg",
+    "moods": [
+      "energetic",
+      "social",
+      "adventurous"
+    ],
     "best_time": "Oct – Mar (avoid summer queues)",
     "duration": "Full day",
     "teaser": "South India's biggest theme park with 60+ rides and wave pools",
@@ -1814,9 +2906,19 @@
       "rides": "60+",
       "entry_fee": "₹899 (adult)",
       "timings": "11:00 AM – 6:00 PM",
-      "highlights": ["High Roller", "Equinox", "Wave Pool"]
+      "highlights": [
+        "High Roller",
+        "Equinox",
+        "Wave Pool"
+      ]
     },
-    "tags": ["amusement-park", "water-park", "family", "group", "rides"],
+    "tags": [
+      "amusement-park",
+      "water-park",
+      "family",
+      "group",
+      "rides"
+    ],
     "active": true
   },
   {
@@ -1828,9 +2930,16 @@
     "distance_km": 65,
     "drive_hours": 1.5,
     "drive_display": "~1.5 hrs",
-    "coordinates": { "lat": 13.4429, "lng": 77.6998 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "reflective"],
+    "coordinates": {
+      "lat": 13.4429,
+      "lng": 77.6998
+    },
+    "image": "skandagiri.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "reflective"
+    ],
     "best_time": "Sep – Mar (night trek Dec – Feb is famous)",
     "duration": "1 day (or night trek)",
     "teaser": "Bangalore's most famous night trek — summit above the clouds at sunrise",
@@ -1842,7 +2951,14 @@
       "permit_required": true,
       "ruins": "Tipu Sultan era fort"
     },
-    "tags": ["trekking", "night-trek", "sunrise", "fort", "clouds", "day-trip"],
+    "tags": [
+      "trekking",
+      "night-trek",
+      "sunrise",
+      "fort",
+      "clouds",
+      "day-trip"
+    ],
     "active": true
   },
   {
@@ -1854,9 +2970,16 @@
     "distance_km": 68,
     "drive_hours": 1.5,
     "drive_display": "~1.5 hrs",
-    "coordinates": { "lat": 13.3462, "lng": 78.2046 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "curious"],
+    "coordinates": {
+      "lat": 13.3462,
+      "lng": 78.2046
+    },
+    "image": "anthargange.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "curious"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Cave exploration and boulder scramble — an underground spring in volcanic rock",
@@ -1868,7 +2991,13 @@
       "peak_height": "1,225 m",
       "combo_with": "Kolar Gold Fields (30 km)"
     },
-    "tags": ["cave", "bouldering", "underground-spring", "trekking", "day-trip"],
+    "tags": [
+      "cave",
+      "bouldering",
+      "underground-spring",
+      "trekking",
+      "day-trip"
+    ],
     "active": true
   },
   {
@@ -1880,9 +3009,16 @@
     "distance_km": 148,
     "drive_hours": 3,
     "drive_display": "~3 hrs",
-    "coordinates": { "lat": 12.2978, "lng": 76.6524 },
-    "image": null,
-    "moods": ["curious", "social", "energetic"],
+    "coordinates": {
+      "lat": 12.2978,
+      "lng": 76.6524
+    },
+    "image": "mysore-zoo.jpg",
+    "moods": [
+      "curious",
+      "social",
+      "energetic"
+    ],
     "best_time": "Oct – Feb",
     "duration": "Half–1 day",
     "teaser": "One of India's oldest and best zoos — white tigers and African animals in spacious enclosures",
@@ -1892,9 +3028,20 @@
       "species": "168+",
       "animals": "1,500+",
       "entry_fee": "₹100 (adult Indian)",
-      "highlights": ["White Tiger", "Gorilla", "African Lion", "Hippopotamus"]
+      "highlights": [
+        "White Tiger",
+        "Gorilla",
+        "African Lion",
+        "Hippopotamus"
+      ]
     },
-    "tags": ["zoo", "wildlife", "family", "Mysore", "historic"],
+    "tags": [
+      "zoo",
+      "wildlife",
+      "family",
+      "Mysore",
+      "historic"
+    ],
     "active": true
   },
   {
@@ -1906,19 +3053,38 @@
     "distance_km": 340,
     "drive_hours": 5.5,
     "drive_display": "~5.5 hrs",
-    "coordinates": { "lat": 14.6118, "lng": 75.6186 },
-    "image": null,
-    "moods": ["curious", "peaceful", "adventurous"],
+    "coordinates": {
+      "lat": 14.6118,
+      "lng": 75.6186
+    },
+    "image": "ranibennur.jpg",
+    "moods": [
+      "curious",
+      "peaceful",
+      "adventurous"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "Vast open plains where blackbuck herds and Indian wolves still roam",
     "about": "Ranibennur Blackbuck Sanctuary is a protected grassland sanctuary supporting large herds of blackbuck alongside wolves, jackals and foxes. The open savanna habitat is quite different from Karnataka's typical jungle parks.",
     "details": {
-      "key_species": ["Blackbuck", "Indian Wolf", "Jackal", "Fox", "Hyena"],
+      "key_species": [
+        "Blackbuck",
+        "Indian Wolf",
+        "Jackal",
+        "Fox",
+        "Hyena"
+      ],
       "habitat": "Dry scrub grassland",
       "best_time": "Sunrise safari"
     },
-    "tags": ["blackbuck", "wolf", "grassland", "offbeat", "sanctuary"],
+    "tags": [
+      "blackbuck",
+      "wolf",
+      "grassland",
+      "offbeat",
+      "sanctuary"
+    ],
     "active": true
   },
   {
@@ -1930,9 +3096,16 @@
     "distance_km": 340,
     "drive_hours": 5.5,
     "drive_display": "~5.5 hrs",
-    "coordinates": { "lat": 15.2717, "lng": 76.3247 },
-    "image": null,
-    "moods": ["peaceful", "curious", "social"],
+    "coordinates": {
+      "lat": 15.2717,
+      "lng": 76.3247
+    },
+    "image": "tungabhadra-dam.jpg",
+    "moods": [
+      "peaceful",
+      "curious",
+      "social"
+    ],
     "best_time": "Oct – Jan",
     "duration": "Half day",
     "teaser": "Musical fountain and sunset views over Tungabhadra — gateway to Hampi",
@@ -1942,7 +3115,13 @@
       "musical_fountain": "6:30 PM – 7:30 PM",
       "viewpoint": "Top of dam (open to public)"
     },
-    "tags": ["dam", "fountain", "Hampi-combo", "river", "sunset"],
+    "tags": [
+      "dam",
+      "fountain",
+      "Hampi-combo",
+      "river",
+      "sunset"
+    ],
     "active": true
   },
   {
@@ -1954,9 +3133,16 @@
     "distance_km": 180,
     "drive_hours": 3.5,
     "drive_display": "~3.5 hrs",
-    "coordinates": { "lat": 12.1081, "lng": 77.789 },
-    "image": null,
-    "moods": ["adventurous", "social", "energetic"],
+    "coordinates": {
+      "lat": 12.1081,
+      "lng": 77.789
+    },
+    "image": "hogenakkal.jpg",
+    "moods": [
+      "adventurous",
+      "social",
+      "energetic"
+    ],
     "best_time": "Jul – Oct (peak water), Nov – Jan (coracles)",
     "duration": "1 day",
     "teaser": "The Niagara of India — coracle rides through Kaveri gorge falls at the border",
@@ -1967,7 +3153,14 @@
       "fish_market": "Fresh Kaveri fish sold at falls",
       "note": "Technically in Tamil Nadu but accessed from Karnataka"
     },
-    "tags": ["waterfall", "coracle", "Kaveri", "Niagara", "fish", "adventure"],
+    "tags": [
+      "waterfall",
+      "coracle",
+      "Kaveri",
+      "Niagara",
+      "fish",
+      "adventure"
+    ],
     "active": true
   },
   {
@@ -1979,9 +3172,16 @@
     "distance_km": 185,
     "drive_hours": 3.5,
     "drive_display": "~3.5 hrs",
-    "coordinates": { "lat": 11.9782, "lng": 77.168 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "spiritual"],
+    "coordinates": {
+      "lat": 11.9782,
+      "lng": 77.168
+    },
+    "image": "biligiri-hills-trek.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "spiritual"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "Temple peak trek through tiger reserve where Eastern and Western Ghats collide",
@@ -1992,7 +3192,13 @@
       "guide": "Soliga tribal guides recommended",
       "wildlife_zone": true
     },
-    "tags": ["trekking", "temple", "wildlife", "tribal", "ghats"],
+    "tags": [
+      "trekking",
+      "temple",
+      "wildlife",
+      "tribal",
+      "ghats"
+    ],
     "active": true
   },
   {
@@ -2004,9 +3210,16 @@
     "distance_km": 100,
     "drive_hours": 2,
     "drive_display": "~2 hrs",
-    "coordinates": { "lat": 12.5187, "lng": 77.0436 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "social"],
+    "coordinates": {
+      "lat": 12.5187,
+      "lng": 77.0436
+    },
+    "image": "cauvery-rafting.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "social"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1 day",
     "teaser": "Grade II–III whitewater rafting through forested Cauvery river gorge",
@@ -2015,9 +3228,18 @@
       "rapids_grade": "Grade II–III",
       "stretch": "14 km",
       "duration": "2–3 hrs on water",
-      "operators": ["Cauvery Adventure Sports", "multiple local camps"]
+      "operators": [
+        "Cauvery Adventure Sports",
+        "multiple local camps"
+      ]
     },
-    "tags": ["rafting", "whitewater", "adventure", "Cauvery", "group"],
+    "tags": [
+      "rafting",
+      "whitewater",
+      "adventure",
+      "Cauvery",
+      "group"
+    ],
     "active": true
   },
   {
@@ -2029,9 +3251,15 @@
     "distance_km": 50,
     "drive_hours": 1,
     "drive_display": "~1 hr",
-    "coordinates": { "lat": 12.9186, "lng": 77.2933 },
-    "image": null,
-    "moods": ["energetic", "adventurous"],
+    "coordinates": {
+      "lat": 12.9186,
+      "lng": 77.2933
+    },
+    "image": "savandurga.jpg",
+    "moods": [
+      "energetic",
+      "adventurous"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "One of Asia's largest monolith hills — a bold granite dome above the plains",
@@ -2042,7 +3270,13 @@
       "type": "Monolithic granite",
       "claim": "One of Asia's largest monoliths"
     },
-    "tags": ["trekking", "monolith", "granite", "bouldering", "day-trip"],
+    "tags": [
+      "trekking",
+      "monolith",
+      "granite",
+      "bouldering",
+      "day-trip"
+    ],
     "active": true
   },
   {
@@ -2054,9 +3288,16 @@
     "distance_km": 625,
     "drive_hours": 10,
     "drive_display": "~10 hrs",
-    "coordinates": { "lat": 17.9142, "lng": 77.5139 },
-    "image": null,
-    "moods": ["curious", "reflective", "creative"],
+    "coordinates": {
+      "lat": 17.9142,
+      "lng": 77.5139
+    },
+    "image": "mahmud-gawan.jpg",
+    "moods": [
+      "curious",
+      "reflective",
+      "creative"
+    ],
     "best_time": "Oct – Feb",
     "duration": "Half day",
     "teaser": "A 15th-century Persian madrasa with blue-glazed tile minarets — India's most overlooked ruin",
@@ -2067,7 +3308,14 @@
       "architectural_style": "Persian (Timurid)",
       "tile_work": "Blue-glazed calligraphy tiles"
     },
-    "tags": ["madrasa", "Persian", "tiles", "Bahmani", "history", "offbeat"],
+    "tags": [
+      "madrasa",
+      "Persian",
+      "tiles",
+      "Bahmani",
+      "history",
+      "offbeat"
+    ],
     "active": true
   },
   {
@@ -2079,9 +3327,16 @@
     "distance_km": 30,
     "drive_hours": 0.75,
     "drive_display": "~45 min",
-    "coordinates": { "lat": 13.1068, "lng": 77.3785 },
-    "image": null,
-    "moods": ["creative", "curious", "peaceful"],
+    "coordinates": {
+      "lat": 13.1068,
+      "lng": 77.3785
+    },
+    "image": "nrityagram.jpg",
+    "moods": [
+      "creative",
+      "curious",
+      "peaceful"
+    ],
     "best_time": "Oct – Mar",
     "duration": "Half day",
     "teaser": "A gurukula dance village where classical odissi is kept alive in a forest setting",
@@ -2091,7 +3346,13 @@
       "visit_type": "Weekend performances & guided visits",
       "type": "Residential gurukula"
     },
-    "tags": ["classical-dance", "culture", "gurukula", "unique", "art"],
+    "tags": [
+      "classical-dance",
+      "culture",
+      "gurukula",
+      "unique",
+      "art"
+    ],
     "active": true
   },
   {
@@ -2103,9 +3364,17 @@
     "distance_km": 340,
     "drive_hours": 6,
     "drive_display": "~6 hrs",
-    "coordinates": { "lat": 15.3293, "lng": 76.4601 },
-    "image": null,
-    "moods": ["energetic", "adventurous", "creative", "social"],
+    "coordinates": {
+      "lat": 15.3293,
+      "lng": 76.4601
+    },
+    "image": "hampi-bouldering.jpg",
+    "moods": [
+      "energetic",
+      "adventurous",
+      "creative",
+      "social"
+    ],
     "best_time": "Oct – Feb",
     "duration": "2–3 days",
     "teaser": "World-class granite bouldering in the shadow of Vijayanagara ruins",
@@ -2116,7 +3385,13 @@
       "season": "Nov – Feb (optimal)",
       "combo_with": "Hampi ruins (same location)"
     },
-    "tags": ["bouldering", "rock-climbing", "adventure", "Hampi", "international"],
+    "tags": [
+      "bouldering",
+      "rock-climbing",
+      "adventure",
+      "Hampi",
+      "international"
+    ],
     "active": true
   },
   {
@@ -2128,9 +3403,15 @@
     "distance_km": 190,
     "drive_hours": 3.5,
     "drive_display": "~3.5 hrs",
-    "coordinates": { "lat": 11.8573, "lng": 76.6219 },
-    "image": null,
-    "moods": ["peaceful", "curious"],
+    "coordinates": {
+      "lat": 11.8573,
+      "lng": 76.6219
+    },
+    "image": "nugu-sanctuary.jpg",
+    "moods": [
+      "peaceful",
+      "curious"
+    ],
     "best_time": "Nov – Mar (migratory season)",
     "duration": "Half day",
     "teaser": "A quiet reservoir sanctuary rarely on the tourist map — migrant waders at their best",
@@ -2140,7 +3421,13 @@
       "reservoir": "Nugu Reservoir",
       "adjoins": "Nagarhole National Park"
     },
-    "tags": ["bird-watching", "reservoir", "offbeat", "migratory", "quiet"],
+    "tags": [
+      "bird-watching",
+      "reservoir",
+      "offbeat",
+      "migratory",
+      "quiet"
+    ],
     "active": true
   },
   {
@@ -2152,9 +3439,16 @@
     "distance_km": 190,
     "drive_hours": 3.5,
     "drive_display": "~3.5 hrs",
-    "coordinates": { "lat": 11.7626, "lng": 77.0302 },
-    "image": null,
-    "moods": ["spiritual", "adventurous", "curious"],
+    "coordinates": {
+      "lat": 11.7626,
+      "lng": 77.0302
+    },
+    "image": "male-mahadeshwara.jpg",
+    "moods": [
+      "spiritual",
+      "adventurous",
+      "curious"
+    ],
     "best_time": "Oct – Mar",
     "duration": "1 day",
     "teaser": "A forest pilgrimage to the shrine of male deity through MM Hills tiger corridor",
@@ -2162,9 +3456,19 @@
     "details": {
       "deity": "Lord Mahadeshwara (Shiva)",
       "tiger_reserve": "MM Hills Tiger Reserve (en route)",
-      "wildlife_en_route": ["Elephant", "Sloth Bear", "Wild Dog"]
+      "wildlife_en_route": [
+        "Elephant",
+        "Sloth Bear",
+        "Wild Dog"
+      ]
     },
-    "tags": ["temple", "pilgrimage", "forest", "tiger-reserve", "Shiva"],
+    "tags": [
+      "temple",
+      "pilgrimage",
+      "forest",
+      "tiger-reserve",
+      "Shiva"
+    ],
     "active": true
   },
   {
@@ -2176,9 +3480,16 @@
     "distance_km": 263,
     "drive_hours": 5,
     "drive_display": "~5 hrs",
-    "coordinates": { "lat": 12.4221, "lng": 75.7378 },
+    "coordinates": {
+      "lat": 12.4221,
+      "lng": 75.7378
+    },
     "image": "Sunset-view-paradise.jpg",
-    "moods": ["peaceful", "romantic", "reflective"],
+    "moods": [
+      "peaceful",
+      "romantic",
+      "reflective"
+    ],
     "best_time": "Oct – Feb",
     "duration": "1–2 hrs",
     "teaser": "The king's garden terrace — where Coorg royalty watched the sun set over the Ghats",
@@ -2189,7 +3500,13 @@
       "sunset_view": "Western Ghats",
       "toy_train": "Available"
     },
-    "tags": ["viewpoint", "sunset", "coorg", "garden", "royal"],
+    "tags": [
+      "viewpoint",
+      "sunset",
+      "coorg",
+      "garden",
+      "royal"
+    ],
     "active": true
   }
 ]
