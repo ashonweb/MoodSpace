@@ -21,38 +21,72 @@ const CATEGORIES = [
   { label: 'Garden',       value: 'Garden'       },
 ];
 
-const pillBase = 'px-3 py-1 rounded-full border-[1.5px] text-[11px] font-medium transition-all whitespace-nowrap';
-const pillOff  = 'bg-white border-[#e5e7eb] text-[#6b7280] hover:border-[#9ca3af] hover:text-[#1a1a1a]';
-const pillOn   = 'bg-[#1a1a1a] border-[#1a1a1a] text-white';
+const INDOOR_CATEGORIES = [
+  { label: 'All activities', value: 'all'       },
+  { label: 'Yoga',           value: 'yoga'      },
+  { label: 'Meditation',     value: 'meditation'},
+  { label: 'Fitness',        value: 'fitness'   },
+  { label: 'Art & Craft',    value: 'art'       },
+  { label: 'Music',          value: 'music'     },
+  { label: 'Cooking',        value: 'cooking'   },
+  { label: 'Gaming',         value: 'gaming'    },
+  { label: 'Movies',         value: 'movies'    },
+  { label: 'Karaoke',        value: 'Karaoke'   },
+  { label: 'Cozy',           value: 'blanket'   },
+  { label: 'Journaling',     value: 'gratitude' },
+  { label: 'Photography',    value: 'Photo'     },
+  { label: 'Writing',        value: 'study'     },
+  { label: 'Language',       value: 'language'  },
+];
+
+const pill    = 'flex-shrink-0 px-3.5 py-[5px] rounded-full text-[12px] font-medium cursor-pointer whitespace-nowrap border-none transition-all duration-150';
+const pillOff = 'bg-[#f3f4f6] text-[#6b7280] hover:bg-[#e9eaec] hover:text-[#111]';
+const pillOn  = 'bg-[#111] text-white font-semibold';
 
 export default function FilterBar({
   count, activeMood, activeDist, activeCat,
   moodName, onClearMood, onDistChange, onCatChange,
+  isIndoor,
 }) {
+  const cats = isIndoor ? INDOOR_CATEGORIES : CATEGORIES;
+
   return (
-    <div className="sticky top-14 z-40 bg-[#f7f6f3] border-b border-[#e5e7eb] px-6 pt-3.5 pb-3">
-      {/* Row 1: count + mood chip + distance pills */}
-      <div className="flex items-center justify-between flex-wrap gap-2 mb-2.5">
+    <div className="sticky top-[58px] z-40 bg-white border-b border-black/[0.07] px-7 pt-3 pb-2.5">
+      {/* Row 1 */}
+      <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
         <div className="flex items-center gap-2">
           <span className="text-[13px] text-[#6b7280]">
-            <strong className="text-[#1a1a1a] font-bold">{count}</strong> places
+            <strong className="text-[#111] font-bold">{count}</strong>{' '}
+            {isIndoor ? 'activities' : 'places'}
           </span>
           {activeMood && moodName && (
             <button
               onClick={onClearMood}
-              className="inline-flex items-center gap-1 bg-[#fff3ee] border border-[#f97316] text-[#c2410c] text-[11px] font-semibold px-2.5 py-1 rounded-full hover:bg-[#ffe4d6] transition-colors"
+              className="inline-flex items-center gap-1 bg-[#fff3ee] border border-[#fed7aa] text-[#c2410c] text-[11px] font-semibold px-2.5 py-1 rounded-full hover:bg-[#ffe4d6] transition-colors"
             >
               {moodName} <span>×</span>
             </button>
           )}
         </div>
 
-        <div className="flex gap-1.5 flex-wrap">
+        <div className="flex gap-1.5 flex-wrap items-center">
+          <button
+            onClick={() => onDistChange('indoor')}
+            className={`${pill} ${activeDist === 'indoor'
+              ? 'bg-[#fff3eb] text-[#c2410c] font-semibold'
+              : 'bg-[#fff3eb] text-[#c2410c] border border-[#fed7aa]'
+            }`}
+          >
+            In Bangalore
+          </button>
+
+          <span className="w-[1px] h-4 bg-[#e5e7eb] mx-0.5" />
+
           {DISTANCES.map(d => (
             <button
               key={d.value}
               onClick={() => onDistChange(d.value)}
-              className={`${pillBase} ${activeDist === d.value ? pillOn : pillOff}`}
+              className={`${pill} ${activeDist === d.value ? pillOn : pillOff}`}
             >
               {d.label}
             </button>
@@ -60,13 +94,13 @@ export default function FilterBar({
         </div>
       </div>
 
-      {/* Row 2: category chips */}
+      {/* Row 2 */}
       <div className="flex gap-1.5 overflow-x-auto pb-0.5" style={{ scrollbarWidth: 'none' }}>
-        {CATEGORIES.map(c => (
+        {cats.map(c => (
           <button
             key={c.value}
             onClick={() => onCatChange(c.value)}
-            className={`flex-shrink-0 ${pillBase} ${activeCat === c.value ? pillOn : pillOff}`}
+            className={`${pill} ${activeCat === c.value ? pillOn : pillOff}`}
           >
             {c.label}
           </button>

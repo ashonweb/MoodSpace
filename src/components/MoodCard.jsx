@@ -3,29 +3,42 @@ import * as Icons from 'lucide-react';
 export default function MoodCard({ mood, isActive, onClick }) {
   const Icon = Icons[mood.icon] || Icons.Zap;
 
+  const activeStyle = {
+    background: `linear-gradient(135deg, ${mood.color}, ${mood.color}cc)`,
+    boxShadow: `0 8px 24px ${mood.color}44`,
+  };
+
+  const inactiveStyle = {
+    background: mood.bg,
+  };
+
   return (
     <button
       onClick={() => onClick(mood.id)}
-      style={{ flex: '1 1 150px', minWidth: '150px', maxWidth: '200px' }}
-      className={[
-        'flex items-center gap-2.5 px-4 py-3 rounded-[10px] border-[1.5px] text-left',
-        'transition-all duration-150 cursor-pointer',
-        isActive
-          ? 'bg-[#c2410c] border-[#c2410c] -translate-y-px'
-          : 'bg-[#2a2a2a] border-[#3a3a3a] hover:border-[#c2410c] hover:bg-[#333] hover:-translate-y-px',
-      ].join(' ')}
+      className="flex flex-col items-start p-3.5 rounded-2xl border-none cursor-pointer text-left transition-all duration-150"
+      style={{
+        ...(isActive ? activeStyle : inactiveStyle),
+        transform: isActive ? 'translateY(-2px)' : undefined,
+      }}
     >
-      <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${isActive ? 'bg-white/20' : 'bg-white/[0.08]'}`}>
-        <Icon size={16} className={isActive ? 'text-white' : 'text-[#9ca3af]'} />
+      <div
+        className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center flex-shrink-0 mb-2.5"
+        style={{ background: isActive ? 'rgba(255,255,255,0.22)' : `${mood.color}18` }}
+      >
+        <Icon size={16} color={isActive ? '#fff' : mood.color} strokeWidth={2} />
       </div>
-      <div className="flex-1 min-w-0">
-        <span className={`block text-[13px] font-semibold ${isActive ? 'text-white' : 'text-[#e5e7eb]'}`}>
-          {mood.name}
-        </span>
-        <span className={`block text-[10px] truncate mt-0.5 ${isActive ? 'text-white/65' : 'text-[#6b7280]'}`}>
-          {mood.tagline}
-        </span>
-      </div>
+      <span
+        className="block text-[13px] font-bold tracking-[-0.2px]"
+        style={{ color: isActive ? '#fff' : '#111' }}
+      >
+        {mood.name}
+      </span>
+      <span
+        className="block text-[10px] mt-0.5 leading-[1.35]"
+        style={{ color: isActive ? 'rgba(255,255,255,0.75)' : '#6b7280' }}
+      >
+        {mood.tagline}
+      </span>
     </button>
   );
 }
